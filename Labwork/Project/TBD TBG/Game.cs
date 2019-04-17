@@ -58,7 +58,7 @@ namespace TBD_TBG
             Choice A4A = new Choice("As reach a opening in the husk Aethor’s Glory, you find a rusted iron shortsword, untouched by the flames. Despite the wear and tear, it fits well in your dominant hand.");
             Choice A4B = new Choice("No, you can’t.");
             Choice A5A = new Choice("Sword in hand, you venture through the opening in the ship’s hull. In front of you lies a lush, green forest.");
-            Choice A6A = new Choice("You wander through the forest for what feels like hours. You are unable to tell as the canopy of leaves obstructs your view of the sun. The only thing you can glean is that it isn’t night yet. Eventually you see lights in the distance and begin to hear sounds of life. Upon exiting the forest, you come upon a moderately sized village teeming with life.");
+            Choice A6A = new Choice("You wander through the forest for what feels like hours. You are unable to tell as the canopy of leaves obstructs your view of the sun. The only thing you can glean is that it isn’t night yet.\nEventually you see lights in the distance and begin to hear sounds of life. Upon exiting the forest, you come upon a moderately sized village teeming with life.");
             Choice A7A = new Choice("Gazing upwards, you can see that the sun has nearly set. You must have been in the forest for hours.");
 
             A1A.SetChoices(new Dictionary<string, Choice>() { { "1) Wake up", A2A }, { "2) Deal with it later", A1B } });
