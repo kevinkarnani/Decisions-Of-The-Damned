@@ -143,6 +143,7 @@ namespace TBD_TBG
                     Console.WriteLine("Invalid Choice Selection. Try Again.");
                 }
             }
+
         }
 
         static void GameTitle()
