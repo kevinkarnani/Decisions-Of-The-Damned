@@ -88,9 +88,13 @@ namespace TBD_TBG
                 Utility.Write(CurrentScenario.GetChoiceText());
                 string selection = Console.ReadLine();
                 //try..catch, check if legit
-                if (true)
+                try
                 {
                     CurrentScenario = CurrentScenario.GetChoice(selection);
+                }
+                catch (ArgumentOutOfRangeException)
+                {
+                    Console.WriteLine("Invalid Choice Selection. Try Again.");
                 }
             }
         }
