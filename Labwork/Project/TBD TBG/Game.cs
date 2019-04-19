@@ -61,15 +61,25 @@ namespace TBD_TBG
             Choice A6A = new Choice("You wander through the forest for what feels like hours. You are unable to tell as the canopy of leaves obstructs your view of the sun. The only thing you can glean is that it isn’t night yet.\nEventually you see lights in the distance and begin to hear sounds of life. Upon exiting the forest, you come upon a moderately sized village teeming with life.");
             Choice A7A = new Choice("Gazing upwards, you can see that the sun has nearly set. You must have been in the forest for hours.");
 
-            Choice B1A = new Choice("You enter into what appears to be the residential district of the town. Similarly built wood and brick houses line the roads, with people either relaxing outside or staring out their windows from inside. \nAs you continue, a low growling from your stomach reminds you how hungry you are.");
+            Choice B1A = new Choice("You enter into what appears to be the residential district of the town. Similarly built wood and brick houses line the roads, with people either relaxing outside or staring out their \nwindows from inside. As you continue, a low growling from your stomach reminds you how hungry you are.");
             Choice B2A = new Choice("Not too long after you start looking, you come upon a tavern adjacent to the town square. From the inside you can hear the loud laughing and voices overlapping one another. \nOnce you get inside, it is not only cramped, but crowded. Luckily, there are a few stools open over at the bar.");
             Choice B2B = new Choice("Once you settle into your seat, a barmaid comes along and asks if you would like something to eat.");
             Choice B2C = new Choice("As previously mentioned, you’re ravenously hungry. We both know you don’t want to starve to death here.");
             Choice B2D = new Choice("This “ignoring the narrator thing” has gotten old real quick. Eat something before I make you. Got it?");
-            Choice B3A = new Choice("The barmaid takes your money and goes to retrieve your meal. While waiting, you observe a group of farmers getting up to leave after finishing their meals. You notice one of them has forgotten his coin purse on his seat.");
+            Choice B3A = new Choice("The barmaid takes your money and goes to retrieve your meal. While waiting, you observe a group of farmers getting up to leave after finishing their meals. You notice one of \nthem has forgotten his coin purse on his seat.");
             Choice B3B = new Choice("As they reach the door to the tavern you flag down the group and gesture to the forgotten purse. The largest of the punch checks his pockets before realizing that it’s his. \nHe quickly grabs it and makes his exit, thanking you profusely as he leaves.");
             Choice B3C = new Choice("Making sure that no one is paying you any attention, you lean down and snatch the pouch. Inside you find 40 drachma. Score!");
-            Choice B4A = new Choice("The waitress returns soon after with your food, which you wolf down in record time. As soon as it hits your stomach, exhaustion kicks in. So you pay your bill and ask the barmaid if you can find an inn nearby. \nLuckily for you this tavern also functions as an inn! For 5 drachma you get room and board for a whole day.");
+            Choice B4A = new Choice("The waitress returns soon after with your food, which you wolf down in record time. As soon as it hits your stomach, exhaustion kicks in. So you pay your bill and ask the \nbarmaid if you can find an inn nearby. Luckily for you this tavern also functions as an inn! For 5 drachma you get room and board for a whole day.");
+
+            Choice C1A = new Choice("Your hibernation is interrupted by a commotion coming from the town square.");
+            Choice C1B = new Choice("Stop.");
+            Choice C2A = new Choice("You gather your things and leave the tavern to investigate. The town square is brimming with townsfolk gathering to do their daily shopping.");
+            Choice C2B = new Choice("While meandering through the crowds, you hear people begin to cry out. Upon reaching the source of the noises you find two guards brutalizing a young man on the ground. \nThey kick him over and over again as he cries out for help, blood leaking from his mouth. At this rate he’s going to die.");
+            Choice C2C = new Choice("You charge at one of the guards, tackling him to the ground. The other guard stops kicking and throws you off of him.");
+            Choice C2D = new Choice("You draw your sword from its ill-fitting sheath and prepare for combat. From behind you hear a deep voice call out. It’s a man in pristine armor, flanked by five more town guards. \n“You there! " + characterName + ", did you think I wouldn’t recognize you? You’re under arrest for conspiring against the Duke. Men, arrest him!”");
+            Choice C2E = new Choice("Turning away from the beatdown, you decide to look for a shop. Maybe a blacksmith can remove the rust from your blade? From behind you hear a deep voice call out. \nIt’s a man in pristine armor, flanked by five more town guards. “You there! " + characterName + ", did you think I wouldn’t recognize you? You’re under arrest for conspiring against the Duke. Men, arrest him!”");
+            Choice C2F = new Choice("Realizing that challenging two town guards with nothing but a rusty iron sword wasn’t you’re greatest decision ever, you try to flee. Unfortunately, you hear a deep voice \ncall out from behind you. It’s a man in pristine armor, flanked by five more town guards. “You there! " + characterName + ", did you think I wouldn’t recognize you? You’re under arrest for conspiring against the Duke. Men, arrest him!”");
+            Choice C3A = new Choice("End of the demo! Thanks for playing!");
 
 
             A1A.SetChoices(new Dictionary<string, Choice>() { { "1) Wake up", A2A }, { "2) Deal with it later", A1B } });
@@ -96,7 +106,18 @@ namespace TBD_TBG
             B3A.SetChoices(new Dictionary<string, Choice>() { { "1) Get his attention and return the money", B3B }, { "2) Yoink!", B3C} });
             B3B.SetChoices(new Dictionary<string, Choice>() { { "1) Return to the bar", B4A } });
             B3C.SetChoices(new Dictionary<string, Choice>() { { "1) Return to the bar", B4A } });
-            B4A.SetChoices(new Dictionary<string, Choice>() { });
+            B4A.SetChoices(new Dictionary<string, Choice>() { { "1) It’s snooze time", C1A } });
+
+            C1A.SetChoices(new Dictionary<string, Choice>() { { "1) Check it out", C2A }, { "2) Just five more minutes", C1B } });
+            C1B.SetChoices(new Dictionary<string, Choice>() { { "1) Check it out", C2A } });
+            C2A.SetChoices(new Dictionary<string, Choice>() { { "1) Explore", C2B} });
+            C2B.SetChoices(new Dictionary<string, Choice>() { { "1) Something needs to be done", C2C }, { "2) Not my problem, back to exploring!", C2E } });
+            C2C.SetChoices(new Dictionary<string, Choice>() { { "1) Draw your sword", C2D }, { "2) Run Away!", C2F } });
+            C2D.SetChoices(new Dictionary<string, Choice>() { { "", C3A } });
+            C2E.SetChoices(new Dictionary<string, Choice>() { { "", C3A } });
+            C2F.SetChoices(new Dictionary<string, Choice>() { { "", C3A } });
+            C3A.SetChoices(new Dictionary<string, Choice>() { });
+
 
             CurrentScenario = A1A;
         }
@@ -112,6 +133,10 @@ namespace TBD_TBG
                 try
                 {
                     CurrentScenario = CurrentScenario.GetChoice(selection);
+                    if (CurrentScenario == null)
+                    {
+                        break;
+                    }
                 }
                 catch (ArgumentOutOfRangeException)
                 {
@@ -134,7 +159,6 @@ namespace TBD_TBG
 
         public static void End()
         {
-            Utility.Write("End of story :( Thanks for playing!!!");
             Utility.Write("Press enter to exit.");
         }
     }
