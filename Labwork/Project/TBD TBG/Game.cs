@@ -61,8 +61,19 @@ namespace TBD_TBG
             Choice A6A = new Choice("You wander through the forest for what feels like hours. You are unable to tell as the canopy of leaves obstructs your view of the sun. The only thing you can glean is that it isn’t night yet.\nEventually you see lights in the distance and begin to hear sounds of life. Upon exiting the forest, you come upon a moderately sized village teeming with life.");
             Choice A7A = new Choice("Gazing upwards, you can see that the sun has nearly set. You must have been in the forest for hours.");
 
+            Choice B1A = new Choice("You enter into what appears to be the residential district of the town. Similarly built wood and brick houses line the roads, with people either relaxing outside or staring out their windows from inside. \nAs you continue, a low growling from your stomach reminds you how hungry you are.");
+            Choice B2A = new Choice("Not too long after you start looking, you come upon a tavern adjacent to the town square. From the inside you can hear the loud laughing and voices overlapping one another. \nOnce you get inside, it is not only cramped, but crowded. Luckily, there are a few stools open over at the bar.");
+            Choice B2B = new Choice("Once you settle into your seat, a barmaid comes along and asks if you would like something to eat.");
+            Choice B2C = new Choice("As previously mentioned, you’re ravenously hungry. We both know you don’t want to starve to death here.");
+            Choice B2D = new Choice("This “ignoring the narrator thing” has gotten old real quick. Eat something before I make you. Got it?");
+            Choice B3A = new Choice("The barmaid takes your money and goes to retrieve your meal. While waiting, you observe a group of farmers getting up to leave after finishing their meals. You notice one of them has forgotten his coin purse on his seat.");
+            Choice B3B = new Choice("As they reach the door to the tavern you flag down the group and gesture to the forgotten purse. The largest of the punch checks his pockets before realizing that it’s his. \nHe quickly grabs it and makes his exit, thanking you profusely as he leaves.");
+            Choice B3C = new Choice("Making sure that no one is paying you any attention, you lean down and snatch the pouch. Inside you find 40 drachma. Score!");
+            Choice B4A = new Choice("The waitress returns soon after with your food, which you wolf down in record time. As soon as it hits your stomach, exhaustion kicks in. So you pay your bill and ask the barmaid if you can find an inn nearby. \nLuckily for you this tavern also functions as an inn! For 5 drachma you get room and board for a whole day.");
+
+
             A1A.SetChoices(new Dictionary<string, Choice>() { { "1) Wake up", A2A }, { "2) Deal with it later", A1B } });
-            A1B.SetChoices(new Dictionary<string, Choice>() { { "1) Get up", A2A }, { "Sleep is important to maintain my healthy lifestyle", A1C } });
+            A1B.SetChoices(new Dictionary<string, Choice>() { { "1) Get up", A2A }, { "2) Sleep is important to maintain my healthy lifestyle", A1C } });
             A1C.SetChoices(new Dictionary<string, Choice>() { { "1) Get up", A2A } });
             A2A.SetChoices(new Dictionary<string, Choice>() { { "1) Look up", A2B }, { "2) Look for a weapon", A3A }, { "3) Guess this is where I die", A2D } });
             A2B.SetChoices(new Dictionary<string, Choice>() { { "1) Look for a weapon", A3A }, { "2) This patch of burning wood looks comfortable!", A2E } });
@@ -75,7 +86,17 @@ namespace TBD_TBG
             A4B.SetChoices(new Dictionary<string, Choice>() { { "1) Take the sword", A5A } });
             A5A.SetChoices(new Dictionary<string, Choice>() { { "1) Venture Forth", A6A } });
             A6A.SetChoices(new Dictionary<string, Choice>() { { "1) Look at the sky", A7A } });
-            A7A.SetChoices(new Dictionary<string, Choice>() { });
+            A7A.SetChoices(new Dictionary<string, Choice>() { { "1) Head into town", B1A } });
+
+            B1A.SetChoices(new Dictionary<string, Choice>() { { "1) Find a tavern", B2A } });
+            B2A.SetChoices(new Dictionary<string, Choice>() { { "1) Head to the bar", B2B } });
+            B2B.SetChoices(new Dictionary<string, Choice>() { { "1) Order dinner [3 drachma]", B3A }, { "2) I’ll pass, thanks", B2C} });
+            B2C.SetChoices(new Dictionary<string, Choice>() { { "1) Order dinner [3 drachma]", B3A }, { "2) Order an ale [1 drachma]", B2D } });
+            B2D.SetChoices(new Dictionary<string, Choice>() { { "1) Order dinner [3 drachma]", B3A } });
+            B3A.SetChoices(new Dictionary<string, Choice>() { { "1) Get his attention and return the money", B3B }, { "2) Yoink!", B3C} });
+            B3B.SetChoices(new Dictionary<string, Choice>() { { "1) Return to the bar", B4A } });
+            B3C.SetChoices(new Dictionary<string, Choice>() { { "1) Return to the bar", B4A } });
+            B4A.SetChoices(new Dictionary<string, Choice>() { });
 
             CurrentScenario = A1A;
         }
