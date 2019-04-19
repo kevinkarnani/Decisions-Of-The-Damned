@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Globalization;
 using System.Collections.Generic;
-//bazinga
-int test = 0;
+
 namespace TBD_TBG
 {
     class Utility
     {
+        //bazinga
+        int test = 0;
         static string margin = "  ";
         static string indent = "    ";
 
