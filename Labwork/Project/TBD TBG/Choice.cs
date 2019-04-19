@@ -30,10 +30,15 @@ namespace TBD_TBG
             return output;
         }
 
+        public bool CheckChoice()
+        {
+            return (this.Choices.Count > 0);
+        }
+
         public Choice GetChoice(string selection)
         {
             int num = Int32.Parse(selection) - 1;
             return this.Choices.Values.ElementAt(num);
-        }
+        } 
     }
 }

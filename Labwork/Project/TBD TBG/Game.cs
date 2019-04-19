@@ -126,6 +126,10 @@ namespace TBD_TBG
         {
             while (true)
             {
+                if (!CurrentScenario.CheckChoice())
+                {
+                    break;
+                }
                 Utility.Write(CurrentScenario.Description);
                 Utility.Write(CurrentScenario.GetChoiceText());
                 string selection = Console.ReadLine();
@@ -133,16 +137,16 @@ namespace TBD_TBG
                 try
                 {
                     CurrentScenario = CurrentScenario.GetChoice(selection);
-                    if (CurrentScenario == null)
+                }
+                catch (Exception ex)
+                {
+                    if (ex is ArgumentOutOfRangeException || ex is FormatException)
                     {
-                        break;
+                        Console.WriteLine("Invalid Choice Selection. Try Again.");
                     }
                 }
-                catch (ArgumentOutOfRangeException)
-                {
-                    Console.WriteLine("Invalid Choice Selection. Try Again.");
-                }
             }
+            // game over stuff here
         }
 
         static void GameTitle()
