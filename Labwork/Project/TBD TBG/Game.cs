@@ -5,8 +5,9 @@ namespace TBD_TBG
 {
     public static class Game
     {
-        static string characterName;
+        //static string characterName;
         static Choice CurrentScenario;
+        //static Player player1 = new Player();
 
         public static void Start()
         {
@@ -30,17 +31,29 @@ namespace TBD_TBG
             Utility.Write("                       Cort Williams, and Joey Hermann.");
             Utility.Write("Now let the story begin...");
 
-            GetName();
+            
+
+            CreatePlayer();
             InitializeScenarios();
             StartGameLoop();
             End();
         }
 
-        public static void GetName()
+        public static void CreatePlayer()
         {
             Utility.Write("What would you like your character's name to be?");
-            characterName = Console.ReadLine();
-            Utility.Write("Welcome " + characterName + "! Your character is now named " + characterName + ".");
+            Player.setName(Console.ReadLine());
+            Utility.Write("What class would you like to play as? (Type 1,2,3, or 4)");
+            Utility.Write("1.) Adventurer: Balanced stats");
+            Utility.Write("2.) Paladin: Defense focused");
+            Utility.Write("3.) Brawler: Attack focused");
+            Utility.Write("4.) Rogue: Quick");
+            //TODO: Make sure this input is a number between 1 and 4
+            Player.setArchetype(Console.ReadLine());
+
+            Utility.Write("Welcome " + Player.name+ "! You are a(n) " + Player.archetype + "!");
+
+            Console.WriteLine(Player.playerStats.getStatOverview());
         }
 
         public static void InitializeScenarios()
@@ -76,9 +89,9 @@ namespace TBD_TBG
             Choice C2A = new Choice("You gather your things and leave the tavern to investigate. The town square is brimming with townsfolk gathering to do their daily shopping.");
             Choice C2B = new Choice("While meandering through the crowds, you hear people begin to cry out. Upon reaching the source of the noises you find two guards brutalizing a young man on the ground. \nThey kick him over and over again as he cries out for help, blood leaking from his mouth. At this rate he’s going to die.");
             Choice C2C = new Choice("You charge at one of the guards, tackling him to the ground. The other guard stops kicking and throws you off of him.");
-            Choice C2D = new Choice("You draw your sword from its ill-fitting sheath and prepare for combat. From behind you hear a deep voice call out. It’s a man in pristine armor, flanked by five more town guards. \n“You there! " + characterName + ", did you think I wouldn’t recognize you? You’re under arrest for conspiring against the Duke. Men, arrest him!”");
-            Choice C2E = new Choice("Turning away from the beatdown, you decide to look for a shop. Maybe a blacksmith can remove the rust from your blade? From behind you hear a deep voice call out. \nIt’s a man in pristine armor, flanked by five more town guards. “You there! " + characterName + ", did you think I wouldn’t recognize you? You’re under arrest for conspiring against the Duke. Men, arrest him!”");
-            Choice C2F = new Choice("Realizing that challenging two town guards with nothing but a rusty iron sword wasn’t you’re greatest decision ever, you try to flee. Unfortunately, you hear a deep voice \ncall out from behind you. It’s a man in pristine armor, flanked by five more town guards. “You there! " + characterName + ", did you think I wouldn’t recognize you? You’re under arrest for conspiring against the Duke. Men, arrest him!”");
+            Choice C2D = new Choice("You draw your sword from its ill-fitting sheath and prepare for combat. From behind you hear a deep voice call out. It’s a man in pristine armor, flanked by five more town guards. \n“You there! " + Player.name + ", did you think I wouldn’t recognize you? You’re under arrest for conspiring against the Duke. Men, arrest him!”");
+            Choice C2E = new Choice("Turning away from the beatdown, you decide to look for a shop. Maybe a blacksmith can remove the rust from your blade? From behind you hear a deep voice call out. \nIt’s a man in pristine armor, flanked by five more town guards. “You there! " + Player.name + ", did you think I wouldn’t recognize you? You’re under arrest for conspiring against the Duke. Men, arrest him!”");
+            Choice C2F = new Choice("Realizing that challenging two town guards with nothing but a rusty iron sword wasn’t you’re greatest decision ever, you try to flee. Unfortunately, you hear a deep voice \ncall out from behind you. It’s a man in pristine armor, flanked by five more town guards. “You there! " + Player.name + ", did you think I wouldn’t recognize you? You’re under arrest for conspiring against the Duke. Men, arrest him!”");
             Choice C3A = new Choice("End of the demo! Thanks for playing!");
 
 
@@ -148,6 +161,15 @@ namespace TBD_TBG
             }
             // game over stuff here
         }
+        public static void StartCombatLoop()
+        {
+            //TODO: 
+            //Create enemy class
+            //Add attacks to player class
+            //Create combat loop
+            //Create test scenario (other than prologue)
+        }
+
 
         static void GameTitle()
         {

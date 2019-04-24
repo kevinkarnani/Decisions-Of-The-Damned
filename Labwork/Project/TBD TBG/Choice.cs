@@ -6,22 +6,11 @@ namespace TBD_TBG
 {
     public class Choice
     {
+        //TODO: ADD Combat value Yes/No for every decision
+        //      ADD morality value for every decision
+
         public string Description { get; set; }
         public Dictionary<string, Choice> Choices { get; set; }
-        /*
-         * combat or not bool
-         * int? nullable int (can be an int or null)
-         * or 
-         * new class
-         * combat class from choice
-         * store combat variables
-         * if its a combat scenario, start combat loop
-         * have a player class that tracks stats and inventory
-         * 
-         * necessary morality for choices
-         * int? 
-         * morality needed for this option to appear
-         */
         public Choice(string des)
         {
             this.Description = des;

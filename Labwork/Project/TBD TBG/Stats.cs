@@ -2,7 +2,7 @@
 
 namespace TBD_TBG
 {
-    class Stats
+    public class Stats
     {
         //CLASS ATTRIBUTES
         public string archetype; //the player's archetype (Palidin, Rogue, Fighter, or Adventurer)
@@ -51,6 +51,7 @@ namespace TBD_TBG
                 totalHP = 70;
                 currentHP = totalHP;
             }
+            setEvasionStat();
         }
         //CLASS METHODS
 
@@ -58,7 +59,7 @@ namespace TBD_TBG
         //evasion should never be greater than 100% 
         private void setEvasionStat()
         {
-            evasion = (0.02*(agility))/(1+(0.02)*(agility));//chance to be hit by an enemy attack
+            evasion = (0.01*(agility))/(1+(0.01)*(agility));//chance to be hit by an enemy attack
             //evasion should be greater than 0 and less than 1
             //EX: 0 agi = 0 eva, 20 agi = .28 eva, 50 agi = 50 eva, 100 agi = 60 eva
             //diminishing returns on more agility
@@ -66,6 +67,18 @@ namespace TBD_TBG
         }
         
         //TO DO: Getters and setters
+        //getters
+        public string getStatOverview()
+        {
+            string str = "";
+            str += "Agility: " + agility + "\n";
+            str += "Evasion: " + evasion + "\n";
+            str += "Attack: " + attack + "\n";
+            str += "Current HP: " + currentHP + "\n";
+            str += "Total HP: " + totalHP + "\n";
+            return str; 
+        }
+
 
 
     }
