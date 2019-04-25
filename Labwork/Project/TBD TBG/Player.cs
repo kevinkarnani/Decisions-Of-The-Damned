@@ -5,6 +5,8 @@ namespace TBD_TBG
     public static class Player
     {
         //TODO: Add attacks for the player
+        //TODO: Create abstract class called "Character" that player and enemy inherit from
+            //Include methods for attacks
 
         //CLASS ATTRIBUTES
         public static string name = ""; //the name of the player
@@ -17,6 +19,7 @@ namespace TBD_TBG
         {
             name = _name;
         }   
+
         public static void setArchetype(string _arch)
         {
             if(_arch == "1")
@@ -37,7 +40,23 @@ namespace TBD_TBG
             }
             playerStats = new Stats(archetype);
         }
-
+            //ATTACKS
+                //light attack
+        public static void lightAttack(Enemy _enem)
+        {
+            int enemyHP = _enem.enemyStats.getCurrentHP();
+            int damage = Player.playerStats.getAttack();
+            _enem.enemyStats.setCurrentHP(enemyHP - damage);
+        }
+                //heavy attack
+        public static void heavyAttack(Enemy _enem)
+        {
+            int enemyHP = _enem.enemyStats.getCurrentHP();
+            int damage = Convert.ToInt32(2.5 * Player.playerStats.getAttack());
+            _enem.enemyStats.setCurrentHP(enemyHP - damage);
+        }
+                //dodge
+                    //no method needed, enemy doesn't take damage
 
     }
 
