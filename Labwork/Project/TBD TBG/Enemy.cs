@@ -39,20 +39,23 @@ namespace TBD_TBG
         }
 
             //ATTACKS
-                //light attack
-                //NEED HELP!!
-        /*
-        public static void lightAttack()
+            //light attack
+            //NEED HELP!!
+        public void lightAttack()
         {
             int playerHP = Player.playerStats.getCurrentHP();
-            int damage = Enemy.enemyStats.getCurrentHP(); //<< I don't know why this line doesn't work
+            int damage = enemyStats.getCurrentHP(); 
             Player.playerStats.setCurrentHP(playerHP - damage);
         }
-        */
-                //heavy attack
-
-                //dodge
-                    //no method needed, player doesn't take damage
+            //heavy attack
+        public void heavyAttack(Enemy _enem)
+        {
+            int playerHP = Player.playerStats.getCurrentHP();
+            int damage = Convert.ToInt32(2.5 * enemyStats.getCurrentHP()); 
+            Player.playerStats.setCurrentHP(playerHP - damage);
+        }
+            //dodge
+                //no method needed, player doesn't take damage
 
     }
 }

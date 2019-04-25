@@ -42,11 +42,11 @@ namespace TBD_TBG
             {
                 agility = 15;
                 attack = 30;
-                maxHP = 150;
+                maxHP = 130;
             }
             else if (archetype == "Brawler") //focus on attack
             {
-                agility = 20;
+                agility = 25;
                 attack = 50;
                 maxHP = 80;
             }
@@ -54,7 +54,7 @@ namespace TBD_TBG
             {
                 agility = 35;
                 attack = 45;
-                maxHP = 70;                
+                maxHP = 75;                
             }
             currentHP = maxHP;
             setEvasionStat();

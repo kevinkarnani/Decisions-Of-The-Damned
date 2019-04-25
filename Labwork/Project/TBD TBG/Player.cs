@@ -45,14 +45,14 @@ namespace TBD_TBG
         public static void lightAttack(Enemy _enem)
         {
             int enemyHP = _enem.enemyStats.getCurrentHP();
-            int damage = Player.playerStats.getAttack();
+            int damage = playerStats.getAttack();
             _enem.enemyStats.setCurrentHP(enemyHP - damage);
         }
                 //heavy attack
         public static void heavyAttack(Enemy _enem)
         {
             int enemyHP = _enem.enemyStats.getCurrentHP();
-            int damage = Convert.ToInt32(2.5 * Player.playerStats.getAttack());
+            int damage = Convert.ToInt32(2.5 * playerStats.getAttack());
             _enem.enemyStats.setCurrentHP(enemyHP - damage);
         }
                 //dodge
