@@ -4,9 +4,8 @@ namespace TBD_TBG
 {
     public static class Player
     {
-        //TODO: Add attacks for the player
         //TODO: Create abstract class called "Character" that player and enemy inherit from
-            //Include methods for attacks
+            //Include methods for attacks?
 
         //CLASS ATTRIBUTES
         public static string name = ""; //the name of the player

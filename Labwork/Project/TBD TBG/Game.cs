@@ -5,9 +5,8 @@ namespace TBD_TBG
 {
     public static class Game
     {
-        //static string characterName;
+        //TO DO: CREATE COMBAT LOOP
         static Choice CurrentScenario;
-        //static Player player1 = new Player();
 
         public static void Start()
         {
@@ -164,8 +163,6 @@ namespace TBD_TBG
         public static void StartCombatLoop()
         {
             //TODO: 
-            //Create enemy class
-            //Add attacks to player class
             //Create combat loop
             //Create test scenario (other than prologue)
         }

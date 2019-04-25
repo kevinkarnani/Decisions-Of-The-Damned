@@ -40,7 +40,6 @@ namespace TBD_TBG
 
             //ATTACKS
             //light attack
-            //NEED HELP!!
         public void lightAttack()
         {
             int playerHP = Player.playerStats.getCurrentHP();
