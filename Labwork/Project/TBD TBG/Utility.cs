@@ -298,7 +298,7 @@ namespace TBD_TBG
             Dictionary<string, Choice>.KeyCollection options = choice.Choices.Keys;
             for (int i = 0; i < options.Count; i++)
             {
-                Console.WriteLine(margin + " " + (i + 1) + " " + options.ElementAt(i));
+                Console.WriteLine(margin + " " + (i + 1) + ") " + options.ElementAt(i));
             }
             Console.WriteLine();
         }
