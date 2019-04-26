@@ -35,6 +35,8 @@ namespace TBD_TBG
         {
             string[] words = text.Split(' ');
             int i = 0;
+            //TODO: switch to the wordsperline variable and set title to console.writeline instead of utility
+            //int wordsPerLine = 80;
             if (words.Length > 80)
             {
                 foreach (string word in words)

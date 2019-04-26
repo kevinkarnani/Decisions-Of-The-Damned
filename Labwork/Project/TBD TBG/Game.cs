@@ -98,7 +98,8 @@ namespace TBD_TBG
             Choice C2E = new Choice("Turning away from the beatdown, you decide to look for a shop. Maybe a blacksmith can remove the rust from your blade? From behind you hear a deep voice call out. \nIt’s a man in pristine armor, flanked by five more town guards. “You there! " + Player.name + ", did you think I wouldn’t recognize you? You’re under arrest for conspiring against the Duke. Men, arrest him!”");
             Choice C2F = new Choice("Realizing that challenging two town guards with nothing but a rusty iron sword wasn’t you’re greatest decision ever, you try to flee. Unfortunately, you hear a deep voice \ncall out from behind you. It’s a man in pristine armor, flanked by five more town guards. “You there! " + Player.name + ", did you think I wouldn’t recognize you? You’re under arrest for conspiring against the Duke. Men, arrest him!”");
             Choice C3A = new Choice("End of the demo! Thanks for playing!");
-
+            //csv file with all the choice information (id num, des, jump scenarios, choices 1-4)
+            // write a script that initializes all of this
 
             A1A.SetChoices(new Dictionary<string, Choice>() { { "1) Wake up", A2A }, { "2) Deal with it later", A1B } });
             A1B.SetChoices(new Dictionary<string, Choice>() { { "1) Get up", A2A }, { "2) Sleep is important to maintain my healthy lifestyle", A1C } });
@@ -161,7 +162,7 @@ namespace TBD_TBG
                 {
                     if (ex is ArgumentOutOfRangeException || ex is FormatException)
                     {
-                        Console.WriteLine("Invalid Choice Selection. Try Again.");
+                        Utility.Write("Invalid Choice Selection. Try Again.", "red");//TODO: change color to red
                     }
                 }
             }

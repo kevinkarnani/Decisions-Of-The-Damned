@@ -6,6 +6,7 @@ namespace TBD_TBG
     {
         //TODO: Create abstract class called "Character" that player and enemy inherit from
             //Include methods for attacks?
+        //TODO: start all methods with capital letters
 
         //CLASS ATTRIBUTES
         public static string name = ""; //the name of the player

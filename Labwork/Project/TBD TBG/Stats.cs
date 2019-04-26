@@ -32,6 +32,8 @@ namespace TBD_TBG
         private void SetInitialArchStats()
         {
             //we can always rebalance the archetype stats later
+            //TODO: Change to a switch statement
+            //TODO: Change to lists to set stats in one line
             if (archetype == "Adventurer")
             { //balanced stats
                 agility = 20;
