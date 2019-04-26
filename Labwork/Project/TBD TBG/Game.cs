@@ -6,8 +6,11 @@ namespace TBD_TBG
     public static class Game
     {
         //TO DO: CREATE COMBAT LOOP
-        static Choice CurrentScenario;
+        static Choice CurrentScenario; //Choice object that is associated with certain paths in the branching narrative
 
+        /* This function is meant to start the game. It outputs the title, the ASCII ART, the authors, creates the player,
+         * sets player archetypes, deals with the branching narrative, *deals with combat*, and ends the game.
+         */
         public static void Start()
         {
             GameTitle();
@@ -38,6 +41,7 @@ namespace TBD_TBG
             End();
         }
 
+        //This method sets the player's name and player's archetype
         public static void CreatePlayer()
         {
             Utility.Write("What would you like your character's name to be?");
@@ -55,6 +59,7 @@ namespace TBD_TBG
             Console.WriteLine(Player.playerStats.getStatOverview());
         }
 
+        //This method initializes all Choice objects
         public static void InitializeScenarios()
         {
             Choice A1A = new Choice("The intoxicating stench of smoke stirs you from your slumber. Hearing the loud crackling of fire tells only on danger.");
@@ -133,7 +138,8 @@ namespace TBD_TBG
 
             CurrentScenario = A1A;
         }
-
+        
+        //Loops through Choice objects for branching narrative
         public static void StartGameLoop()
         {
             while (true)
@@ -145,7 +151,7 @@ namespace TBD_TBG
                 Utility.Write(CurrentScenario.Description);
                 Utility.Write(CurrentScenario.GetChoiceText());
                 string selection = Console.ReadLine();
-                //try..catch, check if legit
+                //Error checking the user input
                 try
                 {
                     CurrentScenario = CurrentScenario.GetChoice(selection);
@@ -167,7 +173,7 @@ namespace TBD_TBG
             //Create test scenario (other than prologue)
         }
 
-
+        //Create Game Title
         static void GameTitle()
         {
             string Title = @"TBD TBG";
@@ -180,6 +186,7 @@ namespace TBD_TBG
             Console.Clear();
         }
 
+        //End the Game
         public static void End()
         {
             Utility.Write("Press enter to exit.");
