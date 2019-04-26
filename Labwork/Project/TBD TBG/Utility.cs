@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Globalization;
+using System.Collections.Generic;
+using System.Linq;
 
 
 namespace TBD_TBG
@@ -291,11 +293,12 @@ namespace TBD_TBG
         }
 
         //modification of DisplayValues method at https://msdn.microsoft.com/en-us/library/aw9s5t8f(v=vs.110).aspx
-        public static void AllValues(String[] _array)
+        public static void AllValues(Choice choice)
         {
-            for (int i = _array.GetLowerBound(0); i <= _array.GetUpperBound(0); i++)
+            Dictionary<string, Choice>.KeyCollection options = choice.Choices.Keys;
+            for (int i = 0; i < options.Count; i++)
             {
-                Console.WriteLine(margin + _array[i]);
+                Console.WriteLine(margin + " " + (i + 1) + " " + options.ElementAt(i));
             }
             Console.WriteLine();
         }

@@ -101,37 +101,37 @@ namespace TBD_TBG
             //csv file with all the choice information (id num, des, jump scenarios, choices 1-4)
             // write a script that initializes all of this
 
-            A1A.SetChoices(new Dictionary<string, Choice>() { { "1) Wake up", A2A }, { "2) Deal with it later", A1B } });
-            A1B.SetChoices(new Dictionary<string, Choice>() { { "1) Get up", A2A }, { "2) Sleep is important to maintain my healthy lifestyle", A1C } });
-            A1C.SetChoices(new Dictionary<string, Choice>() { { "1) Get up", A2A } });
-            A2A.SetChoices(new Dictionary<string, Choice>() { { "1) Look up", A2B }, { "2) Look for a weapon", A3A }, { "3) Guess this is where I die", A2D } });
-            A2B.SetChoices(new Dictionary<string, Choice>() { { "1) Look for a weapon", A3A }, { "2) This patch of burning wood looks comfortable!", A2E } });
-            A2C.SetChoices(new Dictionary<string, Choice>() { { "1) Look for a weapon", A3A } });
-            A2D.SetChoices(new Dictionary<string, Choice>() { { "1) Look up", A2C }, { "2) Look for weapon", A3A } });
-            A2E.SetChoices(new Dictionary<string, Choice>() { { "1) Look for a weapon", A3A } });
-            A3A.SetChoices(new Dictionary<string, Choice>() { { "1) Grab one", A3B }, { "2) Keep Looking", A4A } });
-            A3B.SetChoices(new Dictionary<string, Choice>() { { "1) Drop the sword and keep looking", A4A } });
-            A4A.SetChoices(new Dictionary<string, Choice>() { { "1) Take the sword", A5A }, { "2) I can do better", A4B } });
-            A4B.SetChoices(new Dictionary<string, Choice>() { { "1) Take the sword", A5A } });
-            A5A.SetChoices(new Dictionary<string, Choice>() { { "1) Venture Forth", A6A } });
-            A6A.SetChoices(new Dictionary<string, Choice>() { { "1) Look at the sky", A7A } });
-            A7A.SetChoices(new Dictionary<string, Choice>() { { "1) Head into town", B1A } });
+            A1A.SetChoices(new Dictionary<string, Choice>() { { "Wake up", A2A }, { "Deal with it later", A1B } });
+            A1B.SetChoices(new Dictionary<string, Choice>() { { "Get up", A2A }, { "Sleep is important to maintain my healthy lifestyle", A1C } });
+            A1C.SetChoices(new Dictionary<string, Choice>() { { "Get up", A2A } });
+            A2A.SetChoices(new Dictionary<string, Choice>() { { "Look up", A2B }, { "Look for a weapon", A3A }, { "Guess this is where I die", A2D } });
+            A2B.SetChoices(new Dictionary<string, Choice>() { { "Look for a weapon", A3A }, { "This patch of burning wood looks comfortable!", A2E } });
+            A2C.SetChoices(new Dictionary<string, Choice>() { { "Look for a weapon", A3A } });
+            A2D.SetChoices(new Dictionary<string, Choice>() { { "Look up", A2C }, { "Look for weapon", A3A } });
+            A2E.SetChoices(new Dictionary<string, Choice>() { { "Look for a weapon", A3A } });
+            A3A.SetChoices(new Dictionary<string, Choice>() { { "Grab one", A3B }, { "Keep Looking", A4A } });
+            A3B.SetChoices(new Dictionary<string, Choice>() { { "Drop the sword and keep looking", A4A } });
+            A4A.SetChoices(new Dictionary<string, Choice>() { { "Take the sword", A5A }, { "I can do better", A4B } });
+            A4B.SetChoices(new Dictionary<string, Choice>() { { "Take the sword", A5A } });
+            A5A.SetChoices(new Dictionary<string, Choice>() { { "Venture Forth", A6A } });
+            A6A.SetChoices(new Dictionary<string, Choice>() { { "Look at the sky", A7A } });
+            A7A.SetChoices(new Dictionary<string, Choice>() { { "Head into town", B1A } });
 
-            B1A.SetChoices(new Dictionary<string, Choice>() { { "1) Find a tavern", B2A } });
-            B2A.SetChoices(new Dictionary<string, Choice>() { { "1) Head to the bar", B2B } });
-            B2B.SetChoices(new Dictionary<string, Choice>() { { "1) Order dinner [3 drachma]", B3A }, { "2) I’ll pass, thanks", B2C} });
-            B2C.SetChoices(new Dictionary<string, Choice>() { { "1) Order dinner [3 drachma]", B3A }, { "2) Order an ale [1 drachma]", B2D } });
-            B2D.SetChoices(new Dictionary<string, Choice>() { { "1) Order dinner [3 drachma]", B3A } });
-            B3A.SetChoices(new Dictionary<string, Choice>() { { "1) Get his attention and return the money", B3B }, { "2) Yoink!", B3C} });
-            B3B.SetChoices(new Dictionary<string, Choice>() { { "1) Return to the bar", B4A } });
-            B3C.SetChoices(new Dictionary<string, Choice>() { { "1) Return to the bar", B4A } });
-            B4A.SetChoices(new Dictionary<string, Choice>() { { "1) It’s snooze time", C1A } });
+            B1A.SetChoices(new Dictionary<string, Choice>() { { "Find a tavern", B2A } });
+            B2A.SetChoices(new Dictionary<string, Choice>() { { "Head to the bar", B2B } });
+            B2B.SetChoices(new Dictionary<string, Choice>() { { "Order dinner [3 drachma]", B3A }, { "I’ll pass, thanks", B2C} });
+            B2C.SetChoices(new Dictionary<string, Choice>() { { "Order dinner [3 drachma]", B3A }, { "Order an ale [1 drachma]", B2D } });
+            B2D.SetChoices(new Dictionary<string, Choice>() { { "Order dinner [3 drachma]", B3A } });
+            B3A.SetChoices(new Dictionary<string, Choice>() { { "Get his attention and return the money", B3B }, { "Yoink!", B3C} });
+            B3B.SetChoices(new Dictionary<string, Choice>() { { "Return to the bar", B4A } });
+            B3C.SetChoices(new Dictionary<string, Choice>() { { "Return to the bar", B4A } });
+            B4A.SetChoices(new Dictionary<string, Choice>() { { "It’s snooze time", C1A } });
 
-            C1A.SetChoices(new Dictionary<string, Choice>() { { "1) Check it out", C2A }, { "2) Just five more minutes", C1B } });
-            C1B.SetChoices(new Dictionary<string, Choice>() { { "1) Check it out", C2A } });
-            C2A.SetChoices(new Dictionary<string, Choice>() { { "1) Explore", C2B} });
-            C2B.SetChoices(new Dictionary<string, Choice>() { { "1) Something needs to be done", C2C }, { "2) Not my problem, back to exploring!", C2E } });
-            C2C.SetChoices(new Dictionary<string, Choice>() { { "1) Draw your sword", C2D }, { "2) Run Away!", C2F } });
+            C1A.SetChoices(new Dictionary<string, Choice>() { { "Check it out", C2A }, { "2) Just five more minutes", C1B } });
+            C1B.SetChoices(new Dictionary<string, Choice>() { { "Check it out", C2A } });
+            C2A.SetChoices(new Dictionary<string, Choice>() { { "Explore", C2B} });
+            C2B.SetChoices(new Dictionary<string, Choice>() { { "Something needs to be done", C2C }, { "Not my problem, back to exploring!", C2E } });
+            C2C.SetChoices(new Dictionary<string, Choice>() { { "Draw your sword", C2D }, { "Run Away!", C2F } });
             C2D.SetChoices(new Dictionary<string, Choice>() { { "", C3A } });
             C2E.SetChoices(new Dictionary<string, Choice>() { { "", C3A } });
             C2F.SetChoices(new Dictionary<string, Choice>() { { "", C3A } });
@@ -151,7 +151,7 @@ namespace TBD_TBG
                     break;
                 }
                 Utility.Write(CurrentScenario.Description);
-                Utility.Write(CurrentScenario.GetChoiceText());
+                Utility.AllValues(CurrentScenario);
                 string selection = Console.ReadLine();
                 //Error checking the user input
                 try
