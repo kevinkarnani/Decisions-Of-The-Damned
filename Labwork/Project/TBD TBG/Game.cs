@@ -8,7 +8,8 @@ namespace TBD_TBG
         //TO DO: CREATE COMBAT LOOP
         static Choice CurrentScenario; //Choice object that is associated with certain paths in the branching narrative
 
-        /* This function is meant to start the game. It outputs the title, the ASCII ART, the authors, creates the player,
+        /* 
+         * This function is meant to start the game. It outputs the title, the ASCII ART, the authors, creates the player,
          * sets player archetypes, deals with the branching narrative, *deals with combat*, and ends the game.
          */
         public static void Start()

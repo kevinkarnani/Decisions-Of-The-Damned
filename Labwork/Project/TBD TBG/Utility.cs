@@ -1,12 +1,15 @@
 ﻿using System;
 using System.Globalization;
 
+
 namespace TBD_TBG
 {
+    /*
+     * Derived from "C# Adventure Game" by http://programmingisfun.com, used under CC BY.
+     * https://creativecommons.org/licenses/by/4.0/
+     */
     class Utility
     {
-        //bazinga
-        int test = 0;
         static string margin = "  ";
         static string indent = "    ";
 
@@ -27,42 +30,10 @@ namespace TBD_TBG
             Console.ResetColor();
             return input;
         }
-
-        public static void CleanDes(string text)
-        {
-            string[] words = text.Split(' ');
-            int i = 0;
-            if (words.Length > 80)
-            {
-                foreach (string word in words)
-                {
-                    i += word.Length + 1;
-                    if (i < 80)
-                    {
-                        Console.Write(word + ' ');
-                    }
-                    else if (word == words[words.Length - 1])
-                    {
-                        Console.Write(word);
-                    }
-                    else
-                    {
-                        Console.WriteLine(word);
-                        i = 0;
-                    }
-                }
-                Console.WriteLine();
-            }
-            else
-            {
-                Console.WriteLine(text);
-            }
-        }
-
         public static void Write(string _string)
         {
             _string = _string.Replace("\n", "\n" + margin);
-            CleanDes(margin + _string);
+            Console.WriteLine(margin + _string);
         }
         public static void Write(string _string, string _color)
         {
@@ -284,6 +255,7 @@ namespace TBD_TBG
             return result;
         }
 
+        //modification of DisplayValues method at https://msdn.microsoft.com/en-us/library/aw9s5t8f(v=vs.110).aspx
         public static void AllValues(String[] _array)
         {
             for (int i = _array.GetLowerBound(0); i <= _array.GetUpperBound(0); i++)
