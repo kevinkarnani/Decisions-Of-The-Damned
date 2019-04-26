@@ -59,13 +59,13 @@ namespace TBD_TBG
                 maxHP = 75;                
             }
             currentHP = maxHP;
-            setEvasionStat();
+            SetEvasionStat();
         }
         //CLASS METHODS
 
             //determines the evasion stat based off of the playe's agility stat
             //evasion should never be greater than 100% 
-        private void setEvasionStat()
+        private void SetEvasionStat()
         {
             evasion = (0.01*(agility))/(1+(0.01)*(agility));//chance to be hit by an enemy attack
             //evasion should be greater than 0 and less than 1
@@ -73,27 +73,27 @@ namespace TBD_TBG
             //diminishing returns on evasion with more agility            
         }
             //getters
-        public int getAgilty()
+        public int GetAgilty()
         {
             return agility; 
         }
-        public double getEvasion()
+        public double GetEvasion()
         {
             return evasion; 
         }
-        public int getAttack()
+        public int GetAttack()
         {
             return attack;
         }
-        public int getCurrentHP()
+        public int GetCurrentHP()
         {
             return currentHP;
         }
-        public int getMaxHP()
+        public int GetMaxHP()
         {
             return maxHP;
         }
-        public string getStatOverview()
+        public string GetStatOverview()
         {
             string str = "";
             str += "Agility: " + agility + "\n";
@@ -105,23 +105,23 @@ namespace TBD_TBG
         }
 
         //setters
-        public void setAgilty(int _agi)
+        public void SetAgilty(int _agi)
         {
             agility = _agi;
         }
-        public void setEvasion(double _eva)
+        public void SetEvasion(double _eva)
         {
             evasion = _eva;
         }
-        public void setAttack(int _att)
+        public void SetAttack(int _att)
         {
             attack = _att;
         }
-        public void setCurrentHP(int _curHP)
+        public void SetCurrentHP(int _curHP)
         {
             currentHP = _curHP;
         }
-        public void setMaxHP(int _maxHP)
+        public void SetMaxHP(int _maxHP)
         {
             maxHP = _maxHP;
         }

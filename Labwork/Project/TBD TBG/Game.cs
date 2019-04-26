@@ -46,18 +46,18 @@ namespace TBD_TBG
         public static void CreatePlayer()
         {
             Utility.Write("What would you like your character's name to be?");
-            Player.setName(Console.ReadLine());
+            Player.SetName(Console.ReadLine());
             Utility.Write("What class would you like to play as? (Type 1,2,3, or 4)");
             Utility.Write("1.) Adventurer: Balanced stats");
             Utility.Write("2.) Paladin: Defense focused");
             Utility.Write("3.) Brawler: Attack focused");
             Utility.Write("4.) Rogue: Quick");
             //TODO: Make sure this input is a number between 1 and 4
-            Player.setArchetype(Console.ReadLine());
+            Player.SetArchetype(Console.ReadLine());
 
             Utility.Write("Welcome " + Player.name+ "! You are a(n) " + Player.archetype + "!");
 
-            Console.WriteLine(Player.playerStats.getStatOverview());
+            Utility.Write(Player.playerStats.GetStatOverview(), "blue");
         }
 
         //This method initializes all Choice objects

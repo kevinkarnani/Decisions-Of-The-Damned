@@ -17,41 +17,41 @@ namespace TBD_TBG
         public Enemy(string _name, int _attack, int _agility, int _HP)
         {
             name = _name;
-            enemyStats.setAttack(_attack);
-            enemyStats.setAgilty(_agility);
-            enemyStats.setMaxHP(_HP);
-            enemyStats.setCurrentHP(_HP);
+            enemyStats.SetAttack(_attack);
+            enemyStats.SetAgilty(_agility);
+            enemyStats.SetMaxHP(_HP);
+            enemyStats.SetCurrentHP(_HP);
         }
 
         //CLASS METHODS
             //setters
-        public void setLightChance(double _chance)
+        public void SetLightChance(double _chance)
         {
             chanceToLightAttack = _chance;
         }
-        public void setHeavyChance(double _chance)
+        public void SetHeavyChance(double _chance)
         {
             chanceToHeavyAttack = _chance;
         }
-        public void setDodgeChance(double _chance)
+        public void SetDodgeChance(double _chance)
         {
             chanceToDodge = _chance;
         }
 
             //ATTACKS
             //light attack
-        public void lightAttack()
+        public void LightAttack()
         {
-            int playerHP = Player.playerStats.getCurrentHP();
-            int damage = enemyStats.getCurrentHP(); 
-            Player.playerStats.setCurrentHP(playerHP - damage);
+            int playerHP = Player.playerStats.GetCurrentHP();
+            int damage = enemyStats.GetCurrentHP(); 
+            Player.playerStats.SetCurrentHP(playerHP - damage);
         }
             //heavy attack
-        public void heavyAttack(Enemy _enem)
+        public void HeavyAttack(Enemy _enem)
         {
-            int playerHP = Player.playerStats.getCurrentHP();
-            int damage = Convert.ToInt32(2.5 * enemyStats.getCurrentHP()); 
-            Player.playerStats.setCurrentHP(playerHP - damage);
+            int playerHP = Player.playerStats.GetCurrentHP();
+            int damage = Convert.ToInt32(2.5 * enemyStats.GetCurrentHP()); 
+            Player.playerStats.SetCurrentHP(playerHP - damage);
         }
             //dodge
                 //no method needed, player doesn't take damage

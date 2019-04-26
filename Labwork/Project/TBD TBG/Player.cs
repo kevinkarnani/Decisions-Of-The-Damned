@@ -15,12 +15,12 @@ namespace TBD_TBG
         public static Stats playerStats;
 
         //CLASS METHODS
-        public static void setName(string _name)
+        public static void SetName(string _name)
         {
             name = _name;
         }   
 
-        public static void setArchetype(string _arch)
+        public static void SetArchetype(string _arch)
         {
             if(_arch == "1")
             {
@@ -42,18 +42,18 @@ namespace TBD_TBG
         }
             //ATTACKS
                 //light attack
-        public static void lightAttack(Enemy _enem)
+        public static void LightAttack(Enemy _enem)
         {
-            int enemyHP = _enem.enemyStats.getCurrentHP();
-            int damage = playerStats.getAttack();
-            _enem.enemyStats.setCurrentHP(enemyHP - damage);
+            int enemyHP = _enem.enemyStats.GetCurrentHP();
+            int damage = playerStats.GetAttack();
+            _enem.enemyStats.SetCurrentHP(enemyHP - damage);
         }
                 //heavy attack
-        public static void heavyAttack(Enemy _enem)
+        public static void HeavyAttack(Enemy _enem)
         {
-            int enemyHP = _enem.enemyStats.getCurrentHP();
-            int damage = Convert.ToInt32(2.5 * playerStats.getAttack());
-            _enem.enemyStats.setCurrentHP(enemyHP - damage);
+            int enemyHP = _enem.enemyStats.GetCurrentHP();
+            int damage = Convert.ToInt32(2.5 * playerStats.GetAttack());
+            _enem.enemyStats.SetCurrentHP(enemyHP - damage);
         }
                 //dodge
                     //no method needed, enemy doesn't take damage
