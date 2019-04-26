@@ -57,7 +57,7 @@ namespace TBD_TBG
 
             Utility.Write("Welcome " + Player.name+ "! You are a(n) " + Player.archetype + "!");
 
-            Utility.Write(Player.playerStats.GetStatOverview(), "blue");
+            Player.playerStats.PrintStatOverview();
         }
 
         //This method initializes all Choice objects

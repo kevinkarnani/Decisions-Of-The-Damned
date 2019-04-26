@@ -93,15 +93,14 @@ namespace TBD_TBG
         {
             return maxHP;
         }
-        public string GetStatOverview()
+        public void PrintStatOverview()
         {
-            string str = "";
-            str += "Agility: " + agility + "\n";
-            str += "Evasion: " + (100*evasion).ToString("#.00") + "%\n";
-            str += "Attack: " + attack + "\n";
-            str += "Current HP: " + currentHP + "\n";
-            str += "Maximum HP: " + maxHP + "\n";
-            return str; 
+            string color = "cyan";
+            Utility.Write("Agility: " + agility, color);
+            Utility.Write("Evasion: " + (100 * evasion).ToString("#.00"), color);
+            Utility.Write("Attack: " + attack, color);
+            Utility.Write("Current HP: " + currentHP, color);
+            Utility.Write("Maximum: " + maxHP, color);
         }
 
         //setters
