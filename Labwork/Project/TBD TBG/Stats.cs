@@ -26,10 +26,11 @@ namespace TBD_TBG
             //for enemies (pass in all the stats)
         public Stats(int _agi, int _att, int _maxHP)
         {
-            Agility = _agi;
-            Attack = _att;
-            MaxHP = _maxHP;
-            CurrentHP = MaxHP;
+            agility = _agi;
+            attack = _att;
+            maxHP = _maxHP;
+            heavyAttack = Convert.ToInt32(2.5 * attack);
+            currentHP = MaxHP;
             SetEvasionStat();
         }
         private void SetInitialArchStats(string _arch)
@@ -39,26 +40,27 @@ namespace TBD_TBG
             switch (_arch)
             {
                 case "Adventurer": //balanced
-                    Agility = 20;
-                    Attack = 40;
-                    MaxHP = 100;
+                    agility = 20;
+                    attack = 40;
+                    maxHP = 100;
                     break;
                 case "Paladin": //focus on hp
-                    Agility = 15;
-                    Attack = 30;
-                    MaxHP = 130;
+                    agility = 15;
+                    attack = 30;
+                    maxHP = 130;
                     break;
                 case "Brawler": //focus on attack
-                    Agility = 25;
-                    Attack = 50;
-                    MaxHP = 80;
+                    agility = 25;
+                    attack = 50;
+                    maxHP = 80;
                     break;
                 case "Rogue": //focus on agility
-                    Agility = 35;
-                    Attack = 45;
-                    MaxHP = 75;
+                    agility = 35;
+                    attack = 45;
+                    maxHP = 75;
                     break;
             }
+            heavyAttack = Convert.ToInt32(2.5 * attack);
             CurrentHP = MaxHP;
             SetEvasionStat();
         }
@@ -75,7 +77,7 @@ namespace TBD_TBG
             //prints a general overview of all the stats
         public void PrintStatOverview()
         {
-            string color = "cyan";
+            string color = "darkcyan";
             Utility.Write("Agility: " + Agility, color);
             Utility.Write("Evasion: " + (100 * Evasion).ToString("#.00") + "%", color);
             Utility.Write("Attack: " + Attack, color);
@@ -142,14 +144,25 @@ namespace TBD_TBG
                 {
                     attack = value;
                 }
-                heavyAttack = Convert.ToInt32(2.5 * attack);
+                
             }
         }
         public int HeavyAttack
         {
             get
             {
-                return heavyAttack; //cannot manually set heavy attack, it's always 2.5x attack
+                return heavyAttack; 
+            }
+            set
+            {
+                if (value < 0) //attack cannot be lower than zero
+                {
+                    heavyAttack = 0;
+                }
+                else
+                {
+                    heavyAttack = value;
+                }
             }
         }
         public int MaxHP

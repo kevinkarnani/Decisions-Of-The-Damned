@@ -39,7 +39,7 @@ namespace TBD_TBG
             Player.Damage(damage);
         }
             //heavy attack
-        public void HeavyAttack(Enemy _enem)
+        public void HeavyAttack()
         {
             int damage = Convert.ToInt32(2.5 * enemyStats.Attack);
             Player.Damage(damage);
@@ -55,7 +55,7 @@ namespace TBD_TBG
             Random random = new Random();
             double randomNum = random.NextDouble(); //random number between 0 and 1
 
-            if(randomNum >=0 && randomNum <= chanceToLightAttack) //ex: 0->.25
+            if(randomNum <= chanceToLightAttack) //ex: 0->.25
             {
                 return "lightAttack";
             }
@@ -66,6 +66,20 @@ namespace TBD_TBG
             else
             {
                 return "dodge";
+            }
+        }
+        public bool CheckIfHit() //checks whether you evaded an attack or not
+        {
+            Random random = new Random();
+            double randomNum = random.NextDouble(); //random number between 0 and 1
+
+            if (randomNum <= enemyStats.Evasion)//miss
+            {
+                return false;
+            }
+            else //hit
+            {
+                return true;
             }
         }
     }

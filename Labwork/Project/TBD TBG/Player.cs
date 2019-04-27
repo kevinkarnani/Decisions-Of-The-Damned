@@ -40,7 +40,7 @@ namespace TBD_TBG
             
         public static void PrintPlayerOverview()
         {
-            string color = "cyan";
+            string color = "darkcyan";
             Utility.Write("Name: " + Name, color);
             Utility.Write("Archetype: " + Archetype, color);
             Utility.Write("Honor: " + honor, color);
@@ -57,7 +57,7 @@ namespace TBD_TBG
                 //heavy attack
         public static void HeavyAttack(Enemy _enem)
         {
-            int damage = Convert.ToInt32(2.5 * playerStats.Attack);
+            int damage = playerStats.HeavyAttack;
             _enem.Damage(damage);
         }
                 //dodge
@@ -65,6 +65,20 @@ namespace TBD_TBG
         public static void Damage(int _dmg)
         {
             Player.playerStats.CurrentHP -= _dmg; 
+        }
+        public static bool CheckIfHit() //checks whether you evaded an attack or not
+        {
+            Random random = new Random();
+            double randomNum = random.NextDouble(); //random number between 0 and 1
+
+            if (randomNum <= playerStats.Evasion) //miss
+            {
+                return false;
+            }
+            else //hit
+            {
+                return true;
+            }
         }
     }
 

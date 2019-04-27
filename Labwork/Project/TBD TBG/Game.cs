@@ -39,12 +39,17 @@ namespace TBD_TBG
             CreatePlayer();
             Player.playerStats.MaxHP = 300;
             Player.playerStats.CurrentHP = 300;
-            
+            //Player.playerStats.Evasion = 1.0;
 
-            Enemy testEnemy = new Enemy("Zombie", 20, 10, 200);
+
+            Enemy testEnemy = new Enemy("Zombie", 20, 100, 200);
+            //testEnemy.enemyStats.Evasion = 1.0;
             testEnemy.description = "A gross undead dude";
             testEnemy.SetAttackChance(1.0, 0, 0);
             testEnemy.enemyStats.PrintStatOverview();
+            Console.WriteLine();
+
+            Player.PrintPlayerOverview();
 
             Combat fight1 = new Combat(testEnemy);
             fight1.StartCombatLoop();
@@ -200,128 +205,6 @@ namespace TBD_TBG
         {
             Utility.Write("Press enter to exit.");
         }
-
-
-
-
-        /*
-        //COMBAT BELOW!!
-        
-        //nested combat class inside of the game class (may make this inherit from game and move it to a seperate file later)
-        //TODO: 
-        //Create combat loop
-        //Create test scenario (other than prologue)
-        public static double initialEvasion = Player.playerStats.Evasion;
-        public static bool preparingAttack = false;
-
-        public static void StartCombatLoop(Enemy _enem)
-        {
-            //header of the battle
-            Utility.Write(">>>>>----------> BATTLE START <----------<<<<<", battleColor);
-            Utility.Write("You face a " + _enem.name + "!", battleColor);
-            Utility.Write("Description: " + _enem.description, battleColor);
-            Console.WriteLine();
-
-            //start loop until someone dies
-            while (Player.playerStats.CurrentHP > 0 && _enem.enemyStats.CurrentHP > 0)
-            {
-                //determine who goes first
-                //if (Player.playerStats.Agility > _enem.enemyStats.Agility) //the player goes first
-                //CURRENTLY ASSUMYING YOU ALWAYS GO FIRST
-
-                //PLAYER TURN
-                if (preparingAttack)
-                {
-                    Utility.Write("---PLAYER TURN---", battleColor);
-                    Player.HeavyAttack(_enem);
-                    Utility.Write("You hit for " + Player.playerStats.HeavyAttack + " damage!", battleColor);
-                    preparingAttack = false;
-                }
-                else
-                {
-                    //TODO: Make sure this input is a number between 1 and 3
-                    Utility.Write("---PLAYER TURN---", battleColor);
-                    Utility.Write("Options:", battleColor);
-                    Utility.Write("1.) Light attack", battleColor);
-                    Utility.Write("2.) Heavy attack", battleColor);
-                    Utility.Write("3.) Dodge", battleColor);
-                    //Utility.Write("4.) Display Stats");
-                    //Utility.Write("4.) Use an item");
-                    //Utility.Write("5.) Flee?");
-                    string attackChoice = Console.ReadLine();
-
-                    //make attack choice
-                    switch (attackChoice)
-                    {
-                        case "1":
-                            Player.LightAttack(_enem);
-                            Utility.Write("You hit for " + Player.playerStats.Attack + " damage!", battleColor);
-                            break;
-                        case "2":
-                            Utility.Write("You charge up for a powerful attack...", battleColor);
-                            preparingAttack = true;
-                            break;
-                        //case "3":
-                          //  Player.playerStats.Evasion *= 2;
-                            //break;
-                    }
-                }
-                //display health of enemy            
-                Utility.Write("Enemy HP:" + _enem.enemyStats.CurrentHP + "/" + _enem.enemyStats.MaxHP, battleColor);
-                Console.WriteLine();
-
-
-                //ENEMY TURN              
-                Utility.Write("---ENEMY TURN---", battleColor);
-                switch (_enem.ChooseRandomAttack())
-                {
-                    case "lightAttack":
-                        _enem.LightAttack();
-                        Utility.Write(_enem.name + " hit for " + _enem.enemyStats.Attack + " damage!", battleColor);
-                        break;
-                    /*case "heavyAttack":
-                        Utility.Write("You charge up for a powerful attack...", battleColor);
-                        preparingAttack = true;
-                        break;
-                    //case "dodge":
-                        //  Player.playerStats.Evasion *= 2;
-                        //break;
-                }
-                //display health of player         
-                Utility.Write("Player HP:" + Player.playerStats.CurrentHP+ "/" + Player.playerStats.MaxHP, battleColor);
-                Console.WriteLine();
-
-                //ask player for attack choice
-                //display health of enemy
-                //deal damage and check if health >0 (break)
-                //randomly select enemy attack choice
-                //display health of player
-                //deal damage and check if health >0 (break)
-
-                //loop
-            }
-            if(_enem.enemyStats.CurrentHP == 0)
-            {
-                Utility.Write("You defeated the " + _enem.name + "!", battleColor);
-                Utility.Write(">>>>>----------> BATTLE FINISH <----------<<<<<", battleColor);
-            }
-            else
-            {
-                Utility.Write("You lost to the " + _enem.name + "!", battleColor);
-                Utility.Write(">>>>>----------> BATTLE FINISH <----------<<<<<", battleColor);
-                Utility.Write("GAME OVER");
-                End();
-            }         
-        }
-        static void PlayerTurn()
-        {
-            
-        }
-        static void EnemyTurn()
-        {
-
-        }
-        */
 
 
     }

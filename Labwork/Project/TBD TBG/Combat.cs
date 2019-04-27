@@ -15,6 +15,7 @@ namespace TBD_TBG
         public double initialEvasion = Player.playerStats.Evasion;
         public bool preparingAttack = false;
         static readonly string battleColor = "yellow";
+        static readonly string choiceColor = "cyan";
 
         public Combat(Enemy _enem)
         {
@@ -30,11 +31,12 @@ namespace TBD_TBG
             Utility.Write("Description: " + enemy.description, battleColor);
             Console.WriteLine();
 
-            int turnNumber = 1;            
+            int turnNumber = 1;
+            var pressAnyKey ="";
             //start loop until someone dies
-            while (Player.playerStats.CurrentHP > 0 && enemy.enemyStats.CurrentHP > 0)
-            {
-                Utility.Write("---Turn #" + turnNumber + "---", battleColor);
+            while (Player.playerStats.CurrentHP >= 0 && enemy.enemyStats.CurrentHP > 0)
+            {              
+                Utility.Write("=====TURN #" + turnNumber + "=====", battleColor);
                 //determine who goes first
                 if (Player.playerStats.Agility > enemy.enemyStats.Agility) //the player goes first
                 {
@@ -43,7 +45,10 @@ namespace TBD_TBG
                     {
                         break;
                     }
+                    pressAnyKey = Console.ReadLine();
+
                     EnemyTurn();
+                    pressAnyKey = Console.ReadLine();
                 }
                 else //the enemy goes first
                 {
@@ -52,7 +57,10 @@ namespace TBD_TBG
                     {
                         break;
                     }
+                    pressAnyKey = Console.ReadLine();
+
                     PlayerTurn();
+                    pressAnyKey = Console.ReadLine();
                 }
                 turnNumber++;
             }
@@ -73,21 +81,27 @@ namespace TBD_TBG
         private void PlayerTurn()
         {
             //PLAYER TURN
+            Utility.Write("---PLAYER TURN---", battleColor);
             if (preparingAttack)
             {
-                Utility.Write("--PLAYER TURN--", battleColor);
-                Player.HeavyAttack(enemy);
-                Utility.Write("You hit for " + Player.playerStats.HeavyAttack + " damage!", battleColor);
+                if (Player.CheckIfHit()) //hit
+                {
+                    Player.HeavyAttack(enemy);
+                    Utility.Write("You hit for " + Player.playerStats.HeavyAttack + " damage!", battleColor);
+                }
+                else //miss
+                {
+                    Utility.Write(enemy.name + " evaded your attack!", battleColor);
+                }                
                 preparingAttack = false;
             }
             else
             {
-                //TODO: Make sure this input is a number between 1 and 3
-                Utility.Write("--PLAYER TURN--", battleColor);
-                Utility.Write("Options:", battleColor);
-                Utility.Write("1.) Light attack", battleColor);
-                Utility.Write("2.) Heavy attack", battleColor);
-                Utility.Write("3.) Dodge", battleColor);
+                //TODO: Make sure this input is a number between 1 and 3                
+                Utility.Write("Options:", choiceColor);
+                Utility.Write("1.) Light attack", choiceColor);
+                Utility.Write("2.) Heavy attack", choiceColor);
+                Utility.Write("3.) Dodge", choiceColor);
                 //Utility.Write("4.) Display Stats");
                 //Utility.Write("4.) Use an item");
                 //Utility.Write("5.) Flee?");
@@ -97,8 +111,16 @@ namespace TBD_TBG
                 switch (attackChoice)
                 {
                     case "1":
-                        Player.LightAttack(enemy);
-                        Utility.Write("You hit for " + Player.playerStats.Attack + " damage!", battleColor);
+                        if (Player.CheckIfHit()) //hit
+                        {
+                            Player.LightAttack(enemy);
+                            Utility.Write("You hit for " + Player.playerStats.Attack + " damage!", battleColor);
+                        }
+                        else //miss
+                        {
+                            Utility.Write(enemy.name + " evaded your attack!", battleColor);
+                        }
+                        
                         break;
                     case "2":
                         Utility.Write("You charge up for a powerful attack...", battleColor);
@@ -111,17 +133,25 @@ namespace TBD_TBG
             }
             //display health of enemy            
             Utility.Write("Enemy HP:" + enemy.enemyStats.CurrentHP + "/" + enemy.enemyStats.MaxHP, battleColor);
-            Console.WriteLine();
+            //Console.WriteLine();
         }
         private void EnemyTurn()
         {
             //ENEMY TURN              
-            Utility.Write("--ENEMY TURN--", battleColor);
+            Utility.Write("---ENEMY TURN---", battleColor);
             switch (enemy.ChooseRandomAttack())
             {
                 case "lightAttack":
-                    enemy.LightAttack();
-                    Utility.Write(enemy.name + " hit for " + enemy.enemyStats.Attack + " damage!", battleColor);
+                    if (Player.CheckIfHit()) //hit
+                    {
+                        enemy.LightAttack();
+                        Utility.Write(enemy.name + " hit for " + enemy.enemyStats.Attack + " damage!", battleColor);
+                    }
+                    else //miss
+                    {
+                        Utility.Write("You evaded their attack!", battleColor);
+                    }
+                    
                     break;
                     /*case "heavyAttack":
                         Utility.Write("You charge up for a powerful attack...", battleColor);
@@ -133,7 +163,7 @@ namespace TBD_TBG
             }
             //display health of player         
             Utility.Write("Player HP:" + Player.playerStats.CurrentHP + "/" + Player.playerStats.MaxHP, battleColor);
-            Console.WriteLine();
+            //Console.WriteLine();
         }
 
     }
