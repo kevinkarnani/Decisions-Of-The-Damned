@@ -13,6 +13,9 @@ namespace TBD_TBG
         private int currentHP; //current health. You lose when this reaches zero.
         private int maxHP; //maximum health
 
+        private int heavyAttack;
+
+
         //CLASS CONSTRUCTORS
         //for the player (pass in archetype string)
         public Stats(string _arch)
@@ -92,10 +95,12 @@ namespace TBD_TBG
                 if (value < 0) //attack cannot be lower than zero
                 {
                     agility = 0;
+                    evasion = 0;
                 }
                 else
                 {
                     agility = value;
+                    SetEvasionStat();
                 }
             }
         }
@@ -137,6 +142,14 @@ namespace TBD_TBG
                 {
                     attack = value;
                 }
+                heavyAttack = Convert.ToInt32(2.5 * attack);
+            }
+        }
+        public int HeavyAttack
+        {
+            get
+            {
+                return heavyAttack; //cannot manually set heavy attack, it's always 2.5x attack
             }
         }
         public int MaxHP

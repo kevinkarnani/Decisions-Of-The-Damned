@@ -4,6 +4,8 @@ namespace TBD_TBG
 {
     public class Enemy
     {
+        //TODO: MAKE GETTERS AND SETTERS FOR ENEMY CLASS
+
         //CLASS ATTRIBUTES
         public string name = ""; //the name of the enemy
         public string description = ""; //description of the enemy
@@ -33,19 +35,38 @@ namespace TBD_TBG
             //light attack
         public void LightAttack()
         {
-            int playerHP = Player.playerStats.CurrentHP;
-            int damage = enemyStats.CurrentHP; 
-            Player.playerStats.CurrentHP = (playerHP - damage);
+            int damage = enemyStats.Attack;
+            Player.Damage(damage);
         }
             //heavy attack
         public void HeavyAttack(Enemy _enem)
         {
-            int playerHP = Player.playerStats.CurrentHP;
-            int damage = Convert.ToInt32(2.5 * enemyStats.CurrentHP); 
-            Player.playerStats.CurrentHP = (playerHP - damage);
+            int damage = Convert.ToInt32(2.5 * enemyStats.Attack);
+            Player.Damage(damage);
         }
-            //dodge
-                //no method needed, player doesn't take damage
+        //dodge
+        //no method needed, player doesn't take damage
+        public void Damage(int _dmg)
+        {
+           enemyStats.CurrentHP -= _dmg;
+        }
+        public string ChooseRandomAttack()
+        {
+            Random random = new Random();
+            double randomNum = random.NextDouble(); //random number between 0 and 1
 
+            if(randomNum >=0 && randomNum <= chanceToLightAttack) //ex: 0->.25
+            {
+                return "lightAttack";
+            }
+            else if(randomNum >chanceToLightAttack && randomNum <= chanceToLightAttack + chanceToHeavyAttack) //ex .25->(.25+.25)
+            {
+                return "heavyAttack";
+            }
+            else
+            {
+                return "dodge";
+            }
+        }
     }
 }

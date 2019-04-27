@@ -51,20 +51,21 @@ namespace TBD_TBG
                 //light attack
         public static void LightAttack(Enemy _enem)
         {
-            int enemyHP = _enem.enemyStats.CurrentHP;
             int damage = playerStats.Attack;
-            _enem.enemyStats.CurrentHP = (enemyHP - damage);
+            _enem.Damage(damage);
         }
                 //heavy attack
         public static void HeavyAttack(Enemy _enem)
         {
-            int enemyHP = _enem.enemyStats.CurrentHP;
             int damage = Convert.ToInt32(2.5 * playerStats.Attack);
-            _enem.enemyStats.CurrentHP = (enemyHP - damage);
+            _enem.Damage(damage);
         }
                 //dodge
                     //no method needed, enemy doesn't take damage
-
+        public static void Damage(int _dmg)
+        {
+            Player.playerStats.CurrentHP -= _dmg; 
+        }
     }
 
 }
