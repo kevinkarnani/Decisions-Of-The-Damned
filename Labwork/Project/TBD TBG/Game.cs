@@ -7,6 +7,7 @@ namespace TBD_TBG
     {
         //TO DO: CREATE COMBAT LOOP
         static Choice CurrentScenario; //Choice object that is associated with certain paths in the branching narrative
+        static readonly string battleColor = "yellow";
 
         /* 
          * This function is meant to start the game. It outputs the title, the ASCII ART, the authors, creates the player,
@@ -37,7 +38,17 @@ namespace TBD_TBG
             
 
             CreatePlayer();
+            /*
+            Enemy testEnemy = new Enemy("Zombie", 20, 10, 50);
+            testEnemy.description = "A gross undead dude";
+            testEnemy.SetAttackChance(.5, .25, .25);
+            testEnemy.enemyStats.PrintStatOverview();
+
+            StartCombatLoop(testEnemy);
+            */
+            Player.PrintPlayerOverview();
             InitializeScenarios();
+
             StartGameLoop();
             End();
         }
@@ -46,18 +57,17 @@ namespace TBD_TBG
         public static void CreatePlayer()
         {
             Utility.Write("What would you like your character's name to be?");
-            Player.SetName(Console.ReadLine());
+            Player.Name = Console.ReadLine();
+
+            //TODO: Make sure this input is a number between 1 and 4
             Utility.Write("What class would you like to play as? (Type 1,2,3, or 4)");
             Utility.Write("1.) Adventurer: Balanced stats");
             Utility.Write("2.) Paladin: Defense focused");
             Utility.Write("3.) Brawler: Attack focused");
-            Utility.Write("4.) Rogue: Quick");
-            //TODO: Make sure this input is a number between 1 and 4
-            Player.SetArchetype(Console.ReadLine());
+            Utility.Write("4.) Rogue: Quick");            
+            Player.Archetype = Console.ReadLine();
 
-            Utility.Write("Welcome " + Player.name+ "! You are a(n) " + Player.archetype + "!");
-
-            Player.playerStats.PrintStatOverview();
+            Utility.Write("Welcome " + Player.Name + "! You are a(n) " + Player.archetype + "!");
         }
 
         //This method initializes all Choice objects
@@ -94,9 +104,9 @@ namespace TBD_TBG
             Choice C2A = new Choice("You gather your things and leave the tavern to investigate. The town square is brimming with townsfolk gathering to do their daily shopping.");
             Choice C2B = new Choice("While meandering through the crowds, you hear people begin to cry out. Upon reaching the source of the noises you find two guards brutalizing a young man on the ground. \nThey kick him over and over again as he cries out for help, blood leaking from his mouth. At this rate he’s going to die.");
             Choice C2C = new Choice("You charge at one of the guards, tackling him to the ground. The other guard stops kicking and throws you off of him.");
-            Choice C2D = new Choice("You draw your sword from its ill-fitting sheath and prepare for combat. From behind you hear a deep voice call out. It’s a man in pristine armor, flanked by five more town guards. \n“You there! " + Player.name + ", did you think I wouldn’t recognize you? You’re under arrest for conspiring against the Duke. Men, arrest him!”");
-            Choice C2E = new Choice("Turning away from the beatdown, you decide to look for a shop. Maybe a blacksmith can remove the rust from your blade? From behind you hear a deep voice call out. \nIt’s a man in pristine armor, flanked by five more town guards. “You there! " + Player.name + ", did you think I wouldn’t recognize you? You’re under arrest for conspiring against the Duke. Men, arrest him!”");
-            Choice C2F = new Choice("Realizing that challenging two town guards with nothing but a rusty iron sword wasn’t you’re greatest decision ever, you try to flee. Unfortunately, you hear a deep voice \ncall out from behind you. It’s a man in pristine armor, flanked by five more town guards. “You there! " + Player.name + ", did you think I wouldn’t recognize you? You’re under arrest for conspiring against the Duke. Men, arrest him!”");
+            Choice C2D = new Choice("You draw your sword from its ill-fitting sheath and prepare for combat. From behind you hear a deep voice call out. It’s a man in pristine armor, flanked by five more town guards. \n“You there! " + Player.Name + ", did you think I wouldn’t recognize you? You’re under arrest for conspiring against the Duke. Men, arrest him!”");
+            Choice C2E = new Choice("Turning away from the beatdown, you decide to look for a shop. Maybe a blacksmith can remove the rust from your blade? From behind you hear a deep voice call out. \nIt’s a man in pristine armor, flanked by five more town guards. “You there! " + Player.Name + ", did you think I wouldn’t recognize you? You’re under arrest for conspiring against the Duke. Men, arrest him!”");
+            Choice C2F = new Choice("Realizing that challenging two town guards with nothing but a rusty iron sword wasn’t you’re greatest decision ever, you try to flee. Unfortunately, you hear a deep voice \ncall out from behind you. It’s a man in pristine armor, flanked by five more town guards. “You there! " + Player.Name + ", did you think I wouldn’t recognize you? You’re under arrest for conspiring against the Duke. Men, arrest him!”");
             Choice C3A = new Choice("End of the demo! Thanks for playing!");
             //csv file with all the choice information (id num, des, jump scenarios, choices 1-4)
             // write a script that initializes all of this
@@ -168,11 +178,87 @@ namespace TBD_TBG
             }
             // game over stuff here
         }
-        public static void StartCombatLoop()
+
+        //TODO: 
+        //Create combat loop
+        //Create test scenario (other than prologue)
+        public static void StartCombatLoop(Enemy _enem)
         {
-            //TODO: 
-            //Create combat loop
-            //Create test scenario (other than prologue)
+            //header of the battle
+            
+            Utility.Write(">>>>>----------> BATTLE START <----------<<<<<", battleColor);
+            Utility.Write("You face a " + _enem.name + "!", battleColor);
+            Utility.Write("Description: " + _enem.description, battleColor);
+            //Utility.Write("HP: " + _enem.enemyStats.GetCurrentHP(), battleColor);
+            //Utility.Write("Attack: " + _enem.enemyStats.GetAttack(), battleColor);
+
+            //start loop until someone dies
+            while (Player.playerStats.CurrentHP > 0 && _enem.enemyStats.CurrentHP > 0)
+            {
+                    /*Two options: 
+                     * 1. Make player a non-static class
+                     * 2. Make an abstract parent class of both (do this one!!)
+                     */
+                //determine who goes first
+                if (Player.playerStats.Agility> _enem.enemyStats.Agility)
+                {
+                    Utility.Write("You go first!", battleColor);
+                    PlayerTurn(_enem);
+
+                }
+                else
+                {
+
+                }
+
+                //ask player for attack choice
+                //display health of enemy
+                //deal damage and check if health >0 (break)
+                //randomly select enemy attack choice
+                //display health of player
+                //deal damage and check if health >0 (break)
+
+                //loop
+            }            
+            Utility.Write("You defeated the " + _enem.name + "!", battleColor);
+            Utility.Write(">>>>>----------> BATTLE FINISH <----------<<<<<", battleColor);
+
+        }
+        static void PlayerTurn(Enemy _enem)
+        {
+            Utility.Write("Options:", battleColor);
+            Utility.Write("1.) Light attack", battleColor);
+            Utility.Write("2.) Heavy attack", battleColor);
+            Utility.Write("3.) Dodge", battleColor);
+                //Utility.Write("4.) Display Stats");
+                //Utility.Write("4.) Use an item");
+                //Utility.Write("5.) Flee?");
+            //TODO: Make sure this input is a number between 1 and 3
+            string attackChoice = Console.ReadLine();
+
+            //make attack
+            switch (attackChoice)
+            {
+                case "1":
+                    Player.LightAttack(_enem);
+                    Utility.Write("You hit for " + Player.playerStats.Attack+ " damage!", battleColor);
+                    break;
+                case "2":
+                    //Player.HeavyAttack(_enem);
+                    Utility.Write("You charge up an attack", battleColor);
+                    break;
+               // case "3":
+                 //   Console.WriteLine("Case 3");
+                   // break;
+            }
+
+            //display health of enemy            
+            Utility.Write("Enemy HP:" + _enem.enemyStats.CurrentHP + "/" + _enem.enemyStats.MaxHP, battleColor);
+
+        }
+        static void EnemyTurn()
+        {
+
         }
 
         //Create Game Title
