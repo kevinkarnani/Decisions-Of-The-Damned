@@ -4,9 +4,16 @@ namespace TBD_TBG
 {
     public class Combat
     {
+        /*
+         * TODO:
+         * add in evasion (chance to hit)
+         * add in dodge for player
+         * add in heavy attack for enemy
+         * add in dodge for enemy
+         */
         private Enemy enemy;
-        public static double initialEvasion = Player.playerStats.Evasion;
-        public static bool preparingAttack = false;
+        public double initialEvasion = Player.playerStats.Evasion;
+        public bool preparingAttack = false;
         static readonly string battleColor = "yellow";
 
         public Combat(Enemy _enem)
@@ -38,7 +45,7 @@ namespace TBD_TBG
                     }
                     EnemyTurn();
                 }
-                else
+                else //the enemy goes first
                 {
                     EnemyTurn();
                     if (Player.playerStats.CurrentHP == 0) //if the enemy kills you before you can attack back
@@ -48,22 +55,14 @@ namespace TBD_TBG
                     PlayerTurn();
                 }
                 turnNumber++;
-                //ask player for attack choice
-                //display health of enemy
-                //deal damage and check if health >0 (break)
-                //randomly select enemy attack choice
-                //display health of player
-                //deal damage and check if health >0 (break)
-
-                //loop
             }
             //determines who won the battle
-            if (enemy.enemyStats.CurrentHP == 0)
+            if (enemy.enemyStats.CurrentHP == 0) //you win
             {
                 Utility.Write("You defeated the " + enemy.name + "!", battleColor);
                 Utility.Write(">>>>>----------> BATTLE FINISH <----------<<<<<", battleColor);
             }
-            else
+            else //you lose
             {
                 Utility.Write("You lost to the " +  enemy.name + "!", battleColor);
                 Utility.Write(">>>>>----------> BATTLE FINISH <----------<<<<<", battleColor);
