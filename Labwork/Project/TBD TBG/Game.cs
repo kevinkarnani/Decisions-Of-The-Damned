@@ -39,16 +39,13 @@ namespace TBD_TBG
             CreatePlayer();
             Player.playerStats.MaxHP = 300;
             Player.playerStats.CurrentHP = 300;
-            //Player.playerStats.Evasion = 1.0;
 
-
-            Enemy testEnemy = new Enemy("Zombie", 20, 100, 200);
-            //testEnemy.enemyStats.Evasion = 1.0;
+            Enemy testEnemy = new Enemy("Zombie", 40, 10, 200);
             testEnemy.description = "A gross undead dude";
-            testEnemy.SetAttackChance(1.0, 0, 0);
+            testEnemy.SetAttackChance(.33,.33,.33);
+
             testEnemy.enemyStats.PrintStatOverview();
             Console.WriteLine();
-
             Player.PrintPlayerOverview();
 
             Combat fight1 = new Combat(testEnemy);
