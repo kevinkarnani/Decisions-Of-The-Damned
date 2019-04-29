@@ -33,6 +33,8 @@ namespace TBD_TBG
                     case "4": //focus on agility
                         archetype = "Rogue";
                         break;
+                    default:
+                        throw new ArgumentException();
                 }
                 playerStats = new Stats(archetype);
             }

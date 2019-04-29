@@ -119,12 +119,12 @@ namespace TBD_TBG
                 //the player's combat choices
                 //TODO: Make sure this input is a number between 1 and 3                
                 Utility.Write("Options:", choiceColor);
-                Utility.Write("1.) Light attack", choiceColor);
-                Utility.Write("2.) Heavy attack", choiceColor);
-                Utility.Write("3.) Dodge", choiceColor);
-                //Utility.Write("4.) Display Stats");
-                //Utility.Write("4.) Use an item");
-                //Utility.Write("5.) Flee?");
+                Utility.Write("1) Light attack", choiceColor);
+                Utility.Write("2) Heavy attack", choiceColor);
+                Utility.Write("3) Dodge", choiceColor);
+                //Utility.Write("4) Display Stats");
+                //Utility.Write("5) Use an item");
+                //Utility.Write("6) Flee?");
                 string attackChoice = Console.ReadLine();
 
                 //make attack choice
@@ -199,7 +199,7 @@ namespace TBD_TBG
 
                         break;
                     case "heavyAttack":
-                            Utility.Write("The" + enemy.name + " charges up for a powerful attack...", battleColor);
+                            Utility.Write("The " + enemy.name + " charges up for a powerful attack...", battleColor);
                             enemyPreparingHeavyAttack = true;
                             break;
                     case "dodge": 
@@ -211,7 +211,7 @@ namespace TBD_TBG
             }
             
             //display health of player         
-            Utility.Write("Player HP:" + Player.playerStats.CurrentHP + "/" + Player.playerStats.MaxHP, battleColor);
+            Utility.Write("Player HP: " + Player.playerStats.CurrentHP + "/" + Player.playerStats.MaxHP, battleColor);
             //Console.WriteLine();
         }
 

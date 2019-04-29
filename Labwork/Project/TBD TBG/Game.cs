@@ -64,13 +64,29 @@ namespace TBD_TBG
             Utility.Write("What would you like your character's name to be?");
             Player.Name = Console.ReadLine();
 
-            //TODO: Make sure this input is a number between 1 and 4
-            Utility.Write("What class would you like to play as? (Type 1,2,3, or 4)");
-            Utility.Write("1.) Adventurer: Balanced stats");
-            Utility.Write("2.) Paladin: Defense focused");
-            Utility.Write("3.) Brawler: Attack focused");
-            Utility.Write("4.) Rogue: Quick");            
-            Player.Archetype = Console.ReadLine();
+            //Make sure this input is a number between 1 and 4
+            while (true)
+            {
+                try
+                {
+                    Utility.Write("What class would you like to play as? (Type 1,2,3, or 4)");
+                    Utility.Write("1) Adventurer: Balanced stats");
+                    Utility.Write("2) Paladin: Defense focused");
+                    Utility.Write("3) Brawler: Attack focused");
+                    Utility.Write("4) Rogue: Quick");
+
+                    Player.Archetype = Console.ReadLine();
+                    break;
+                }
+                catch (Exception ex)
+                {
+                    if (ex is ArgumentException || ex is FormatException)
+                    {
+                        Utility.Write("Invalid Input. Try Again");
+                    }
+                }
+            }
+            
 
             Utility.Write("Welcome " + Player.Name + "! You are a(n) " + Player.archetype + "!");
         }
