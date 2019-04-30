@@ -40,15 +40,15 @@ namespace TBD_TBG
             Console.WriteLine();
 
             int turnNumber = 1;
-            var pressAnyKey ="";
+            var pressAnyKey = "";
             //start loop until someone dies
             while (Player.playerStats.CurrentHP >= 0 && enemy.enemyStats.CurrentHP > 0)
             {
-                try
+                Utility.Write("=====TURN #" + turnNumber + "=====", battleColor);
+                //determine who goes first
+                if (Player.playerStats.Agility > enemy.enemyStats.Agility) //the player goes first
                 {
-                    Utility.Write("=====TURN #" + turnNumber + "=====", battleColor);
-                    //determine who goes first
-                    if (Player.playerStats.Agility > enemy.enemyStats.Agility) //the player goes first
+                    try
                     {
                         PlayerTurn(); //the player chooses an attack
                         if (enemy.enemyStats.CurrentHP == 0) //if you kill the enemy before they can attack back
@@ -60,41 +60,40 @@ namespace TBD_TBG
                         EnemyTurn(); //the enemy chooses an attack
                         pressAnyKey = Console.ReadLine();
                     }
-                    else //the enemy goes first
+                    catch (Exception ex)
                     {
-                        EnemyTurn(); //the enemy chooses an attack
-                        if (Player.playerStats.CurrentHP == 0) //if the enemy kills you before you can attack back
+                        if (ex is ArgumentException || ex is FormatException)
                         {
-                            break;
+                            Utility.Write("Invalid Choice.", "red");
                         }
-                        pressAnyKey = Console.ReadLine();
-
-                        PlayerTurn(); //the player chooses an attack                    
-                        pressAnyKey = Console.ReadLine();
-                    }
-                    turnNumber++;
-
-                    //determines who won the battle
-                    if (enemy.enemyStats.CurrentHP == 0) //you win
-                    {
-                        Utility.Write("You defeated the " + enemy.name + "!", battleColor);
-                        Utility.Write(">>>>>----------> BATTLE FINISH <----------<<<<<", battleColor);
-                    }
-                    else //you lose
-                    {
-                        Utility.Write("You lost to the " + enemy.name + "!", battleColor);
-                        Utility.Write(">>>>>----------> BATTLE FINISH <----------<<<<<", battleColor);
-                        Utility.Write("GAME OVER", "red");
-                        Game.End();
                     }
                 }
-                catch (Exception ex)
+                else //the enemy goes first
                 {
-                    if (ex is ArgumentException || ex is FormatException)
+                    EnemyTurn(); //the enemy chooses an attack
+                    if (Player.playerStats.CurrentHP == 0) //if the enemy kills you before you can attack back
                     {
-                        Utility.Write("Invalid Choice.", "red");
+                        break;
                     }
+                    pressAnyKey = Console.ReadLine();
+
+                    PlayerTurn(); //the player chooses an attack                    
+                    pressAnyKey = Console.ReadLine();
                 }
+                turnNumber++;
+            }
+            //determines who won the battle
+            if (enemy.enemyStats.CurrentHP == 0) //you win
+            {
+                Utility.Write("You defeated the " + enemy.name + "!", battleColor);
+                Utility.Write(">>>>>----------> BATTLE FINISH <----------<<<<<", battleColor);
+            }
+            else //you lose
+            {
+                Utility.Write("You lost to the " + enemy.name + "!", battleColor);
+                Utility.Write(">>>>>----------> BATTLE FINISH <----------<<<<<", battleColor);
+                Utility.Write("GAME OVER", "red");
+                Game.End();
             }
         }
 
