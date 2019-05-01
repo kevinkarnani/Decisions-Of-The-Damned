@@ -137,7 +137,7 @@ namespace TBD_TBG
             B3C.SetChoices(new Dictionary<string, Choice>() { { "Return to the bar", B4A } });
             B4A.SetChoices(new Dictionary<string, Choice>() { { "It’s snooze time", C1A } });
 
-            C1A.SetChoices(new Dictionary<string, Choice>() { { "Check it out", C2A }, { "2) Just five more minutes", C1B } });
+            C1A.SetChoices(new Dictionary<string, Choice>() { { "Check it out", C2A }, { "Just five more minutes", C1B } });
             C1B.SetChoices(new Dictionary<string, Choice>() { { "Check it out", C2A } });
             C2A.SetChoices(new Dictionary<string, Choice>() { { "Explore", C2B} });
             C2B.SetChoices(new Dictionary<string, Choice>() { { "Something needs to be done", C2C }, { "Not my problem, back to exploring!", C2E } });
