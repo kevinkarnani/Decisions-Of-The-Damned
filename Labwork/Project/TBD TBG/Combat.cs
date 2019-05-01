@@ -48,14 +48,25 @@ namespace TBD_TBG
                 //determine who goes first
                 if (Player.playerStats.Agility > enemy.enemyStats.Agility) //the player goes first
                 {
-                    PlayerTurn(); //the player chooses an attack
-                    if (enemy.enemyStats.CurrentHP <= 0) //if you kill the enemy before they can attack back
+                    try
                     {
-                        break;
+                        PlayerTurn();
+                        if (enemy.enemyStats.CurrentHP <= 0) //if you kill the enemy before they can attack back
+                        {
+                            break;
+                        }
+                        pressAnyKey = Console.ReadLine();  //make the player press any key to continue
+                        EnemyTurn(); //the enemy chooses an attack
+                        pressAnyKey = Console.ReadLine();
+                        turnNumber++;
                     }
-                    pressAnyKey = Console.ReadLine();  //make the player press any key to continue
-                    EnemyTurn(); //the enemy chooses an attack
-                    pressAnyKey = Console.ReadLine();
+                    catch (Exception ex)
+                    {
+                        if (ex is ArgumentException)
+                        {
+                            Utility.Write("Invalid Choice Selection", "red");
+                        }
+                    }
                 }
                 else //the enemy goes first
                 {
@@ -68,8 +79,8 @@ namespace TBD_TBG
 
                     PlayerTurn(); //the player chooses an attack                    
                     pressAnyKey = Console.ReadLine();
+                    turnNumber++;
                 }
-                turnNumber++;
             }
             //determines who won the battle
             if (enemy.enemyStats.CurrentHP <= 0) //you win
@@ -124,49 +135,38 @@ namespace TBD_TBG
                 //Utility.Write("6) Flee?");
 
                 //make attack choice
-                try
+                string attackChoice = Utility.Input();
+                switch (attackChoice)
                 {
-                    string attackChoice = Utility.Input();
-                    switch (attackChoice)
-                    {
-                        case "1"://light attack
-                            if (enemy.CheckIfHit()) //hit
-                            {
-                                Player.LightAttack(enemy); // do light attack on enemy
-                                Utility.Write("You hit for " + Player.playerStats.Attack + " damage!", battleColor);
-                            }
-                            else //miss
-                            {
-                                Utility.Write(enemy.name + " evaded your attack!", battleColor);
-                            }
-                            break;
-                        case "2"://heavy attack
-                            Utility.Write("You charge up for a powerful attack...", battleColor);
-                            playerPreparingHeavyAttack = true; //sets up for a heavy attack next turn
-                            break;
-                        case "3"://dodge
-                            Utility.Write("You prepare to dodge the enemy's attack...", battleColor);
-                            Player.playerStats.Evasion += .65;
-                            playerDodgingAttack = true;
-                            break;
-                        default://bad input
-                            throw new ArgumentException();
-                    }
-                }
-                catch (Exception ex)
-                {
-                    if (ex is ArgumentException)
-                    {
-                        Utility.Write("Invalid Choice Selection.", "red");
-                    }
+                    case "1"://light attack
+                        if (enemy.CheckIfHit()) //hit
+                        {
+                            Player.LightAttack(enemy); // do light attack on enemy
+                            Utility.Write("You hit for " + Player.playerStats.Attack + " damage!", battleColor);
+                        }
+                        else //miss
+                        {
+                            Utility.Write(enemy.name + " evaded your attack!", battleColor);
+                        }
+                        break;
+                    case "2"://heavy attack
+                        Utility.Write("You charge up for a powerful attack...", battleColor);
+                        playerPreparingHeavyAttack = true; //sets up for a heavy attack next turn
+                        break;
+                    case "3"://dodge
+                        Utility.Write("You prepare to dodge the enemy's attack...", battleColor);
+                        Player.playerStats.Evasion += .65;
+                        playerDodgingAttack = true;
+                        break;
+                    default://bad input
+                        throw new ArgumentException();
                 }
             }
             //display health of enemy            
             Utility.Write("Enemy HP:" + enemy.enemyStats.CurrentHP + "/" + enemy.enemyStats.MaxHP, battleColor);
             //Console.WriteLine();
         }
-
-
+        
         private void EnemyTurn()
         {
             //ENEMY TURN              
