@@ -42,36 +42,25 @@ namespace TBD_TBG
             int turnNumber = 1;
             var pressAnyKey = "";
             //start loop until someone dies
-            while (Player.playerStats.CurrentHP >= 0 && enemy.enemyStats.CurrentHP > 0)
+            while (Player.playerStats.CurrentHP > 0 && enemy.enemyStats.CurrentHP > 0)
             {
                 Utility.Write("=====TURN #" + turnNumber + "=====", battleColor);
                 //determine who goes first
                 if (Player.playerStats.Agility > enemy.enemyStats.Agility) //the player goes first
                 {
-                    try
+                    PlayerTurn(); //the player chooses an attack
+                    if (enemy.enemyStats.CurrentHP <= 0) //if you kill the enemy before they can attack back
                     {
-                        PlayerTurn(); //the player chooses an attack
-                        if (enemy.enemyStats.CurrentHP == 0) //if you kill the enemy before they can attack back
-                        {
-                            break;
-                        }
-                        pressAnyKey = Console.ReadLine();  //make the player press any key to continue
-
-                        EnemyTurn(); //the enemy chooses an attack
-                        pressAnyKey = Console.ReadLine();
+                        break;
                     }
-                    catch (Exception ex)
-                    {
-                        if (ex is ArgumentException || ex is FormatException)
-                        {
-                            Utility.Write("Invalid Choice.", "red");
-                        }
-                    }
+                    pressAnyKey = Console.ReadLine();  //make the player press any key to continue
+                    EnemyTurn(); //the enemy chooses an attack
+                    pressAnyKey = Console.ReadLine();
                 }
                 else //the enemy goes first
                 {
                     EnemyTurn(); //the enemy chooses an attack
-                    if (Player.playerStats.CurrentHP == 0) //if the enemy kills you before you can attack back
+                    if (Player.playerStats.CurrentHP <= 0) //if the enemy kills you before you can attack back
                     {
                         break;
                     }
@@ -83,12 +72,12 @@ namespace TBD_TBG
                 turnNumber++;
             }
             //determines who won the battle
-            if (enemy.enemyStats.CurrentHP == 0) //you win
+            if (enemy.enemyStats.CurrentHP <= 0) //you win
             {
                 Utility.Write("You defeated the " + enemy.name + "!", battleColor);
                 Utility.Write(">>>>>----------> BATTLE FINISH <----------<<<<<", battleColor);
             }
-            else //you lose
+            else if (Player.playerStats.CurrentHP <= 0)//you lose
             {
                 Utility.Write("You lost to the " + enemy.name + "!", battleColor);
                 Utility.Write(">>>>>----------> BATTLE FINISH <----------<<<<<", battleColor);
@@ -133,34 +122,44 @@ namespace TBD_TBG
                 //Utility.Write("4) Display Stats");
                 //Utility.Write("5) Use an item");
                 //Utility.Write("6) Flee?");
-                string attackChoice = Utility.Input();
 
                 //make attack choice
-                switch (attackChoice)
+                try
                 {
-                    case "1"://light attack
-                        if (enemy.CheckIfHit()) //hit
-                        {
-                            Player.LightAttack(enemy); // do light attack on enemy
-                            Utility.Write("You hit for " + Player.playerStats.Attack + " damage!", battleColor);
-                        }
-                        else //miss
-                        {
-                            Utility.Write(enemy.name + " evaded your attack!", battleColor);
-                        }                        
-                        break;
-                    case "2"://heavy attack
-                        Utility.Write("You charge up for a powerful attack...", battleColor);
-                        playerPreparingHeavyAttack = true; //sets up for a heavy attack next turn
-                        break;
-                    case "3"://dodge
-                        Utility.Write("You prepare to dodge the enemy's attack...", battleColor);
-                        Player.playerStats.Evasion += .65; 
-                        playerDodgingAttack = true;
-                        break;
-                    default://bad input
-                        throw new ArgumentException();
-                }                
+                    string attackChoice = Utility.Input();
+                    switch (attackChoice)
+                    {
+                        case "1"://light attack
+                            if (enemy.CheckIfHit()) //hit
+                            {
+                                Player.LightAttack(enemy); // do light attack on enemy
+                                Utility.Write("You hit for " + Player.playerStats.Attack + " damage!", battleColor);
+                            }
+                            else //miss
+                            {
+                                Utility.Write(enemy.name + " evaded your attack!", battleColor);
+                            }
+                            break;
+                        case "2"://heavy attack
+                            Utility.Write("You charge up for a powerful attack...", battleColor);
+                            playerPreparingHeavyAttack = true; //sets up for a heavy attack next turn
+                            break;
+                        case "3"://dodge
+                            Utility.Write("You prepare to dodge the enemy's attack...", battleColor);
+                            Player.playerStats.Evasion += .65;
+                            playerDodgingAttack = true;
+                            break;
+                        default://bad input
+                            throw new ArgumentException();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    if (ex is ArgumentException)
+                    {
+                        Utility.Write("Invalid Choice Selection.", "red");
+                    }
+                }
             }
             //display health of enemy            
             Utility.Write("Enemy HP:" + enemy.enemyStats.CurrentHP + "/" + enemy.enemyStats.MaxHP, battleColor);

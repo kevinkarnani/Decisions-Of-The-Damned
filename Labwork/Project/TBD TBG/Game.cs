@@ -36,6 +36,7 @@ namespace TBD_TBG
             CreatePlayer();
 
             InitializeScenarios();
+            StartCombat();
             StartGameLoop();
             End();
         }
