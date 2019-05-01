@@ -156,12 +156,12 @@ namespace TBD_TBG
         {
             while (true)
             {
+                Utility.Write(CurrentScenario.Description);
                 if (!CurrentScenario.CheckChoice())
                 {
                     StartCombat();
                     break;
                 }
-                Utility.Write(CurrentScenario.Description);
                 Utility.AllValues(CurrentScenario);
                 string selection = Utility.Input();
                 //Error checking the user input
