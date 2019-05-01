@@ -182,6 +182,7 @@ namespace TBD_TBG
         //Start Combat
         public static void StartCombat()
         {
+            Console.ReadLine();
             Enemy Enemy = new Enemy("Guard", 40, 10, 200)
             {
                 description = "Royal Guard of the palace"
