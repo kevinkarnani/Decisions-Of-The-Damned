@@ -32,26 +32,8 @@ namespace TBD_TBG
             Utility.Write("                                 Created by:");
             Utility.Write("                  Mark Melkumyan, Kev Karnani, Humaid Mustajab,");
             Utility.Write("                       Cort Williams, and Joey Hermann.");
-            Utility.Write("Now let the story begin...");
-
-            
 
             CreatePlayer();
-            Player.playerStats.MaxHP = 300;
-            Player.playerStats.CurrentHP = 300;
-
-            Enemy testEnemy = new Enemy("Zombie", 40, 10, 200);
-            testEnemy.description = "A gross undead dude";
-            testEnemy.SetAttackChance(.33,.33,.33);
-
-            testEnemy.enemyStats.PrintStatOverview();
-            Console.WriteLine();
-            Player.PrintPlayerOverview();
-
-            Combat fight1 = new Combat(testEnemy);
-            fight1.StartCombatLoop();
-            
-            Player.PrintPlayerOverview();
 
             InitializeScenarios();
             StartGameLoop();
@@ -61,21 +43,20 @@ namespace TBD_TBG
         //This method sets the player's name and player's archetype
         public static void CreatePlayer()
         {
-            Utility.Write("What would you like your character's name to be?");
-            Player.Name = Console.ReadLine();
+            Player.Name = Utility.Input("What would you like your character's name to be?");
 
             //Make sure this input is a number between 1 and 4
             while (true)
             {
                 try
                 {
-                    Utility.Write("What class would you like to play as? (Type 1,2,3, or 4)");
+                    Utility.Write("What class would you like to play as?");
                     Utility.Write("1) Adventurer: Balanced stats");
                     Utility.Write("2) Paladin: Defense focused");
                     Utility.Write("3) Brawler: Attack focused");
                     Utility.Write("4) Rogue: Quick");
 
-                    Player.Archetype = Console.ReadLine();
+                    Player.Archetype = Utility.Input("Type 1,2,3, or 4");
                     break;
                 }
                 catch (Exception ex)
@@ -86,9 +67,8 @@ namespace TBD_TBG
                     }
                 }
             }
-            
-
             Utility.Write("Welcome " + Player.Name + "! You are a(n) " + Player.archetype + "!");
+            Utility.Write("Now let the story begin...\n");
         }
 
         //This method initializes all Choice objects
@@ -128,7 +108,6 @@ namespace TBD_TBG
             Choice C2D = new Choice("You draw your sword from its ill-fitting sheath and prepare for combat. From behind you hear a deep voice call out. It’s a man in pristine armor, flanked by five more town guards. \n“You there! " + Player.Name + ", did you think I wouldn’t recognize you? You’re under arrest for conspiring against the Duke. Men, arrest him!”");
             Choice C2E = new Choice("Turning away from the beatdown, you decide to look for a shop. Maybe a blacksmith can remove the rust from your blade? From behind you hear a deep voice call out. \nIt’s a man in pristine armor, flanked by five more town guards. “You there! " + Player.Name + ", did you think I wouldn’t recognize you? You’re under arrest for conspiring against the Duke. Men, arrest him!”");
             Choice C2F = new Choice("Realizing that challenging two town guards with nothing but a rusty iron sword wasn’t you’re greatest decision ever, you try to flee. Unfortunately, you hear a deep voice \ncall out from behind you. It’s a man in pristine armor, flanked by five more town guards. “You there! " + Player.Name + ", did you think I wouldn’t recognize you? You’re under arrest for conspiring against the Duke. Men, arrest him!”");
-            Choice C3A = new Choice("End of the demo! Thanks for playing!");
             //csv file with all the choice information (id num, des, jump scenarios, choices 1-4)
             // write a script that initializes all of this
 
@@ -163,10 +142,10 @@ namespace TBD_TBG
             C2A.SetChoices(new Dictionary<string, Choice>() { { "Explore", C2B} });
             C2B.SetChoices(new Dictionary<string, Choice>() { { "Something needs to be done", C2C }, { "Not my problem, back to exploring!", C2E } });
             C2C.SetChoices(new Dictionary<string, Choice>() { { "Draw your sword", C2D }, { "Run Away!", C2F } });
-            C2D.SetChoices(new Dictionary<string, Choice>() { { "", C3A } });
-            C2E.SetChoices(new Dictionary<string, Choice>() { { "", C3A } });
-            C2F.SetChoices(new Dictionary<string, Choice>() { { "", C3A } });
-            C3A.SetChoices(new Dictionary<string, Choice>() { });
+            C2D.SetChoices(new Dictionary<string, Choice>() { });
+            C2E.SetChoices(new Dictionary<string, Choice>() { });
+            C2F.SetChoices(new Dictionary<string, Choice>() { });
+
 
 
             CurrentScenario = A1A;
@@ -179,11 +158,12 @@ namespace TBD_TBG
             {
                 if (!CurrentScenario.CheckChoice())
                 {
+                    StartCombat();
                     break;
                 }
                 Utility.Write(CurrentScenario.Description);
                 Utility.AllValues(CurrentScenario);
-                string selection = Console.ReadLine();
+                string selection = Utility.Input();
                 //Error checking the user input
                 try
                 {
@@ -193,11 +173,30 @@ namespace TBD_TBG
                 {
                     if (ex is ArgumentOutOfRangeException || ex is FormatException)
                     {
-                        Utility.Write("Invalid Choice Selection. Try Again.", "red");//TODO: change color to red
+                        Utility.Write("Invalid Choice Selection. Try Again.", "red");
                     }
                 }
             }
-            // game over stuff here
+        }
+
+        //Start Combat
+        public static void StartCombat()
+        {
+            Player.playerStats.MaxHP = 300;
+            Player.playerStats.CurrentHP = 300;
+
+            Enemy testEnemy = new Enemy("Zombie", 40, 10, 200);
+            testEnemy.description = "A gross undead dude";
+            testEnemy.SetAttackChance(.33, .33, .33);
+
+            testEnemy.enemyStats.PrintStatOverview();
+            Console.WriteLine();
+            Player.PrintPlayerOverview();
+
+            Combat fight1 = new Combat(testEnemy);
+            fight1.StartCombatLoop();
+
+            Player.PrintPlayerOverview();
         }
 
         //Create Game Title
@@ -218,8 +217,5 @@ namespace TBD_TBG
         {
             Utility.Write("Press enter to exit.");
         }
-
-
     }
-
 }

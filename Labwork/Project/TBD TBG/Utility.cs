@@ -19,7 +19,6 @@ namespace TBD_TBG
         {
             Console.Write(margin + ": ");
             string input = Console.ReadLine();
-            input = input.ToLower();
             Console.ResetColor();
             return input;
         }
@@ -28,7 +27,6 @@ namespace TBD_TBG
             Console.ForegroundColor = ConsoleColor.Green;
             Console.Write(margin + _string + ": ");
             string input = Console.ReadLine();
-            input = input.ToLower();
             Console.ResetColor();
             return input;
         }
