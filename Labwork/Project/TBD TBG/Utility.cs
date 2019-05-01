@@ -12,12 +12,12 @@ namespace TBD_TBG
      */
     class Utility
     {
-        static string margin = "  ";
-        static string indent = "    ";
+        static string margin = "    ";
+        static string indent = "      ";
 
         public static string Input()
         {
-            Console.Write(margin + ": ");
+            Console.Write(margin);
             string input = Console.ReadLine();
             Console.ResetColor();
             return input;

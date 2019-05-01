@@ -133,7 +133,7 @@ namespace TBD_TBG
                 //Utility.Write("4) Display Stats");
                 //Utility.Write("5) Use an item");
                 //Utility.Write("6) Flee?");
-                string attackChoice = Console.ReadLine();
+                string attackChoice = Utility.Input();
 
                 //make attack choice
                 switch (attackChoice)
@@ -149,7 +149,6 @@ namespace TBD_TBG
                             Utility.Write(enemy.name + " evaded your attack!", battleColor);
                         }                        
                         break;
-
                     case "2"://heavy attack
                         Utility.Write("You charge up for a powerful attack...", battleColor);
                         playerPreparingHeavyAttack = true; //sets up for a heavy attack next turn
@@ -219,12 +218,9 @@ namespace TBD_TBG
                         break;
                 }
             }
-            
             //display health of player         
             Utility.Write("Player HP: " + Player.playerStats.CurrentHP + "/" + Player.playerStats.MaxHP, battleColor);
             //Console.WriteLine();
         }
-
     }
-
 }

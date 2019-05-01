@@ -56,14 +56,14 @@ namespace TBD_TBG
                     Utility.Write("3) Brawler: Attack focused");
                     Utility.Write("4) Rogue: Quick");
 
-                    Player.Archetype = Utility.Input("Type 1,2,3, or 4");
+                    Player.Archetype = Utility.Input("Type 1, 2, 3, or 4");
                     break;
                 }
                 catch (Exception ex)
                 {
                     if (ex is ArgumentException || ex is FormatException)
                     {
-                        Utility.Write("Invalid Input. Try Again");
+                        Utility.Write("Invalid Archetype Selection. Try Again", "red");
                     }
                 }
             }
@@ -182,18 +182,17 @@ namespace TBD_TBG
         //Start Combat
         public static void StartCombat()
         {
-            Player.playerStats.MaxHP = 300;
-            Player.playerStats.CurrentHP = 300;
+            Enemy Enemy = new Enemy("Guard", 40, 10, 200)
+            {
+                description = "Royal Guard of the palace"
+            };
+            Enemy.SetAttackChance(.33, .33, .33);
 
-            Enemy testEnemy = new Enemy("Zombie", 40, 10, 200);
-            testEnemy.description = "A gross undead dude";
-            testEnemy.SetAttackChance(.33, .33, .33);
-
-            testEnemy.enemyStats.PrintStatOverview();
+            Enemy.enemyStats.PrintStatOverview();
             Console.WriteLine();
             Player.PrintPlayerOverview();
 
-            Combat fight1 = new Combat(testEnemy);
+            Combat fight1 = new Combat(Enemy);
             fight1.StartCombatLoop();
 
             Player.PrintPlayerOverview();
