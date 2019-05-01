@@ -34,15 +34,17 @@ namespace TBD_TBG
         public static void CleanDes(string text)
         {
             string[] words = text.Split(' ');
-            int i = 0;
+            int charOnLine = 0;
+
+            int charLimit = 60;
             //TODO: switch to the wordsperline variable and set title to console.writeline instead of utility
             //int wordsPerLine = 80;
-            if (words.Length > 80)
+            if (text.Length > charLimit)
             {
                 foreach (string word in words)
                 {
-                    i += word.Length + 1;
-                    if (i < 80)
+                    charOnLine += word.Length + 1;
+                    if (charOnLine < charLimit)
                     {
                         Console.Write(word + ' ');
                     }
@@ -53,7 +55,7 @@ namespace TBD_TBG
                     else
                     {
                         Console.WriteLine(word);
-                        i = 0;
+                        charOnLine = 0;
                     }
                 }
                 Console.WriteLine();
