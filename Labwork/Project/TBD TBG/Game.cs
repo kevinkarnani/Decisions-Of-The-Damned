@@ -15,23 +15,23 @@ namespace TBD_TBG
         public static void Start()
         {
             GameTitle();
-            Console.WriteLine("                    ████████╗ ██████╗     ██████╗ ███████╗                       ");
-            Console.WriteLine("                    ╚══██╔══╝██╔═══██╗    ██╔══██╗██╔════╝                       ");
-            Console.WriteLine("                       ██║   ██║   ██║    ██████╔╝█████╗                         ");
-            Console.WriteLine("                       ██║   ██║   ██║    ██╔══██╗██╔══╝                         ");
-            Console.WriteLine("                       ██║   ╚██████╔╝    ██████╔╝███████╗                       ");
-            Console.WriteLine("                       ╚═╝    ╚═════╝     ╚═════╝ ╚══════╝                       ");
-            Console.WriteLine("██████╗ ███████╗████████╗███████╗██████╗ ███╗   ███╗██╗███╗   ██╗███████╗██████╗ ");
-            Console.WriteLine("██╔══██╗██╔════╝╚══██╔══╝██╔════╝██╔══██╗████╗ ████║██║████╗  ██║██╔════╝██╔══██╗");
-            Console.WriteLine("██║  ██║█████╗     ██║   █████╗  ██████╔╝██╔████╔██║██║██╔██╗ ██║█████╗  ██║  ██║");
-            Console.WriteLine("██║  ██║██╔══╝     ██║   ██╔══╝  ██╔══██╗██║╚██╔╝██║██║██║╚██╗██║██╔══╝  ██║  ██║");
-            Console.WriteLine("██████╔╝███████╗   ██║   ███████╗██║  ██║██║ ╚═╝ ██║██║██║ ╚████║███████╗██████╔╝");
-            Console.WriteLine("╚═════╝ ╚══════╝   ╚═╝   ╚══════╝╚═╝  ╚═╝╚═╝     ╚═╝╚═╝╚═╝  ╚═══╝╚══════╝╚═════╝ ");
-            Console.WriteLine("              ▁ ▂ ▃ ▄ ▅ ▆ ▇ ▌  A Text Based Game  ▌ ▇ ▆ ▅ ▄ ▃ ▂ ▁");
-            Utility.Write("");
-            Utility.Write("                                 Created by:");
-            Utility.Write("                  Mark Melkumyan, Kev Karnani, Humaid Mustajab,");
-            Utility.Write("                       Cort Williams, and Joey Hermann.");
+            Console.WriteLine(Utility.Center("                    ████████╗ ██████╗     ██████╗ ███████╗                       "));
+            Console.WriteLine(Utility.Center("                    ╚══██╔══╝██╔═══██╗    ██╔══██╗██╔════╝                       "));
+            Console.WriteLine(Utility.Center("                       ██║   ██║   ██║    ██████╔╝█████╗                         "));
+            Console.WriteLine(Utility.Center("                       ██║   ██║   ██║    ██╔══██╗██╔══╝                         "));
+            Console.WriteLine(Utility.Center("                       ██║   ╚██████╔╝    ██████╔╝███████╗                       "));
+            Console.WriteLine(Utility.Center("                       ╚═╝    ╚═════╝     ╚═════╝ ╚══════╝                       "));
+            Console.WriteLine(Utility.Center("██████╗ ███████╗████████╗███████╗██████╗ ███╗   ███╗██╗███╗   ██╗███████╗██████╗ "));
+            Console.WriteLine(Utility.Center("██╔══██╗██╔════╝╚══██╔══╝██╔════╝██╔══██╗████╗ ████║██║████╗  ██║██╔════╝██╔══██╗"));
+            Console.WriteLine(Utility.Center("██║  ██║█████╗     ██║   █████╗  ██████╔╝██╔████╔██║██║██╔██╗ ██║█████╗  ██║  ██║"));
+            Console.WriteLine(Utility.Center("██║  ██║██╔══╝     ██║   ██╔══╝  ██╔══██╗██║╚██╔╝██║██║██║╚██╗██║██╔══╝  ██║  ██║"));
+            Console.WriteLine(Utility.Center("██████╔╝███████╗   ██║   ███████╗██║  ██║██║ ╚═╝ ██║██║██║ ╚████║███████╗██████╔╝"));
+            Console.WriteLine(Utility.Center("╚═════╝ ╚══════╝   ╚═╝   ╚══════╝╚═╝  ╚═╝╚═╝     ╚═╝╚═╝╚═╝  ╚═══╝╚══════╝╚═════╝ "));
+            Console.WriteLine(Utility.Center("▁ ▂ ▃ ▄ ▅ ▆ ▇ ▌  A Text Based Game  ▌ ▇ ▆ ▅ ▄ ▃ ▂ ▁"));
+            Console.WriteLine();
+            Console.WriteLine(Utility.Center("Created by:"));
+            Console.WriteLine(Utility.Center("Mark Melkumyan, Kev Karnani, Humaid Mustajab,"));
+            Console.WriteLine(Utility.Center("Cort Williams, and Joey Hermann."));
 
             CreatePlayer();
 
