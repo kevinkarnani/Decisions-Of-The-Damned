@@ -31,14 +31,15 @@ namespace TBD_TBG
             return input;
         }
 
-        public static void CleanDes(string text)
+        //TODO: Fix with write and margin
+
+        public static string CleanDes(string text)
         {
             string[] words = text.Split(' ');
             int charOnLine = 0;
-
             int charLimit = 60;
-            //TODO: switch to the wordsperline variable and set title to console.writeline instead of utility
-            //int wordsPerLine = 80;
+            string cleanText = "";
+
             if (text.Length > charLimit)
             {
                 foreach (string word in words)
@@ -46,30 +47,33 @@ namespace TBD_TBG
                     charOnLine += word.Length + 1;
                     if (charOnLine < charLimit)
                     {
-                        Console.Write(word + ' ');
+                        cleanText += word + ' ';
                     }
                     else if (word == words[words.Length - 1])
                     {
-                        Console.Write(word);
+                        cleanText += word;
                     }
                     else
                     {
-                        Console.WriteLine(word);
+                        cleanText += word + "\n";
                         charOnLine = 0;
                     }
                 }
-                Console.WriteLine();
+                cleanText += "\n";
             }
             else
             {
-                Console.WriteLine(text);
+                return text;
             }
+            return cleanText;
         }
+
+        //TODO: Clean this up and fix the this with cleanDes
 
         public static void Write(string _string)
         {
             _string = _string.Replace("\n", "\n" + margin);
-            CleanDes(margin + _string);
+            Console.WriteLine(CleanDes(margin + _string));
         }
 
         public static void Write(string _string, string _color)
