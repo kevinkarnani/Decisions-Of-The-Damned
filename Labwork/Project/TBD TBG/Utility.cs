@@ -55,11 +55,11 @@ namespace TBD_TBG
                     }
                     else
                     {
-                        cleanText += word + "\n";
+                        cleanText += word + "\n" + margin;
                         charOnLine = 0;
                     }
                 }
-                cleanText += "\n";
+                cleanText += "\n" + margin;
             }
             else
             {
@@ -72,8 +72,9 @@ namespace TBD_TBG
 
         public static void Write(string _string)
         {
-            _string = _string.Replace("\n", "\n" + margin);
-            Console.WriteLine(CleanDes(margin + _string));
+            //_string = _string.Replace("\n", "\n" + margin);
+            string clean_string = CleanDes(margin + _string); 
+            Console.WriteLine(clean_string);
         }
 
         public static void Write(string _string, string _color)
