@@ -71,14 +71,21 @@ namespace TBD_TBG
 
         //TODO: Clean this up and fix the this with cleanDes
 
-        public static void Write(string _string)
+        public static void Write(string _string, bool NewLine=true)
         {
             //_string = _string.Replace("\n", "\n" + margin);
             string clean_string = CleanDes(margin + _string); 
-            Console.WriteLine(clean_string);
+            if (NewLine)
+            {
+                Console.WriteLine(clean_string);
+            }
+            else
+            {
+                Console.Write(clean_string);
+            }
         }
 
-        public static void Write(string _string, string _color)
+        public static void Write(string _string, string _color, bool NewLine=true)
         {
             _string = _string.Replace("\n", "\n" + margin);
             switch (_color)
@@ -127,7 +134,7 @@ namespace TBD_TBG
                     break;
             }
 
-            Write(_string);
+            Write(_string, NewLine);
             Console.ResetColor();
         }
         public static void Write(string _string, string _color, string _background)
@@ -304,7 +311,8 @@ namespace TBD_TBG
             Dictionary<string, Choice>.KeyCollection options = choice.Choices.Keys;
             for (int i = 0; i < options.Count; i++)
             {
-                Write((i + 1) + ") " + options.ElementAt(i), "cyan");
+                Write(margin + (i + 1) + ") ", "cyan", false);
+                Console.WriteLine(options.ElementAt(i));
             }
         }
     }
