@@ -17,9 +17,10 @@ namespace TBD_TBG
 
         public static string Input()
         {
-            Console.Write(margin);
+            Console.Write(margin + ">");
             string input = Console.ReadLine();
             Console.ResetColor();
+            Console.WriteLine();
             return input;
         }
         public static string Input(string _string)
@@ -303,9 +304,8 @@ namespace TBD_TBG
             Dictionary<string, Choice>.KeyCollection options = choice.Choices.Keys;
             for (int i = 0; i < options.Count; i++)
             {
-                Console.WriteLine(margin + " " + (i + 1) + ") " + options.ElementAt(i));
+                Write((i + 1) + ") " + options.ElementAt(i), "cyan");
             }
-            Console.WriteLine();
         }
     }
 }

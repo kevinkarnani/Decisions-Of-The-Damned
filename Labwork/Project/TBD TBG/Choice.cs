@@ -30,7 +30,7 @@ namespace TBD_TBG
             string output = "";
             foreach (string s in this.Choices.Keys)
             {
-                output += s + "\n";
+                output += s;
             }
             return output;
         }
