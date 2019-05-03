@@ -4,19 +4,15 @@ namespace TBD_TBG
 {
     public class Item
     {
+        string ID; //id of item
         string Name; //name of item
         string Description; //description of item
 
-        string[] Items; //string array holding all item names
-        string[] Descriptions; //string array holding all item descriptions
-        int number;
-        Random random = new Random();
-
-        public Item()
+        public Item(string _ID, string _name, string _des)
         {
-            this.number = random.Next(Items.Length);
-            this.Name = Items[number];
-            this.Description = Descriptions[number];
+            ID = _ID;
+            Name = _name;
+            Description = _des;
         }
 
     }
