@@ -4,16 +4,15 @@ namespace TBD_TBG
 {
     public class Item
     {
-        string ID; //id of item
-        string Name; //name of item
-        string Description; //description of item
+        string ID { get; set; } //id of item
+        string Name { get; set; } //name of item
+        string Description { get; set; } //description of item
 
-        public Item(string _ID, string _name, string _des)
+        public Item(string Identification, string Name, string Description)
         {
-            ID = _ID;
-            Name = _name;
-            Description = _des;
+            this.ID = Identification;
+            this.Name = Name;
+            this.Description = Description;
         }
-
     }
 }
