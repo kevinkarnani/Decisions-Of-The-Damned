@@ -33,6 +33,11 @@ namespace TBD_TBG
             Console.WriteLine(Utility.Center("Mark Melkumyan, Kev Karnani, Humaid Mustajab,"));
             Console.WriteLine(Utility.Center("Cort Williams, and Joey Hermann."));
 
+            
+            //Equipable testEquipable = new Equipable();
+
+
+
             CreatePlayer();
 
             InitializeScenarios();

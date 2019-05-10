@@ -2,7 +2,7 @@
 
 namespace TBD_TBG
 {
-    public class Item
+    public abstract class Item
     {
         string ID { get; set; } //id of item
         string Name { get; set; } //name of item
@@ -14,5 +14,17 @@ namespace TBD_TBG
             this.Name = Name;
             this.Description = Description;
         }
+        public void printItemOverview()
+        {
+            string color = "darkcyan";
+            Utility.Write("ID: " + ID, color);
+            Utility.Write("Name: " + Name, color);
+            Utility.Write("Description: " + Description, color);
+            Console.WriteLine();
+        }
+               
+
     }
+
+    
 }
