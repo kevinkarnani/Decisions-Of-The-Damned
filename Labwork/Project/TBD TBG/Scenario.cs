@@ -1,12 +1,10 @@
 ﻿using System;
-using CsvHelper;
-using System.IO;
 using System.Collections.Generic;
-using TBD_TBG;
+using System.Text;
 
-namespace CSV_Script_test
-{ 
-    public class scenario
+namespace TBD_TBG
+{
+    class Scenario
     {
         public string Key { get; set; }
         public string Description { get; set; }
@@ -45,35 +43,9 @@ namespace CSV_Script_test
             string[] optdescs = optionDescription.Split(",");
             for (int i = 0; i < options.Length; i++)
             {
-                dict.Add(optdescs[i], Program.GlobalChoices[options[i]]);
+                dict.Add(optdescs[i], FileParser.GlobalChoices[options[i]]);
             }
             return dict;
         }
     }
-    public static class Program
-    {
-        public static Dictionary<string, Choice> GlobalChoices = new Dictionary<string, Choice>();
-        static void Main(string[] args)
-        {
-            FileStream fileStream = new FileStream("Choice.csv", FileMode.Open);
-            using (var reader = new StreamReader(fileStream))
-            using (var csv = new CsvReader(reader))
-            {
-                var records = csv.GetRecords<scenario>();
-                List<scenario> things = new List<scenario>();
-                foreach (var record in records)
-                {
-                    GlobalChoices.Add(record.GetKey(), new Choice(record.GetDescription()));
-                    things.Add(record);
-                }
-                foreach (var record in things)
-                {
-                    Dictionary<string, Choice> options = record.GetKeyValueOptions();
-                    
-                    GlobalChoices[record.GetKey()].SetChoices(options);
-                }
-            }
-        }
-    }
 }
-
