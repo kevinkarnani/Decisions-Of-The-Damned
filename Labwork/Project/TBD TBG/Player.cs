@@ -51,22 +51,22 @@ namespace TBD_TBG
         }
             //ATTACKS
                 //light attack
-        public static void LightAttack(Enemy _enem)
+        public static void LightAttack(Enemy enemy)
         {
             int damage = playerStats.Attack;
-            _enem.Damage(damage);
+            enemy.Damage(damage);
         }
                 //heavy attack
-        public static void HeavyAttack(Enemy _enem)
+        public static void HeavyAttack(Enemy enemy)
         {
             int damage = playerStats.HeavyAttack;
-            _enem.Damage(damage);
+            enemy.Damage(damage);
         }
                 //dodge
                     //no method needed, enemy doesn't take damage
-        public static void Damage(int _dmg)
+        public static void Damage(int damage)
         {
-            Player.playerStats.CurrentHP -= _dmg; 
+            Player.playerStats.CurrentHP -= damage; 
         }
         public static bool CheckIfHit() //checks whether you evaded an attack or not
         {
