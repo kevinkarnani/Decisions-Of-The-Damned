@@ -8,4 +8,12 @@
   <ItemGroup>
     <PackageReference Include="CsvHelper" Version="12.1.2" />
   </ItemGroup>
+  <ItemGroup>
+    <None Update="Choice.csv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TBD TBG\TBD TBG.csproj" />
+  </ItemGroup>
 </Project>
