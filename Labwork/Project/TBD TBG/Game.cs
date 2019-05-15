@@ -27,31 +27,31 @@ namespace TBD_TBG
             Console.WriteLine(Utility.Center("██║  ██║██╔══╝     ██║   ██╔══╝  ██╔══██╗██║╚██╔╝██║██║██║╚██╗██║██╔══╝  ██║  ██║"));
             Console.WriteLine(Utility.Center("██████╔╝███████╗   ██║   ███████╗██║  ██║██║ ╚═╝ ██║██║██║ ╚████║███████╗██████╔╝"));
             Console.WriteLine(Utility.Center("╚═════╝ ╚══════╝   ╚═╝   ╚══════╝╚═╝  ╚═╝╚═╝     ╚═╝╚═╝╚═╝  ╚═══╝╚══════╝╚═════╝ "));
-            Console.WriteLine(Utility.Center("▁ ▂ ▃ ▄ ▅ ▆ ▇ ▌  A Text Based Game  ▌ ▇ ▆ ▅ ▄ ▃ ▂ ▁"));
+            Console.WriteLine(Utility.Center("[]xxx[]::::::::::>  A Text Based Game  <::::::::::[]xxx[]"));
             Console.WriteLine();
             Console.WriteLine(Utility.Center("Created by:"));
             Console.WriteLine(Utility.Center("Mark Melkumyan, Kev Karnani, Humaid Mustajab,"));
             Console.WriteLine(Utility.Center("Cort Williams, and Joey Hermann."));
             
             CreatePlayer();
-            /*
-            Equipable testEquipable = new Equipable("1", "iron sword", "a crappy sword", true);
-            testEquipable.SetStats(1, 2, 3);
-            testEquipable.PrintItemOverview();
-            testEquipable.PrintEquipableStats();
-
-            Player.playerStats.PrintStatOverview();
             
+            Equipable weapon1 = new Equipable("1", "iron sword", "a crappy sword", true);
+            weapon1.SetStats(1, 2, 0);
+            Equipable weapon2 = new Equipable("2", "wooden sword", "a shitty sword", true);
+            weapon2.SetStats(4, 5, 0);
+            Equipable armor1 = new Equipable("3", "iron armor", "shiny armor fancy fancy", false);
+            armor1.SetStats(0, 8, 9);
+            Equipable armor2 = new Equipable("4", "leather armor", "old leather armor that smells like shit", false);
+            armor2.SetStats(0, 11, 12);
+
+
             Inventory.AddItem(testEquipable);
             Inventory.EquipItem(testEquipable);
-            Inventory.Display();
-            Player.playerStats.PrintStatOverview();
-
-            Inventory.UnequipItem(testEquipable);
+            Inventory.OpenInventoryMenu();
             Player.playerStats.PrintStatOverview();
 
             Console.WriteLine("TESTING DONE");
-            */
+            
             InitializeScenarios();
             StartGameLoop();
             End();
@@ -60,20 +60,6 @@ namespace TBD_TBG
         //This method sets the player's name and player's archetype
         public static void CreatePlayer()
         {
-            //Inventory.InitializeInventory();
-            /*
-            //TODO: Joey add some better flavor text here
-            Equipable defaultWeapon = new Equipable("DW", "Fists", "Literally just your fists", true);
-            defaultWeapon.SetStats(0, 0, 0);
-            Inventory.AddItem(defaultWeapon);
-            Inventory.EquipItem(defaultWeapon);
-
-            Equipable defaultArmor = new Equipable("DA", "Leather armor", "Just some old tore up leath armor", false);
-            defaultArmor.SetStats(0, 0, 0);
-            Inventory.AddItem(defaultArmor);
-            Inventory.EquipItem(defaultArmor);
-            */
-
             Player.Name = Utility.Input("What would you like your character's name to be?");
             //Make sure this input is a number between 1 and 4
             while (true)

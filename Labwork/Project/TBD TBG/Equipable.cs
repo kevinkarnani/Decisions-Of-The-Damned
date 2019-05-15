@@ -12,6 +12,7 @@ namespace TBD_TBG
 
         public Equipable(string Identification, string Name, string Description, bool isWeapon) : base(Identification, Name, Description)
         {
+            //TODO: fix this init? it doesnt look right ^^^
             this.ID = Identification;
             this.Name = Name;
             this.Description = Description;

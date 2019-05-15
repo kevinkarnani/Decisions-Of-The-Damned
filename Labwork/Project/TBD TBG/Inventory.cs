@@ -6,7 +6,9 @@ namespace TBD_TBG
     public static class Inventory
     {
         static List<Item> InventoryList = new List<Item>(); //list that will serve as inventory
-        
+        //TODO: MAKE EQUIPABLE LIST AND CONSUMABLE LIST
+
+
         public static Equipable equippedWeapon = new Equipable("", "default", "default", true);
         public static Equipable equippedArmor = new Equipable("", "default", "default", true);
 
@@ -27,7 +29,7 @@ namespace TBD_TBG
                         Console.Write("EQUIPPED");
                     }
                 }*/
-                Utility.Write(cnt + ". " + i.Name);
+                Utility.Write(cnt + ") " + i.Name);
                 cnt++;
             }
         }
@@ -66,6 +68,58 @@ namespace TBD_TBG
         public static void OpenInventoryMenu()
         {
             //TODO: create inventory interface
+            Utility.Write("[]xx[]:::::> INVENTORY MENU <:::::[]xx[]");
+            string option = "";
+            while(option.ToLower() != "q")
+            {
+                //Inventory.Display();
+                Utility.Write("What would you like to do?");
+                Utility.Write("1) Check item");
+                Utility.Write("2) Equip item");
+                Utility.Write("3) Consume item");
+                Utility.Write("Q) Quit");
+                option = Utility.Input();
+                switch (option)
+                {
+                    case ("1"):
+                        CheckItemSubmenu();
+                        break;
+                    case ("2"):
+                        EquipItemSubmenu();
+                        break;
+                    case ("3"):
+                        ConsumeItemSubmenu();
+                        break;
+                    case ("Q"):
+                        break;
+                }
+
+            }
+        }
+        private static void CheckItemSubmenu()
+        {
+            Utility.Write("~~~ EQUIP ITEM ~~~");
+            int option = 0;
+            
+            Inventory.Display();
+            Utility.Write("What item would you like to equip?");
+
+            //TODO: Error check this!!
+            option = Int32.Parse(Utility.Input());
+
+            //TODO: Make equippable list
+            
+
+
+
+        }
+        private static void EquipItemSubmenu()
+        {
+
+        }
+        private static void ConsumeItemSubmenu()
+        {
+
         }
 
     }
