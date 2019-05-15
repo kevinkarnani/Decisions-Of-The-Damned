@@ -1,0 +1,23 @@
+ID,Name,Description,Death Description,Attack,Agility,HP,Lchance,Hchance,Dchance
+1,Bulette,,,2,1,3,0,0,1
+2,Umber Hulk,,,2,1,3,0,0,1
+3,Anhkeg,,,3,1,2,0,0,1
+4,Stone Golem,,,2,1,3,0,0,1
+5,Flameskull,,,2,3,1,0,0,3
+6,Banshee,,,2,3,1,0,0,3
+7,Wraith,,,2,3,1,0,0,2
+8,Twig Blight,,,3,0,0,0,0,0
+9,Owlbear,,,5,2,4,0,0,2
+10,Treant,,,2,1,5,0,0,1
+11,Trogolodyte ,God,,3,3,3,0,0,3
+12,Gelatinous Cube,,,3,1,4,0,0,1
+13,Shambling Mound,,,5,1,5,0,0,2
+14,Basilisk,,,2,2,4,0,0,2
+15,Phase Spider,,,1,5,1,0,0,3
+16,Displacer Beast,,,3,5,1,0,0,3
+17,Stirge,,,2,5,1,0,0,3
+18,Dire Wolf,,,3,4,2,0,0,3
+19,Lich,,,15,15,15,0,0,2
+20,Mephisto,,,20,20,20,0,0,2
+,,,,1,99,69,,,
+,,Descriptions to be added for 1-18,,,,,,,
