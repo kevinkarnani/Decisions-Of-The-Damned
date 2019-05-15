@@ -4,9 +4,9 @@ namespace TBD_TBG
 {
     public abstract class Item
     {
-        string ID { get; set; } //id of item
-        string Name { get; set; } //name of item
-        string Description { get; set; } //description of item
+        public string ID { get; set; } //id of item
+        public string Name { get; set; } //name of item
+        public string Description { get; set; } //description of item
 
         public Item(string Identification, string Name, string Description)
         {
