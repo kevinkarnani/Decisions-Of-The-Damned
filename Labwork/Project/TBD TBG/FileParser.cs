@@ -11,7 +11,9 @@ namespace TBD_TBG
         public static Dictionary<string, Choice> GlobalChoices = new Dictionary<string, Choice>();
         public static void Parser()
         {
-            FileStream fileStream = new FileStream("CSV-GameChoice.csv", FileMode.Open);
+            string Name = "Choice.csv";
+            string path = Path.Combine(Environment.CurrentDirectory, @"TBD TBG\", Name);
+            FileStream fileStream = new FileStream(path, FileMode.Open);
             using (var reader = new StreamReader(fileStream))
             using (var csv = new CsvReader(reader))
             {
