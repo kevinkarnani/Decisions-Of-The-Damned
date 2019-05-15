@@ -174,12 +174,12 @@ namespace TBD_TBG
             C2C.SetChoices(new Dictionary<string, Choice>() { { "Draw your sword", C2D }, { "Run Away!", C2F } });
             C2D.SetChoices(new Dictionary<string, Choice>() { });
             C2E.SetChoices(new Dictionary<string, Choice>() { });
-            C2F.SetChoices(new Dictionary<string, Choice>() { });
+            C2F.SetChoices(new Dictionary<string, Choice>() { });*/
 
 
 
-            CurrentScenario = A1A;*/
             FileParser.Parser();
+            CurrentScenario = FileParser.GlobalChoices["A1A"];
         }
         
         //Loops through Choice objects for branching narrative

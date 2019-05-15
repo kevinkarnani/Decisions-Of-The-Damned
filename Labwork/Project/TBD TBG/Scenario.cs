@@ -45,7 +45,14 @@ namespace TBD_TBG
             string[] optdescs = OptionDescription.Split(",");
             for (int i = 0; i < options.Length; i++)
             {
-                dict.Add(optdescs[i], FileParser.GlobalChoices[options[i]]);
+                try
+                {
+                    dict.Add(optdescs[i], FileParser.GlobalChoices[options[i]]);
+                }
+                catch (Exception ex)
+                {
+                    continue;
+                }
             }
             return dict;
         }
