@@ -14,7 +14,7 @@ namespace TBD_TBG
             this.Name = Name;
             this.Description = Description;
         }
-        public void printItemOverview()
+        public void PrintItemOverview()
         {
             string color = "darkcyan";
             Utility.Write("ID: " + ID, color);

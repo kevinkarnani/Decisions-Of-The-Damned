@@ -32,15 +32,26 @@ namespace TBD_TBG
             Console.WriteLine(Utility.Center("Created by:"));
             Console.WriteLine(Utility.Center("Mark Melkumyan, Kev Karnani, Humaid Mustajab,"));
             Console.WriteLine(Utility.Center("Cort Williams, and Joey Hermann."));
-
             
-           /* Equipable testEquipable = new Equipable("1", "iron sword", "a crappy sword");
-            testEquipable.setStats(1, 2, 3);
-            testEquipable.printItemOverview();
-            testEquipable.printEquipableStats();
-            */
             CreatePlayer();
+            /*
+            Equipable testEquipable = new Equipable("1", "iron sword", "a crappy sword", true);
+            testEquipable.SetStats(1, 2, 3);
+            testEquipable.PrintItemOverview();
+            testEquipable.PrintEquipableStats();
 
+            Player.playerStats.PrintStatOverview();
+            
+            Inventory.AddItem(testEquipable);
+            Inventory.EquipItem(testEquipable);
+            Inventory.Display();
+            Player.playerStats.PrintStatOverview();
+
+            Inventory.UnequipItem(testEquipable);
+            Player.playerStats.PrintStatOverview();
+
+            Console.WriteLine("TESTING DONE");
+            */
             InitializeScenarios();
             StartGameLoop();
             End();
@@ -49,8 +60,21 @@ namespace TBD_TBG
         //This method sets the player's name and player's archetype
         public static void CreatePlayer()
         {
-            Player.Name = Utility.Input("What would you like your character's name to be?");
+            //Inventory.InitializeInventory();
+            /*
+            //TODO: Joey add some better flavor text here
+            Equipable defaultWeapon = new Equipable("DW", "Fists", "Literally just your fists", true);
+            defaultWeapon.SetStats(0, 0, 0);
+            Inventory.AddItem(defaultWeapon);
+            Inventory.EquipItem(defaultWeapon);
 
+            Equipable defaultArmor = new Equipable("DA", "Leather armor", "Just some old tore up leath armor", false);
+            defaultArmor.SetStats(0, 0, 0);
+            Inventory.AddItem(defaultArmor);
+            Inventory.EquipItem(defaultArmor);
+            */
+
+            Player.Name = Utility.Input("What would you like your character's name to be?");
             //Make sure this input is a number between 1 and 4
             while (true)
             {
