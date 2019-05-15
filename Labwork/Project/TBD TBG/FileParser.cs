@@ -9,9 +9,9 @@ namespace TBD_TBG
     class FileParser
     {
         public static Dictionary<string, Choice> GlobalChoices = new Dictionary<string, Choice>();
-        static void Parser()
+        public static void Parser()
         {
-            FileStream fileStream = new FileStream("Choice.csv", FileMode.Open);
+            FileStream fileStream = new FileStream("CSV-GameChoice.csv", FileMode.Open);
             using (var reader = new StreamReader(fileStream))
             using (var csv = new CsvReader(reader))
             {

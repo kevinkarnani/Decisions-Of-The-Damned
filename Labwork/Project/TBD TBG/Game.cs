@@ -79,7 +79,7 @@ namespace TBD_TBG
         //This method initializes all Choice objects
         public static void InitializeScenarios()
         {
-            Choice A1A = new Choice("The intoxicating stench of smoke stirs you from your slumber. Hearing the loud crackling of fire tells only on danger.");
+            /*Choice A1A = new Choice("The intoxicating stench of smoke stirs you from your slumber. Hearing the loud crackling of fire tells only on danger.");
             Choice A1B = new Choice("The sound of wood crashing to the floor is becoming hard to ignore. If action is not taken soon, you get the feeling you might find yourself in serious danger.");
             Choice A1C = new Choice("You’re going to be one of those players huh? Fine! Be that way, but I’m not going to take your crap. You get up.");
             Choice A2A = new Choice("Looking up, you can see that things have indeed gone terribly wrong. Around you lies the wreckage of the skyship Aethor’s Glory, now engulfed in flame.");
@@ -153,7 +153,8 @@ namespace TBD_TBG
 
 
 
-            CurrentScenario = A1A;
+            CurrentScenario = A1A;*/
+            FileParser.Parser();
         }
         
         //Loops through Choice objects for branching narrative
