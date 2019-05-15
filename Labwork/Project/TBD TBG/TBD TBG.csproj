@@ -11,4 +11,9 @@
   </ItemGroup>
 
 
+  <ItemGroup>
+    <None Update="Choice.csv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
 </Project>

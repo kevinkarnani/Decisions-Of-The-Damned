@@ -5,8 +5,6 @@ VisualStudioVersion = 16.0.28803.156
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TBD TBG", "TBD TBG\TBD TBG.csproj", "{52618935-D5DF-4284-AAB4-31F101C21234}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSV_Script_test", "CSV_Script_test\CSV_Script_test.csproj", "{3796F60C-2B71-42B7-9211-DA640BBA52AB}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -17,10 +15,6 @@ Global
 		{52618935-D5DF-4284-AAB4-31F101C21234}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{52618935-D5DF-4284-AAB4-31F101C21234}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{52618935-D5DF-4284-AAB4-31F101C21234}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3796F60C-2B71-42B7-9211-DA640BBA52AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3796F60C-2B71-42B7-9211-DA640BBA52AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3796F60C-2B71-42B7-9211-DA640BBA52AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3796F60C-2B71-42B7-9211-DA640BBA52AB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
