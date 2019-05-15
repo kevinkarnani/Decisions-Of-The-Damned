@@ -34,10 +34,11 @@ namespace TBD_TBG
             Console.WriteLine(Utility.Center("Cort Williams, and Joey Hermann."));
 
             
-            Equipable testEquipable = new Equipable("1", "iron sword", "a crappy sword");
+           /* Equipable testEquipable = new Equipable("1", "iron sword", "a crappy sword");
+            testEquipable.setStats(1, 2, 3);
             testEquipable.printItemOverview();
-
-
+            testEquipable.printEquipableStats();
+            */
             CreatePlayer();
 
             InitializeScenarios();

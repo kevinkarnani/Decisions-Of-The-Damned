@@ -22,6 +22,7 @@ namespace TBD_TBG
             Utility.Write("Description: " + Description, color);
             Console.WriteLine();
         }
+        //TODO: function add to inventory
                
 
     }
