@@ -16,13 +16,13 @@ namespace TBD_TBG
             this.Description = Description;
             this.isEquipped = false;
         }
-        public void setStats(int attack, int HP, int agility)
+        public void SetStats(int attack, int HP, int agility)
         {
             plusAgility = agility;
             plusHP = HP;
             plusAttack = attack; 
         }
-        public void printEquipableStats()
+        public void PrintEquipableStats()
         {
             string color = "darkcyan";
             Utility.Write("Attack: " + plusAttack, color);
@@ -31,7 +31,7 @@ namespace TBD_TBG
             Console.WriteLine();
         }
 
-        public void equipItem()
+        public void EquipItem()
         {
             //if it is not equipped
             if (!isEquipped)
@@ -48,7 +48,7 @@ namespace TBD_TBG
                 Utility.Write("The item is already equipped.", "red");
             }
         }
-        public void unequipItem()
+        public void UnequipItem()
         {
             //if it is equipped
             if (isEquipped)

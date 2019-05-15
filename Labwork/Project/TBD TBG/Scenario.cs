@@ -4,12 +4,12 @@ using System.Text;
 
 namespace TBD_TBG
 {
-    class Scenario
+    public class Scenario
     {
         public string Key { get; set; }
         public string Description { get; set; }
-        public string optionDescription { get; set; }
-        public string optionKeys { get; set; }
+        public string OptionDescription { get; set; }
+        public string OptionKeys { get; set; }
 
         public void GetData()
         {
@@ -33,14 +33,14 @@ namespace TBD_TBG
 
         public string GetOptionDescription()
         {
-            return optionDescription;
+            return OptionDescription;
         }
 
         public Dictionary<string, Choice> GetKeyValueOptions()
         {
             Dictionary<string, Choice> dict = new Dictionary<string, Choice>();
-            string[] options = optionKeys.Split(",");
-            string[] optdescs = optionDescription.Split(",");
+            string[] options = OptionKeys.Split(",");
+            string[] optdescs = OptionDescription.Split(",");
             for (int i = 0; i < options.Length; i++)
             {
                 dict.Add(optdescs[i], FileParser.GlobalChoices[options[i]]);
