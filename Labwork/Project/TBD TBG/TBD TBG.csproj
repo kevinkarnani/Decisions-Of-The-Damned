@@ -16,4 +16,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="Parser - Choices.cs" />
+  </ItemGroup>
 </Project>
