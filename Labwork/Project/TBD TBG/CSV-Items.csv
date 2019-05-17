@@ -1,33 +1,31 @@
-ID,Item Name,Description,Attack,Agility,HP,Special
-1,Iron Broadsword,weapons,3,0,0,
-2,Platinum Greatsword,,4,0,0,
-3,Maul of Disruption,,5,0,0,
-4,Glass Cannon,,10,0,0,
-5,Bramble Bow,,3,0,0,
-6,Time Hammer,,5,5,0,
-7,Void Blade,,3,0,0,
-8,Double-Shot Bow,,4,0,0,
-9,Blazing Whip,,3,0,0,
-10,Chilling Handaxe,,3,0,0,
-11,Displacer Armor,armor,0,5,3,
-12,Shield of the Martyr,,0,0,2,
-13,Plate of the Dawn-Blessed,,0,0,4,
-14,Thorn Armor,,2,0,2,
-15,Cloak of Perception,,0,5,2,
-16,Raven's Wings,,0,3,4,
-17,Dragon-Scale Armor,,0,0,4,
-18,Mithril Chain Mail,,0,0,5,
-19,Extending Shield,,0,5,0,
-20,Boomerang Shield,,5,0,5,
-21,Elixir of Hawk's Perception,consumables,0,5,0,
-22,Potion of Bestial Strength,,5,0,0,
-23,Potion of Stone's Endurance,,0,0,5,
-24,Elixir of Etherealness,,0,0,0,
-25,Potion of Dragon's Breath,,5,0,0,
-26,Throwing Knife,,2,0,0,
-27,Smoke Bomb,,0,3,0,
-28,Acid Vial,,3,0,0,
-29,Elixir of Vitality,,0,0,5,
-30,Death's Ward,,0,0,0,
-,,Scaled 1-5,,,,
-,,Descriptions to be added,,,,
+ID,Item Name,Attack,Agility,HP,Type,Special,Description
+1,Iron Broadsword,3,0,0,Weapon,-,Empty
+2,Platinum Greatsword,4,0,0,Weapon,-,Empty
+3,Maul of Disruption,5,0,0,Weapon,-,Empty
+4,Glass Cannon,10,0,0,Weapon,-,Empty
+5,Bramble Bow,3,0,0,Weapon,-,Empty
+6,Time Hammer,5,5,0,Weapon,-,Empty
+7,Void Blade,3,0,0,Weapon,-,Empty
+8,Double-Shot Bow,4,0,0,Weapon,-,Empty
+9,Blazing Whip,3,0,0,Weapon,-,Empty
+10,Chilling Handaxe,3,0,0,Weapon,-,Empty
+11,Displacer Armor,0,5,3,Armor,-,Empty
+12,Shield of the Martyr,0,0,2,Armor,-,Empty
+13,Plate of the Dawn-Blessed,0,0,4,Armor,-,Empty
+14,Thorn Armor,2,0,2,Armor,-,Empty
+15,Cloak of Perception,0,5,2,Armor,-,Empty
+16,Raven's Wings,0,3,4,Armor,-,Empty
+17,Dragon-Scale Armor,0,0,4,Armor,-,Empty
+18,Mithril Chain Mail,0,0,5,Armor,-,Empty
+19,Extending Shield,0,5,0,Armor,-,Empty
+20,Boomerang Shield,5,0,5,Armor,-,Empty
+21,Elixir of Hawk's Perception,0,5,0,Consumable,-,Empty
+22,Potion of Bestial Strength,5,0,0,Consumable,-,Empty
+23,Potion of Stone's Endurance,0,0,5,Consumable,-,Empty
+24,Elixir of Etherealness,0,0,0,Consumable,-,Empty
+25,Potion of Dragon's Breath,5,0,0,Consumable,-,Empty
+26,Throwing Knife,2,0,0,Consumable,-,Empty
+27,Smoke Bomb,0,3,0,Consumable,-,Empty
+28,Acid Vial,3,0,0,Consumable,-,Empty
+29,Elixir of Vitality,0,0,5,Consumable,-,Empty
+30,Death's Ward,0,0,0,Consumable,-,Empty
