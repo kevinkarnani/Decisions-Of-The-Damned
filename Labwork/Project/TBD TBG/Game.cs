@@ -34,7 +34,16 @@ namespace TBD_TBG
             Console.WriteLine(Utility.Center("Cort Williams, and Joey Hermann."));
             
             CreatePlayer();
-            
+
+            //test encounter
+            Enemy testEnemy = new Enemy("Zombie", 10, 20, 100);
+            testEnemy.SetAttackChance(.33, .33, .33);
+
+            Combat testBattle = new Combat(testEnemy);
+            testBattle.StartCombatLoop();
+
+
+            /*
             Equipable weapon1 = new Equipable("1", "iron sword", "a crappy sword", true);
             weapon1.SetStats(1, 2, 0);
             Equipable weapon2 = new Equipable("2", "wooden sword", "a shitty sword", true);
@@ -45,13 +54,18 @@ namespace TBD_TBG
             armor2.SetStats(0, 11, 12);
 
 
-            Inventory.AddItem(testEquipable);
-            Inventory.EquipItem(testEquipable);
+            Inventory.AddItem(weapon1);
+            Inventory.AddItem(weapon2);
+            Inventory.AddItem(armor1);
+            Inventory.AddItem(armor1);
+            Inventory.EquipItem(weapon1);
+            Inventory.EquipItem(armor1);
+
             Inventory.OpenInventoryMenu();
             Player.playerStats.PrintStatOverview();
 
             Console.WriteLine("TESTING DONE");
-            
+            */
             InitializeScenarios();
             StartGameLoop();
             End();

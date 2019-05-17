@@ -98,17 +98,26 @@ namespace TBD_TBG
         }
         private static void CheckItemSubmenu()
         {
-            Utility.Write("~~~ EQUIP ITEM ~~~");
-            int option = 0;
+            Utility.Write("~~~ CHECK ITEM ~~~");
+            string option = "";
             
             Inventory.Display();
-            Utility.Write("What item would you like to equip?");
+            Utility.Write("Q) Quit");
+            Utility.Write("What item would you like to check?");
 
             //TODO: Error check this!!
-            option = Int32.Parse(Utility.Input());
+            //option = Int32.Parse(Utility.Input());
+            //option = Utility.Input()
+
+            while(option.ToLower() != "q")
+            {
+                option = Utility.Input();
+                //print item info 
+
+            }
 
             //TODO: Make equippable list
-            
+
 
 
 
