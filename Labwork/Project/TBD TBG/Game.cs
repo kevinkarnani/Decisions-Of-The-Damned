@@ -89,7 +89,7 @@ namespace TBD_TBG
         //This method sets the player's name and player's archetype
         public static void CreatePlayer()
         {
-            Utility.Write("What would you like your character's name to be?", Game.choiceColor);
+            Utility.Write("What would you like your character's name to be?");
             Player.Name = Utility.Input();
 
             //Make sure this input is a number between 1 and 4
@@ -256,6 +256,7 @@ namespace TBD_TBG
             Console.ForegroundColor = ConsoleColor.Cyan;
             Utility.Write(Title);
             Console.ResetColor();
+            Utility.Write("Please fullscreen the window for the best experience.", "red");
             Utility.Write("Press enter to start");
             Console.ReadKey();
             Console.Clear();

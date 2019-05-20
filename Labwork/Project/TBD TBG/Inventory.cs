@@ -121,6 +121,8 @@ namespace TBD_TBG
                         ConsumeItemSubmenu();
                         break;
                     case ("q"):
+                        Utility.Write("Current stats: ", Game.inventoryColor);
+                        Player.playerStats.PrintStatOverview();
                         break;
                 }
 
