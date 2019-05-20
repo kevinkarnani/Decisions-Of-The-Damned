@@ -28,9 +28,9 @@ namespace TBD_TBG
         public void PrintEquipableStats()
         {
             string color = "darkcyan";
-            Utility.Write("Attack: " + plusAttack, color);
-            Utility.Write("Agility: " + plusAgility, color);
-            Utility.Write("HP: " + plusHP, color);
+            Utility.Write("+Attack: " + plusAttack, color);
+            Utility.Write("+Agility: " + plusAgility, color);
+            Utility.Write("+HP: " + plusHP, color);
             Console.WriteLine();
         }
 

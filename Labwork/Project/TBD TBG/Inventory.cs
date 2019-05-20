@@ -5,34 +5,67 @@ namespace TBD_TBG
 {
     public static class Inventory
     {
-        static List<Item> InventoryList = new List<Item>(); //list that will serve as inventory
+        //static List<Item> InventoryList = new List<Item>(); //list that will serve as inventory
         //TODO: MAKE EQUIPABLE LIST AND CONSUMABLE LIST
-
+        static List<Equipable> EquipableList = new List<Equipable>();
 
         public static Equipable equippedWeapon = new Equipable("", "default", "default", true);
         public static Equipable equippedArmor = new Equipable("", "default", "default", true);
 
+        static readonly string inventoryColor = "yellow";
+        static readonly string choiceColor = "cyan";
+        /*
+         * 
+         * 
+         */
+
         public static void AddItem(Item newItem)
         {
-            InventoryList.Add(newItem);
-        }
-        public static void Display()
-        {
-            Utility.Write("Inventory: ");
-            int cnt = 1;
-            foreach (var i in InventoryList)
+            if (newItem is Equipable)
             {
-                /*if (i is Equipable )
+                EquipableList.Add((Equipable)newItem);
+            }
+            else
+            {
+                //it's a consumable
+            }
+        }
+        public static void DisplayAll()
+        {
+            Utility.Write("Inventory: ", inventoryColor);
+            int cnt = 1;
+            foreach (var i in EquipableList)
+            {
+                string itemLine = cnt + ") " + i.Name;
+                
+                if (i.isEquipped)
                 {
-                    if (i.isEquipped)//<-- TODO: Fix this error
-                    {
-                        Console.Write("EQUIPPED");
-                    }
-                }*/
-                Utility.Write(cnt + ") " + i.Name);
+                    itemLine += " [EQUIPPED]";
+                }                
+                Utility.Write(itemLine, inventoryColor);
+                cnt++;
+            }
+            //for each in consumable list
+        }
+        public static void DisplayEquipables()
+        {
+            Utility.Write("Equipable Items: ", inventoryColor);
+            int cnt = 1;
+            foreach (var i in EquipableList)
+            {
+                string itemLine = cnt + ") " + i.Name;
+
+                if (i.isEquipped)
+                {
+                    itemLine += " [EQUIPPED]";
+                }
+                Utility.Write(itemLine, inventoryColor);
                 cnt++;
             }
         }
+        //TODO: displayConsumables
+
+
         public static void EquipItem(Equipable newEquip)
         {
             //Console.WriteLine(newEquip.Name + " EQUIPED", "yellow");
@@ -68,16 +101,16 @@ namespace TBD_TBG
         public static void OpenInventoryMenu()
         {
             //TODO: create inventory interface
-            Utility.Write("[]xx[]:::::> INVENTORY MENU <:::::[]xx[]");
+            Utility.Write("[]xx[]:::::> INVENTORY MENU <:::::[]xx[]", inventoryColor);
             string option = "";
             while(option.ToLower() != "q")
             {
                 //Inventory.Display();
-                Utility.Write("What would you like to do?");
-                Utility.Write("1) Check item");
-                Utility.Write("2) Equip item");
-                Utility.Write("3) Consume item");
-                Utility.Write("Q) Quit");
+                Utility.Write("What would you like to do?", inventoryColor);
+                Utility.Write("1) Check item", choiceColor);
+                Utility.Write("2) Equip item", choiceColor);
+                Utility.Write("3) Consume item", choiceColor);
+                Utility.Write("Q) Quit", choiceColor);
                 option = Utility.Input();
                 switch (option)
                 {
@@ -90,7 +123,7 @@ namespace TBD_TBG
                     case ("3"):
                         ConsumeItemSubmenu();
                         break;
-                    case ("Q"):
+                    case ("q"):
                         break;
                 }
 
@@ -98,21 +131,31 @@ namespace TBD_TBG
         }
         private static void CheckItemSubmenu()
         {
-            Utility.Write("~~~ CHECK ITEM ~~~");
+            Utility.Write("~~~ CHECK ITEM ~~~", inventoryColor);
             string option = "";
             
-            Inventory.Display();
-            Utility.Write("Q) Quit");
-            Utility.Write("What item would you like to check?");
+            Inventory.DisplayAll();
+            Utility.Write("Q) Quit", choiceColor);
+            Utility.Write("What item would you like to check?", choiceColor);
 
             //TODO: Error check this!!
-            //option = Int32.Parse(Utility.Input());
-            //option = Utility.Input()
 
             while(option.ToLower() != "q")
             {
                 option = Utility.Input();
+                if(option.ToLower() == "q")
+                {
+                    break;
+                }
+                int itemNum = Int32.Parse(option);
                 //print item info 
+                if (itemNum < EquipableList.Count) //item chosen is an equipable item
+                {
+                    Utility.Write("Name:" + EquipableList[itemNum].Name, inventoryColor);
+                    Utility.Write("Description: " + EquipableList[itemNum].Description, inventoryColor);
+                    Utility.Write("Stats:", inventoryColor);
+                    EquipableList[itemNum].PrintEquipableStats();
+                }
 
             }
 
@@ -124,7 +167,31 @@ namespace TBD_TBG
         }
         private static void EquipItemSubmenu()
         {
+            Utility.Write("~~~ EQUIP ITEM ~~~", inventoryColor);
+            string option = "";
 
+            Inventory.DisplayEquipables();
+            Utility.Write("Q) Quit", choiceColor);
+            Utility.Write("What item would you like to equip?", choiceColor);
+
+            //TODO: Error check this!!
+
+            while (option.ToLower() != "q")
+            {
+                option = Utility.Input();
+                if (option.ToLower() == "q")
+                {
+                    break;
+                }
+                int itemNum = Int32.Parse(option);
+                //print item info 
+                if (itemNum < EquipableList.Count) //item chosen is an equipable item
+                {
+                    Utility.Write("Item Equipped:" + EquipableList[itemNum].Name, inventoryColor);
+                    Inventory.EquipItem(EquipableList[itemNum]);
+                }
+
+            }
         }
         private static void ConsumeItemSubmenu()
         {

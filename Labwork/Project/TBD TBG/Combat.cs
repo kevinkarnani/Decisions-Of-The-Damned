@@ -125,7 +125,7 @@ namespace TBD_TBG
             else //if you didn't prepare a heavy attack last turn you can attack
             {
                 //the player's combat choices
-                //TODO: Make sure this input is a number between 1 and 3                
+                //TODO: ERROR CHECKING           
                 Utility.Write("Options:", choiceColor);
                 Utility.Write("1) Light attack", choiceColor);
                 Utility.Write("2) Heavy attack", choiceColor);
@@ -135,31 +135,41 @@ namespace TBD_TBG
                 //Utility.Write("6) Flee?");
 
                 //make attack choice
-                string attackChoice = Utility.Input();
-                switch (attackChoice)
+                string attackChoice = Utility.Input();                
+                try
                 {
-                    case "1"://light attack
-                        if (enemy.CheckIfHit()) //hit
-                        {
-                            Player.LightAttack(enemy); // do light attack on enemy
-                            Utility.Write("You hit for " + Player.playerStats.Attack + " damage!", battleColor);
-                        }
-                        else //miss
-                        {
-                            Utility.Write(enemy.name + " evaded your attack!", battleColor);
-                        }
-                        break;
-                    case "2"://heavy attack
-                        Utility.Write("You charge up for a powerful attack...", battleColor);
-                        playerPreparingHeavyAttack = true; //sets up for a heavy attack next turn
-                        break;
-                    case "3"://dodge
-                        Utility.Write("You prepare to dodge the enemy's attack...", battleColor);
-                        Player.playerStats.Evasion += .65;
-                        playerDodgingAttack = true;
-                        break;
-                    default://bad input
-                        throw new ArgumentException();
+                    switch (attackChoice)
+                    {
+                        case "1"://light attack
+                            if (enemy.CheckIfHit()) //hit
+                            {
+                                Player.LightAttack(enemy); // do light attack on enemy
+                                Utility.Write("You hit for " + Player.playerStats.Attack + " damage!", battleColor);
+                            }
+                            else //miss
+                            {
+                                Utility.Write(enemy.name + " evaded your attack!", battleColor);
+                            }
+                            break;
+                        case "2"://heavy attack
+                            Utility.Write("You charge up for a powerful attack...", battleColor);
+                            playerPreparingHeavyAttack = true; //sets up for a heavy attack next turn
+                            break;
+                        case "3"://dodge
+                            Utility.Write("You prepare to dodge the enemy's attack...", battleColor);
+                            Player.playerStats.Evasion += .65;
+                            playerDodgingAttack = true;
+                            break;
+                        default://bad input
+                            throw new ArgumentException();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    if (ex is ArgumentException || ex is FormatException)
+                    {
+                        Utility.Write("Invalid Choice Selection. Try Again.", "red");
+                    }
                 }
             }
             //display health of enemy            

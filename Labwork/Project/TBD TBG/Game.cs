@@ -33,17 +33,24 @@ namespace TBD_TBG
             Console.WriteLine(Utility.Center("Mark Melkumyan, Kev Karnani, Humaid Mustajab,"));
             Console.WriteLine(Utility.Center("Cort Williams, and Joey Hermann."));
             
-            CreatePlayer();
-
+            CreatePlayer();   
+            /*
             //test encounter
             Enemy testEnemy = new Enemy("Zombie", 10, 20, 100);
-            testEnemy.SetAttackChance(.33, .33, .33);
+            testEnemy.SetAttackChance(.33, .66, 0);
+
+            Utility.Write("Player Stats: ", "darkcyan");
+            Player.playerStats.PrintStatOverview();
+            Console.WriteLine();
+            Utility.Write("Enemy Stats: ", "darkcyan");
+            testEnemy.enemyStats.PrintStatOverview();
+
 
             Combat testBattle = new Combat(testEnemy);
             testBattle.StartCombatLoop();
+            */
 
-
-            /*
+            
             Equipable weapon1 = new Equipable("1", "iron sword", "a crappy sword", true);
             weapon1.SetStats(1, 2, 0);
             Equipable weapon2 = new Equipable("2", "wooden sword", "a shitty sword", true);
@@ -57,15 +64,17 @@ namespace TBD_TBG
             Inventory.AddItem(weapon1);
             Inventory.AddItem(weapon2);
             Inventory.AddItem(armor1);
-            Inventory.AddItem(armor1);
+            Inventory.AddItem(armor2);
             Inventory.EquipItem(weapon1);
             Inventory.EquipItem(armor1);
+
+            //Console.WriteLine(Inventory.EquipableList[3].Name);
 
             Inventory.OpenInventoryMenu();
             Player.playerStats.PrintStatOverview();
 
             Console.WriteLine("TESTING DONE");
-            */
+            
             InitializeScenarios();
             StartGameLoop();
             End();
