@@ -30,9 +30,9 @@ namespace TBD_TBG
                 //it's a consumable
             }
         }
-        public static void DisplayAll()
+        public static void DisplayAll(string color)
         {
-            Utility.Write("Inventory: ", inventoryColor);
+            
             int cnt = 1;
             foreach (var i in EquipableList)
             {
@@ -42,14 +42,13 @@ namespace TBD_TBG
                 {
                     itemLine += " [EQUIPPED]";
                 }                
-                Utility.Write(itemLine, inventoryColor);
+                Utility.Write(itemLine, color);
                 cnt++;
             }
             //for each in consumable list
         }
-        public static void DisplayEquipables()
+        public static void DisplayEquipables(string color)
         {
-            Utility.Write("Equipable Items: ", inventoryColor);
             int cnt = 1;
             foreach (var i in EquipableList)
             {
@@ -59,7 +58,7 @@ namespace TBD_TBG
                 {
                     itemLine += " [EQUIPPED]";
                 }
-                Utility.Write(itemLine, inventoryColor);
+                Utility.Write(itemLine, color);
                 cnt++;
             }
         }
@@ -132,11 +131,14 @@ namespace TBD_TBG
         private static void CheckItemSubmenu()
         {
             Utility.Write("~~~ CHECK ITEM ~~~", inventoryColor);
+            Utility.Write("What item would you like to check?", inventoryColor);
+
             string option = "";
-            
-            Inventory.DisplayAll();
+
+            Utility.Write("Inventory: ", inventoryColor);
+            Inventory.DisplayAll(choiceColor);
             Utility.Write("Q) Quit", choiceColor);
-            Utility.Write("What item would you like to check?", choiceColor);
+            
 
             //TODO: Error check this!!
 
@@ -147,7 +149,7 @@ namespace TBD_TBG
                 {
                     break;
                 }
-                int itemNum = Int32.Parse(option);
+                int itemNum = Int32.Parse(option) - 1;
                 //print item info 
                 if (itemNum < EquipableList.Count) //item chosen is an equipable item
                 {
@@ -168,11 +170,13 @@ namespace TBD_TBG
         private static void EquipItemSubmenu()
         {
             Utility.Write("~~~ EQUIP ITEM ~~~", inventoryColor);
+            Utility.Write("What item would you like to equip?", inventoryColor);
+
             string option = "";
 
-            Inventory.DisplayEquipables();
+            Inventory.DisplayEquipables(choiceColor);
             Utility.Write("Q) Quit", choiceColor);
-            Utility.Write("What item would you like to equip?", choiceColor);
+            
 
             //TODO: Error check this!!
 
@@ -183,15 +187,34 @@ namespace TBD_TBG
                 {
                     break;
                 }
-                int itemNum = Int32.Parse(option);
+                int itemNum = Int32.Parse(option) - 1;
                 //print item info 
                 if (itemNum < EquipableList.Count) //item chosen is an equipable item
                 {
+                    Equipable oldItem; 
+                    if (EquipableList[itemNum].isWeapon)
+                    {
+                        oldItem = Inventory.equippedWeapon;
+                    }
+                    else
+                    {
+                        oldItem = Inventory.equippedArmor;
+                    }
+
                     Utility.Write("Item Equipped:" + EquipableList[itemNum].Name, inventoryColor);
                     Inventory.EquipItem(EquipableList[itemNum]);
+
+                    PrintDifferenceInStats(oldItem, EquipableList[itemNum]);
                 }
 
             }
+        }
+        private static void PrintDifferenceInStats(Equipable oldItem, Equipable newItem)
+        {
+            Utility.Write("Change in stats: ", inventoryColor);
+            Utility.Write("Attack: " + (newItem.plusAttack - oldItem.plusAttack), inventoryColor);
+            Utility.Write("Agility: " + (newItem.plusAgility - oldItem.plusAgility), inventoryColor);
+            Utility.Write("HP: " + (newItem.plusHP - oldItem.plusHP), inventoryColor);
         }
         private static void ConsumeItemSubmenu()
         {
