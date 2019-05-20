@@ -16,11 +16,23 @@ namespace TBD_TBG
             this.Name = Name;
             this.Description = Description;
         }
-        public void Use()
+        public void UseEffect()
         {
 
         }
         public void ClearEffect()
+        {
+
+        }
+        public void AttackingEnemyEffect()
+        {
+
+        }
+        public void TakingDamageEffect()
+        {
+
+        }
+        public void DodgeEffect()
         {
 
         }
