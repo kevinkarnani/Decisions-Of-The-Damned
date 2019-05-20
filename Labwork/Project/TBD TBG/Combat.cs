@@ -21,9 +21,6 @@ namespace TBD_TBG
         private bool enemyPreparingHeavyAttack = false;
         private bool enemyDodgingAttack = false;
 
-        static readonly string battleColor = "yellow";
-        static readonly string choiceColor = "cyan";
-
         public Combat(Enemy _enem)
         {
             enemy = _enem;
@@ -34,9 +31,9 @@ namespace TBD_TBG
         public void StartCombatLoop()
         {
             //header of the battle
-            Utility.Write(">>>>>----------> BATTLE START <----------<<<<<", battleColor);
-            Utility.Write("You face a " + enemy.name + "!", battleColor);
-            Utility.Write("Description: " + enemy.description, battleColor);
+            Utility.Write(">>>>>----------> BATTLE START <----------<<<<<", Game.combatColor);
+            Utility.Write("You face a " + enemy.name + "!", Game.combatColor);
+            Utility.Write("Description: " + enemy.description, Game.combatColor);
             Console.WriteLine();
 
             int turnNumber = 1;
@@ -44,7 +41,7 @@ namespace TBD_TBG
             //start loop until someone dies
             while (Player.playerStats.CurrentHP > 0 && enemy.enemyStats.CurrentHP > 0)
             {
-                Utility.Write("=====TURN #" + turnNumber + "=====", battleColor);
+                Utility.Write("=====TURN #" + turnNumber + "=====", Game.combatColor);
                 //determine who goes first
                 if (Player.playerStats.Agility > enemy.enemyStats.Agility) //the player goes first
                 {
@@ -85,13 +82,13 @@ namespace TBD_TBG
             //determines who won the battle
             if (enemy.enemyStats.CurrentHP <= 0) //you win
             {
-                Utility.Write("You defeated the " + enemy.name + "!", battleColor);
-                Utility.Write(">>>>>----------> BATTLE FINISH <----------<<<<<", battleColor);
+                Utility.Write("You defeated the " + enemy.name + "!", Game.combatColor);
+                Utility.Write(">>>>>----------> BATTLE FINISH <----------<<<<<", Game.combatColor);
             }
             else if (Player.playerStats.CurrentHP <= 0)//you lose
             {
-                Utility.Write("You lost to the " + enemy.name + "!", battleColor);
-                Utility.Write(">>>>>----------> BATTLE FINISH <----------<<<<<", battleColor);
+                Utility.Write("You lost to the " + enemy.name + "!", Game.combatColor);
+                Utility.Write(">>>>>----------> BATTLE FINISH <----------<<<<<", Game.combatColor);
                 Utility.Write("GAME OVER", "red");
                 Game.End();
             }
@@ -101,7 +98,7 @@ namespace TBD_TBG
         private void PlayerTurn()
         {
             //PLAYER TURN
-            Utility.Write("---PLAYER TURN---", battleColor);
+            Utility.Write("---PLAYER TURN---", Game.combatColor);
             
             if (playerDodgingAttack) //if you dodged an attack last turn
             {
@@ -114,11 +111,11 @@ namespace TBD_TBG
                 if (enemy.CheckIfHit()) //hit
                 {
                     Player.HeavyAttack(enemy); //do heavy attack on enemy
-                    Utility.Write("You hit for " + Player.playerStats.HeavyAttack + " damage!", battleColor);
+                    Utility.Write("You hit for " + Player.playerStats.HeavyAttack + " damage!", Game.combatColor);
                 }
                 else //miss
                 {
-                    Utility.Write(enemy.name + " evaded your attack!", battleColor);
+                    Utility.Write(enemy.name + " evaded your attack!", Game.combatColor);
                 }                
                 playerPreparingHeavyAttack = false;
             }
@@ -126,10 +123,10 @@ namespace TBD_TBG
             {
                 //the player's combat choices
                 //TODO: ERROR CHECKING           
-                Utility.Write("Options:", choiceColor);
-                Utility.Write("1) Light attack", choiceColor);
-                Utility.Write("2) Heavy attack", choiceColor);
-                Utility.Write("3) Dodge", choiceColor);
+                Utility.Write("Options:", Game.choiceColor);
+                Utility.Write("1) Light attack", Game.choiceColor);
+                Utility.Write("2) Heavy attack", Game.choiceColor);
+                Utility.Write("3) Dodge", Game.choiceColor);
                 //Utility.Write("4) Display Stats");
                 //Utility.Write("5) Use an item");
                 //Utility.Write("6) Flee?");
@@ -144,19 +141,19 @@ namespace TBD_TBG
                             if (enemy.CheckIfHit()) //hit
                             {
                                 Player.LightAttack(enemy); // do light attack on enemy
-                                Utility.Write("You hit for " + Player.playerStats.Attack + " damage!", battleColor);
+                                Utility.Write("You hit for " + Player.playerStats.Attack + " damage!", Game.combatColor);
                             }
                             else //miss
                             {
-                                Utility.Write(enemy.name + " evaded your attack!", battleColor);
+                                Utility.Write(enemy.name + " evaded your attack!", Game.combatColor);
                             }
                             break;
                         case "2"://heavy attack
-                            Utility.Write("You charge up for a powerful attack...", battleColor);
+                            Utility.Write("You charge up for a powerful attack...", Game.combatColor);
                             playerPreparingHeavyAttack = true; //sets up for a heavy attack next turn
                             break;
                         case "3"://dodge
-                            Utility.Write("You prepare to dodge the enemy's attack...", battleColor);
+                            Utility.Write("You prepare to dodge the enemy's attack...", Game.combatColor);
                             Player.playerStats.Evasion += .65;
                             playerDodgingAttack = true;
                             break;
@@ -173,14 +170,14 @@ namespace TBD_TBG
                 }
             }
             //display health of enemy            
-            Utility.Write("Enemy HP:" + enemy.enemyStats.CurrentHP + "/" + enemy.enemyStats.MaxHP, battleColor);
+            Utility.Write("Enemy HP:" + enemy.enemyStats.CurrentHP + "/" + enemy.enemyStats.MaxHP, Game.combatColor);
             //Console.WriteLine();
         }
         
         private void EnemyTurn()
         {
             //ENEMY TURN              
-            Utility.Write("---ENEMY TURN---", battleColor);
+            Utility.Write("---ENEMY TURN---", Game.combatColor);
             if (enemyDodgingAttack) //if you dodged an attack last turn
             {
                 enemyDodgingAttack = false;
@@ -192,11 +189,11 @@ namespace TBD_TBG
                 if (Player.CheckIfHit()) //hit
                 {
                     enemy.HeavyAttack(); 
-                    Utility.Write(enemy.name + " hit for " + enemy.enemyStats.HeavyAttack + " damage!", battleColor);
+                    Utility.Write(enemy.name + " hit for " + enemy.enemyStats.HeavyAttack + " damage!", Game.combatColor);
                 }
                 else //miss
                 {
-                    Utility.Write("You evaded their attack!", battleColor);
+                    Utility.Write("You evaded their attack!", Game.combatColor);
                 }
                 enemyPreparingHeavyAttack = false;
             }
@@ -208,27 +205,27 @@ namespace TBD_TBG
                         if (Player.CheckIfHit()) //hit
                         {
                             enemy.LightAttack();
-                            Utility.Write(enemy.name + " hit for " + enemy.enemyStats.Attack + " damage!", battleColor);
+                            Utility.Write(enemy.name + " hit for " + enemy.enemyStats.Attack + " damage!", Game.combatColor);
                         }
                         else //miss
                         {
-                            Utility.Write("You evaded their attack!", battleColor);
+                            Utility.Write("You evaded their attack!", Game.combatColor);
                         }
 
                         break;
                     case "heavyAttack":
-                            Utility.Write("The " + enemy.name + " charges up for a powerful attack...", battleColor);
+                            Utility.Write("The " + enemy.name + " charges up for a powerful attack...", Game.combatColor);
                             enemyPreparingHeavyAttack = true;
                             break;
                     case "dodge": 
-                        Utility.Write("The " + enemy.name + " prepares to dodge your attack...", battleColor);
+                        Utility.Write("The " + enemy.name + " prepares to dodge your attack...", Game.combatColor);
                         enemy.enemyStats.Evasion += .65;
                         enemyDodgingAttack = true;
                         break;
                 }
             }
             //display health of player         
-            Utility.Write("Player HP: " + Player.playerStats.CurrentHP + "/" + Player.playerStats.MaxHP, battleColor);
+            Utility.Write("Player HP: " + Player.playerStats.CurrentHP + "/" + Player.playerStats.MaxHP, Game.combatColor);
             //Console.WriteLine();
         }
     }

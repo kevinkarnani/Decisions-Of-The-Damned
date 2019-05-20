@@ -10,6 +10,7 @@ namespace TBD_TBG
      * Derived from "C# Adventure Game" by http://programmingisfun.com, used under CC BY.
      * https://creativecommons.org/licenses/by/4.0/
      */
+
     class Utility
     {
         static string margin = "    ";
@@ -25,7 +26,7 @@ namespace TBD_TBG
         }
         public static string Input(string _string)
         {
-            Console.ForegroundColor = ConsoleColor.Green;
+            Console.ForegroundColor = ConsoleColor.Cyan;
             Console.Write(margin + _string + ": ");
             string input = Console.ReadLine();
             Console.ResetColor();

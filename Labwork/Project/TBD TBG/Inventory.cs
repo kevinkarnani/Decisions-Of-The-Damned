@@ -12,8 +12,6 @@ namespace TBD_TBG
         public static Equipable equippedWeapon = new Equipable("", "default", "default", true);
         public static Equipable equippedArmor = new Equipable("", "default", "default", true);
 
-        static readonly string inventoryColor = "yellow";
-        static readonly string choiceColor = "cyan";
         /*
          * 
          * 
@@ -100,16 +98,16 @@ namespace TBD_TBG
         public static void OpenInventoryMenu()
         {
             //TODO: create inventory interface
-            Utility.Write("[]xx[]:::::> INVENTORY MENU <:::::[]xx[]", inventoryColor);
+            Utility.Write("[]xx[]:::::> INVENTORY MENU <:::::[]xx[]", Game.inventoryColor);
             string option = "";
             while(option.ToLower() != "q")
             {
                 //Inventory.Display();
-                Utility.Write("What would you like to do?", inventoryColor);
-                Utility.Write("1) Check item", choiceColor);
-                Utility.Write("2) Equip item", choiceColor);
-                Utility.Write("3) Consume item", choiceColor);
-                Utility.Write("Q) Quit", choiceColor);
+                Utility.Write("What would you like to do?", Game.inventoryColor);
+                Utility.Write("1) Check item", Game.choiceColor);
+                Utility.Write("2) Equip item", Game.choiceColor);
+                Utility.Write("3) Consume item", Game.choiceColor);
+                Utility.Write("Q) Quit", Game.choiceColor);
                 option = Utility.Input();
                 switch (option)
                 {
@@ -130,14 +128,14 @@ namespace TBD_TBG
         }
         private static void CheckItemSubmenu()
         {
-            Utility.Write("~~~ CHECK ITEM ~~~", inventoryColor);
-            Utility.Write("What item would you like to check?", inventoryColor);
+            Utility.Write("~~~ CHECK ITEM ~~~", Game.inventoryColor);
+            Utility.Write("What item would you like to check?", Game.inventoryColor);
 
             string option = "";
 
-            Utility.Write("Inventory: ", inventoryColor);
-            Inventory.DisplayAll(choiceColor);
-            Utility.Write("Q) Quit", choiceColor);
+            Utility.Write("Inventory: ", Game.inventoryColor);
+            Inventory.DisplayAll(Game.choiceColor);
+            Utility.Write("Q) Quit", Game.choiceColor);
             
 
             //TODO: Error check this!!
@@ -153,9 +151,9 @@ namespace TBD_TBG
                 //print item info 
                 if (itemNum < EquipableList.Count) //item chosen is an equipable item
                 {
-                    Utility.Write("Name:" + EquipableList[itemNum].Name, inventoryColor);
-                    Utility.Write("Description: " + EquipableList[itemNum].Description, inventoryColor);
-                    Utility.Write("Stats:", inventoryColor);
+                    Utility.Write("Name:" + EquipableList[itemNum].Name, Game.inventoryColor);
+                    Utility.Write("Description: " + EquipableList[itemNum].Description, Game.inventoryColor);
+                    Utility.Write("Stats:", Game.inventoryColor);
                     EquipableList[itemNum].PrintEquipableStats();
                 }
 
@@ -169,13 +167,13 @@ namespace TBD_TBG
         }
         private static void EquipItemSubmenu()
         {
-            Utility.Write("~~~ EQUIP ITEM ~~~", inventoryColor);
-            Utility.Write("What item would you like to equip?", inventoryColor);
+            Utility.Write("~~~ EQUIP ITEM ~~~", Game.inventoryColor);
+            Utility.Write("What item would you like to equip?", Game.inventoryColor);
 
             string option = "";
 
-            Inventory.DisplayEquipables(choiceColor);
-            Utility.Write("Q) Quit", choiceColor);
+            Inventory.DisplayEquipables(Game.choiceColor);
+            Utility.Write("Q) Quit", Game.choiceColor);
             
 
             //TODO: Error check this!!
@@ -201,7 +199,7 @@ namespace TBD_TBG
                         oldItem = Inventory.equippedArmor;
                     }
 
-                    Utility.Write("Item Equipped:" + EquipableList[itemNum].Name, inventoryColor);
+                    Utility.Write("Item Equipped:" + EquipableList[itemNum].Name, Game.inventoryColor);
                     Inventory.EquipItem(EquipableList[itemNum]);
 
                     PrintDifferenceInStats(oldItem, EquipableList[itemNum]);
@@ -211,10 +209,10 @@ namespace TBD_TBG
         }
         private static void PrintDifferenceInStats(Equipable oldItem, Equipable newItem)
         {
-            Utility.Write("Change in stats: ", inventoryColor);
-            Utility.Write("Attack: " + (newItem.plusAttack - oldItem.plusAttack), inventoryColor);
-            Utility.Write("Agility: " + (newItem.plusAgility - oldItem.plusAgility), inventoryColor);
-            Utility.Write("HP: " + (newItem.plusHP - oldItem.plusHP), inventoryColor);
+            Utility.Write("Change in stats: ", Game.inventoryColor);
+            Utility.Write("Attack: " + (newItem.plusAttack - oldItem.plusAttack), Game.statsColor);
+            Utility.Write("Agility: " + (newItem.plusAgility - oldItem.plusAgility), Game.statsColor);
+            Utility.Write("HP: " + (newItem.plusHP - oldItem.plusHP), Game.statsColor);
         }
         private static void ConsumeItemSubmenu()
         {

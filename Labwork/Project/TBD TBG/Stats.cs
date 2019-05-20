@@ -15,8 +15,6 @@ namespace TBD_TBG
 
         private int heavyAttack;
 
-        static string color = "darkcyan";
-
         //CLASS CONSTRUCTORS
         //for the player (pass in archetype string)
         public Stats(string _arch)
@@ -78,10 +76,10 @@ namespace TBD_TBG
             //prints a general overview of all the stats
         public void PrintStatOverview()
         {
-            Utility.Write("Attack: " + Attack, color);
-            Utility.Write("Agility: " + Agility, color);
-            Utility.Write("Evasion: " + (100 * Evasion).ToString("#.00") + "%", color);            
-            Utility.Write("HP: " + CurrentHP + "/" + MaxHP, color);
+            Utility.Write("Attack: " + Attack, Game.statsColor);
+            Utility.Write("Agility: " + Agility, Game.statsColor);
+            Utility.Write("Evasion: " + (100 * Evasion).ToString("#.00") + "%", Game.statsColor);            
+            Utility.Write("HP: " + CurrentHP + "/" + MaxHP, Game.statsColor);
         }
 
         //getters & setters

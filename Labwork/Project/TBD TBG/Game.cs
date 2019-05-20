@@ -5,7 +5,12 @@ namespace TBD_TBG
 {
     public static class Game
     {
-        //TO DO: CREATE COMBAT LOOP
+        //colors for type of text
+        public static readonly string choiceColor = "cyan";
+        public static readonly string combatColor = "yellow";
+        public static readonly string statsColor = "darkcyan";
+        public static readonly string inventoryColor = "green";
+
         static Choice CurrentScenario; //Choice object that is associated with certain paths in the branching narrative        
 
         /* 
@@ -32,6 +37,7 @@ namespace TBD_TBG
             Console.WriteLine(Utility.Center("Created by:"));
             Console.WriteLine(Utility.Center("Mark Melkumyan, Kev Karnani, Humaid Mustajab,"));
             Console.WriteLine(Utility.Center("Cort Williams, and Joey Hermann."));
+            Console.WriteLine();
             
             CreatePlayer();   
             /*
@@ -71,7 +77,7 @@ namespace TBD_TBG
             //Console.WriteLine(Inventory.EquipableList[3].Name);
 
             Inventory.OpenInventoryMenu();
-            Player.playerStats.PrintStatOverview();
+            //Player.playerStats.PrintStatOverview();
 
             Console.WriteLine("TESTING DONE");
             
@@ -83,19 +89,22 @@ namespace TBD_TBG
         //This method sets the player's name and player's archetype
         public static void CreatePlayer()
         {
-            Player.Name = Utility.Input("What would you like your character's name to be?");
+            Utility.Write("What would you like your character's name to be?", Game.choiceColor);
+            Player.Name = Utility.Input();
+
             //Make sure this input is a number between 1 and 4
             while (true)
             {
                 try
                 {
                     Utility.Write("What class would you like to play as?");
-                    Utility.Write("1) Adventurer: Balanced stats");
-                    Utility.Write("2) Paladin: Defense focused");
-                    Utility.Write("3) Brawler: Attack focused");
-                    Utility.Write("4) Rogue: Quick");
+                    Utility.Write("1) Adventurer: Balanced stats", Game.choiceColor);
+                    Utility.Write("2) Paladin: Defense focused", Game.choiceColor);
+                    Utility.Write("3) Brawler: Attack focused", Game.choiceColor);
+                    Utility.Write("4) Rogue: Quick", Game.choiceColor);
+                    Utility.Write("Type 1, 2, 3, or 4", Game.choiceColor);
 
-                    Player.Archetype = Utility.Input("Type 1, 2, 3, or 4");
+                    Player.Archetype = Utility.Input();
                     break;
                 }
                 catch (Exception ex)
