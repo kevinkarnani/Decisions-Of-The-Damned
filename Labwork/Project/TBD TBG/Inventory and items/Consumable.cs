@@ -4,11 +4,11 @@ namespace TBD_TBG
 {
     public class Consumable : Item
     {
-        public bool isEquipped;
-        public bool isWeapon;
-
-        //Don't use parser for consumables, just make it an abstract class and create instances that inherit from it
-
+        //STILL IN PROGRESS
+        public int plusAgility;
+        public int plusHP;
+        public int plusAttack;
+        
         public Consumable(string Identification, string Name, string Description) : base(Identification, Name, Description)
         {
             //TODO: fix this init? it doesnt look right ^^^
@@ -18,7 +18,8 @@ namespace TBD_TBG
         }
         public void UseEffect()
         {
-
+            //player.hasEffect = true
+            //hp +=
         }
         public void ClearEffect()
         {
