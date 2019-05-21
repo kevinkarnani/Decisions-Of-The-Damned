@@ -61,7 +61,7 @@ namespace TBD_TBG
                     {
                         if (ex is ArgumentException)
                         {
-                            Utility.Write("Invalid Choice Selection", "red");
+                            Utility.Write("Invalid Choice Selection", Game.errorColor);
                         }
                     }
                 }
@@ -89,7 +89,7 @@ namespace TBD_TBG
             {
                 Utility.Write("You lost to the " + enemy.name + "!", Game.combatColor);
                 Utility.Write(">>>>>----------> BATTLE FINISH <----------<<<<<", Game.combatColor);
-                Utility.Write("GAME OVER", "red");
+                Utility.Write("GAME OVER", Game.errorColor);
                 Game.End();
             }
         }
@@ -165,7 +165,7 @@ namespace TBD_TBG
                 {
                     if (ex is ArgumentException || ex is FormatException)
                     {
-                        Utility.Write("Invalid Choice Selection. Try Again.", "red");
+                        Utility.Write("Invalid Choice Selection. Try Again.", Game.errorColor);
                     }
                 }
             }

@@ -10,6 +10,7 @@ namespace TBD_TBG
         public static readonly string combatColor = "yellow";
         public static readonly string statsColor = "darkcyan";
         public static readonly string inventoryColor = "green";
+        public static readonly string errorColor = "red";
 
         static Choice CurrentScenario; //Choice object that is associated with certain paths in the branching narrative        
 
@@ -111,7 +112,7 @@ namespace TBD_TBG
                 {
                     if (ex is ArgumentException || ex is FormatException)
                     {
-                        Utility.Write("Invalid Archetype Selection. Try Again", "red");
+                        Utility.Write("Invalid Archetype Selection. Try Again", Game.errorColor);
                     }
                 }
             }
@@ -222,7 +223,7 @@ namespace TBD_TBG
                 {
                     if (ex is ArgumentOutOfRangeException || ex is FormatException)
                     {
-                        Utility.Write("Invalid Choice Selection. Try Again.", "red");
+                        Utility.Write("Invalid Choice Selection. Try Again.", Game.errorColor);
                     }
                 }
             }
