@@ -46,7 +46,6 @@ namespace TBD_TBG
             Enemy testEnemy = new Enemy("Zombie", 10, 20, 100);
             testEnemy.SetAttackChance(.33, .66, 0);
 
-            Utility.Write("Player Stats: ", "darkcyan");
             Player.playerStats.PrintStatOverview();
             Console.WriteLine();
             Utility.Write("Enemy Stats: ", "darkcyan");

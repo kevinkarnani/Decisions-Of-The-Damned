@@ -9,6 +9,7 @@ namespace TBD_TBG
         public int plusHP = 0;
         public int plusAttack = 0;
         public int quantity = 0;
+        public bool isUsableOutsideOfCombat = false;
 
         public bool isActive = false; //whether or not the player is currently effected by the consumbable buff
         
@@ -24,6 +25,15 @@ namespace TBD_TBG
             plusAgility = agility;
             plusHP = HP;
             plusAttack = attack;
+
+            /* Only hp potions should be usable outside of combat
+             * Ex: You can use potions outside of combat in pokemon,
+             * but not xattacks or xdefenses
+             */
+            if (plusAgility == 0 && plusAttack == 0)
+            {
+                isUsableOutsideOfCombat = true;
+            }
         }
         //displays the stats of the consumable
         public void PrintStats()

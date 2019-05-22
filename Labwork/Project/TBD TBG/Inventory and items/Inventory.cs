@@ -222,7 +222,13 @@ namespace TBD_TBG
         //submenu to consume a consumable item
         private static void ConsumeItemSubmenu()
         {
-            //TODO: Can you consume an item outside of combat?
+            //TODO: Can you consume an item outside of combat? 
+            /* Only hp potions should be usable outside of combat
+             * Ex: You can use potions outside of combat in pokemon,
+             * but no xattacks or xdefenses
+             */
+
+            //only display if the consumable is usable outside of combat
         }
 
     }
