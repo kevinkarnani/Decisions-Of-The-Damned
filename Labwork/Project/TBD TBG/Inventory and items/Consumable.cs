@@ -5,9 +5,12 @@ namespace TBD_TBG
     public class Consumable : Item
     {
         //STILL IN PROGRESS
-        public int plusAgility;
-        public int plusHP;
-        public int plusAttack;
+        public int plusAgility = 0;
+        public int plusHP = 0;
+        public int plusAttack = 0;
+        public int quantity = 0;
+
+        public bool isActive = false; //whether or not the player is currently effected by the consumbable buff
         
         public Consumable(string Identification, string Name, string Description) : base(Identification, Name, Description)
         {
@@ -16,15 +19,55 @@ namespace TBD_TBG
             this.Name = Name;
             this.Description = Description;
         }
+        public void SetStats(int attack, int agility, int HP)
+        {
+            plusAgility = agility;
+            plusHP = HP;
+            plusAttack = attack;
+        }
+        //displays the stats of the consumable
+        public void PrintStats()
+        {
+            string color = "darkcyan";
+            if (plusAttack != 0)
+            {
+                Utility.Write("+Attack: " + plusAttack, color);
+            }
+            if (plusAgility != 0)
+            {
+                Utility.Write("+Agility: " + plusAgility, color);
+            }
+            if (plusHP != 0)
+            {
+                Utility.Write("+HP: " + plusHP, color);
+            }
+            Console.WriteLine();
+        }
+        //consumes an item by adding its stats to the player's stats
         public void UseEffect()
         {
-            //player.hasEffect = true
-            //hp +=
+            isActive = true;
+            quantity--; 
+
+            //adds stats of equipable to the players stats
+            Player.playerStats.Attack += plusAttack;
+            Player.playerStats.MaxHP += plusHP;
+            Player.playerStats.CurrentHP += plusHP;
+            Player.playerStats.Agility += plusAgility;
         }
         public void ClearEffect()
         {
-
+            if (isActive) //you can only unequip an equipped item
+            {
+                isActive = false;
+                //subtracts the stats of consumable from the players stats
+                Player.playerStats.Attack -= plusAttack;
+                Player.playerStats.MaxHP -= plusHP;
+                Player.playerStats.CurrentHP -= plusHP;
+                Player.playerStats.Agility -= plusAgility;
+            }
         }
+        /*
         public void AttackingEnemyEffect()
         {
 
@@ -36,6 +79,6 @@ namespace TBD_TBG
         public void DodgeEffect()
         {
 
-        }
+        }*/
     }
 }

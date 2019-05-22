@@ -66,19 +66,23 @@ namespace TBD_TBG
             armor1.SetStats(0, 8, 9);
             Equipable armor2 = new Equipable("4", "leather armor", "old leather armor that smells like shit", false);
             armor2.SetStats(0, 11, 12);
-
-
+            
             Inventory.AddItem(weapon1);
             Inventory.AddItem(weapon2);
             Inventory.AddItem(armor1);
             Inventory.AddItem(armor2);
-            //Inventory.EquipItem(weapon1);
             weapon1.Equip();
             weapon2.Equip();
-            //Inventory.EquipItem(armor1);
             armor1.Equip();
 
-            //Console.WriteLine(Inventory.EquipableList[3].Name);
+            Consumable potion1 = new Consumable("1", "Health potion", "a red liquid in a shiny bottle");
+            potion1.SetStats(0, 0, 20);
+            Consumable potion2 = new Consumable("2", "Attack potion", "a blue liquid in a dark bottle");
+            potion2.SetStats(10, 0, 0);
+
+            Inventory.AddItem(potion1);
+            Inventory.AddItem(potion2);
+            potion1.UseEffect();
 
             Inventory.OpenInventoryMenu();
             //Player.playerStats.PrintStatOverview();

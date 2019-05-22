@@ -9,6 +9,7 @@ namespace TBD_TBG
         //TODO: Error check user inputs
 
         static List<Equipable> EquipableList = new List<Equipable>();
+        static List<Consumable> ConsumableList = new List<Consumable>();
 
         public static Equipable equippedWeapon = new Equipable("", "default", "default", true);
         public static Equipable equippedArmor = new Equipable("", "default", "default", true);
@@ -20,15 +21,16 @@ namespace TBD_TBG
             {
                 EquipableList.Add((Equipable)newItem);
             }
-            else
+            else if (newItem is Consumable) //it's a consumable
             {
-                //it's a consumable
+                ConsumableList.Add((Consumable)newItem);
+                ((Consumable)newItem).quantity++; 
             }
         }
         //displays all items in your inventory, first the equipables then the consumbales
         public static void DisplayAll(string color)
         {
-            
+            Utility.Write("Equipable Items: ", Game.inventoryColor);
             int cnt = 1;
             foreach (var i in EquipableList)
             {
@@ -41,7 +43,14 @@ namespace TBD_TBG
                 Utility.Write(itemLine, color);
                 cnt++;
             }
+            Utility.Write("Consumable Items: ", Game.inventoryColor);
             //for each in consumable list
+            foreach (var i in ConsumableList)
+            {
+                string itemLine = cnt + ") " + i.Name;
+                Utility.Write(itemLine, color);
+                cnt++;
+            }
         }
         //displays only the items in your equipable list
         public static void DisplayEquipables(string color)
@@ -60,11 +69,21 @@ namespace TBD_TBG
             }
         }
         //TODO: displayConsumables
+        public static void DisplayConsumables(string color)
+        {
+            int cnt = 1;
+            foreach (var i in EquipableList)
+            {
+                string itemLine = cnt + ") " + i.Name;
+                Utility.Write(itemLine, color);
+                cnt++;
+            }
+        }
 
         //Opens an interface for the user to interact with their inventory
         public static void OpenInventoryMenu()
         {            
-            Utility.Write("[]xx[]:::::> INVENTORY MENU <:::::[]xx[]", Game.inventoryColor);
+            Utility.Write("[]xxx[]::::::::> INVENTORY MENU <::::::::[]xxx[]", Game.inventoryColor);
             string option = "";
             while(option.ToLower() != "q") //type q to exit the menu
             {
@@ -97,19 +116,19 @@ namespace TBD_TBG
         //submenu that lets the user look at item descriptions and stats
         private static void CheckItemSubmenu()
         {
-            Utility.Write("~~~ CHECK ITEM ~~~", Game.inventoryColor);
+            Utility.Write("~~~~~~ CHECK ITEM ~~~~~~", Game.inventoryColor);
             Utility.Write("What item would you like to check?", Game.inventoryColor);
 
-            string option = "";
-
-            Utility.Write("Inventory: ", Game.inventoryColor);
-            Inventory.DisplayAll(Game.choiceColor); //displays all items in your invenory
-            Utility.Write("Q) Quit", Game.choiceColor);
+            string option = "";            
             
             //TODO: Error check this!!
 
             while(option.ToLower() != "q")
             {
+                Utility.Write("Inventory: ", Game.inventoryColor);
+                Inventory.DisplayAll(Game.choiceColor); //displays all items in your invenory
+                Utility.Write("Q) Quit", Game.choiceColor);
+
                 option = Utility.Input();
                 if(option.ToLower() == "q") //type q to exit
                 {
@@ -118,14 +137,24 @@ namespace TBD_TBG
                 int itemNum = Int32.Parse(option) - 1;
 
                 //print item info 
-                if (itemNum < EquipableList.Count) //item chosen is an equipable item
+                if (EquipableList.Count!=0 && itemNum < EquipableList.Count) //item chosen is an equipable item
                 {
-                    Utility.Write("Name:" + EquipableList[itemNum].Name, Game.inventoryColor);
+                    Utility.Write("Item type: Equipable", Game.inventoryColor);
+                    Utility.Write("Name: " + EquipableList[itemNum].Name, Game.inventoryColor);
                     Utility.Write("Description: " + EquipableList[itemNum].Description, Game.inventoryColor);
                     Utility.Write("Stats:", Game.inventoryColor);
-                    EquipableList[itemNum].PrintEquipableStats();
+                    EquipableList[itemNum].PrintStats();
                 }
                 //TODO: display consumable item info
+                else if (ConsumableList.Count != 0 && itemNum >= EquipableList.Count && itemNum< (EquipableList.Count + ConsumableList.Count))//item chosen is an equipable item
+                {
+                    itemNum -= EquipableList.Count;
+                    Utility.Write("Item type: Consumable", Game.inventoryColor);
+                    Utility.Write("Name: " + ConsumableList[itemNum].Name, Game.inventoryColor);
+                    Utility.Write("Description: " + ConsumableList[itemNum].Description, Game.inventoryColor);
+                    Utility.Write("Buff:", Game.inventoryColor);
+                    ConsumableList[itemNum].PrintStats();
+                }
             }
                      
 
@@ -133,18 +162,19 @@ namespace TBD_TBG
         //submenu that lets the user equip equipables (and unequip current equipable)
         private static void EquipItemSubmenu()
         {
-            Utility.Write("~~~ EQUIP ITEM ~~~", Game.inventoryColor);
+            Utility.Write("~~~~~~ EQUIP ITEM ~~~~~~", Game.inventoryColor);
             Utility.Write("What item would you like to equip?", Game.inventoryColor);
 
-            string option = "";
-
-            Inventory.DisplayEquipables(Game.choiceColor);
-            Utility.Write("Q) Quit", Game.choiceColor);
+            string option = ""; 
             
             //TODO: Error check this!!
 
             while (option.ToLower() != "q")
             {
+                Utility.Write("Equipable items: ", Game.inventoryColor);
+                Inventory.DisplayEquipables(Game.choiceColor);
+                Utility.Write("Q) Quit", Game.choiceColor);
+
                 option = Utility.Input();
                 if (option.ToLower() == "q") //type q to exit
                 {
@@ -180,16 +210,19 @@ namespace TBD_TBG
         //displays the difference between the stats of one equipable and a new equipable
         private static void PrintDifferenceInStats(Equipable oldEquip, Equipable newEquip)
         {
+            //TODO: Don't display change if it = 0
+
             Utility.Write("Change in stats: ", Game.inventoryColor);
             Utility.Write("Attack: " + (newEquip.plusAttack - oldEquip.plusAttack), Game.statsColor);
             Utility.Write("Agility: " + (newEquip.plusAgility - oldEquip.plusAgility), Game.statsColor);
             Utility.Write("HP: " + (newEquip.plusHP - oldEquip.plusHP), Game.statsColor);
+            Console.WriteLine();
         }
 
         //submenu to consume a consumable item
         private static void ConsumeItemSubmenu()
         {
-
+            //TODO: Can you consume an item outside of combat?
         }
 
     }

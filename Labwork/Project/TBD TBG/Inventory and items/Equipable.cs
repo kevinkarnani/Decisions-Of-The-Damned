@@ -27,12 +27,21 @@ namespace TBD_TBG
             plusAttack = attack; 
         }
         //displays the stats of the equipable
-        public void PrintEquipableStats()
+        public void PrintStats()
         {
             string color = "darkcyan";
-            Utility.Write("+Attack: " + plusAttack, color);
-            Utility.Write("+Agility: " + plusAgility, color);
-            Utility.Write("+HP: " + plusHP, color);
+            if(plusAttack != 0)
+            {
+                Utility.Write("+Attack: " + plusAttack, color);
+            }
+            if (plusAgility != 0)
+            {
+                Utility.Write("+Agility: " + plusAgility, color);
+            }
+            if (plusHP != 0)
+            {
+                Utility.Write("+HP: " + plusHP, color);
+            }           
             Console.WriteLine();
         }
         //equips an item to the player by adding its stats to the player's stats
