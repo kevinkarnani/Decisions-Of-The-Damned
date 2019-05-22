@@ -6,7 +6,7 @@ namespace TBD_TBG
 {
     public class Scenario
     {
-        //TODO: ADD Morality value, hasCombat var, and hasItem var
+        //TODO: ADD Morality value, hasCombat var (empty = no enemy, anything else = enemy ID), and hasItem var
 
         public string Key { get; set; }
         public string Description { get; set; }

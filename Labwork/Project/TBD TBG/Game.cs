@@ -72,8 +72,11 @@ namespace TBD_TBG
             Inventory.AddItem(weapon2);
             Inventory.AddItem(armor1);
             Inventory.AddItem(armor2);
-            Inventory.EquipItem(weapon1);
-            Inventory.EquipItem(armor1);
+            //Inventory.EquipItem(weapon1);
+            weapon1.Equip();
+            weapon2.Equip();
+            //Inventory.EquipItem(armor1);
+            armor1.Equip();
 
             //Console.WriteLine(Inventory.EquipableList[3].Name);
 

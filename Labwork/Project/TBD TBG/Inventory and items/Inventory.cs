@@ -61,39 +61,6 @@ namespace TBD_TBG
         }
         //TODO: displayConsumables
 
-        //equips an item to the player by adding its stats to the player's stats
-        public static void EquipItem(Equipable newEquip)
-        {
-            if (newEquip.isWeapon) //if the item you're equiping is a weapon
-            {   
-                Inventory.UnequipItem(Inventory.equippedWeapon); //unequips current weapon
-                Inventory.equippedWeapon = newEquip; //equips new weapon
-            }
-            else //if the item you're equiping is a weapon
-            {
-                Inventory.UnequipItem(Inventory.equippedArmor); //unequips current armor
-                Inventory.equippedArmor = newEquip; //equips new armor
-            }
-
-            newEquip.isEquipped = true; 
-            //adds stats of equipable to the players stats
-            Player.playerStats.Attack += newEquip.plusAttack;
-            Player.playerStats.MaxHP += newEquip.plusHP;
-            Player.playerStats.CurrentHP += newEquip.plusHP;            
-            Player.playerStats.Agility += newEquip.plusAgility;
-        }
-        public static void UnequipItem(Equipable oldEquip)
-        {
-            if (oldEquip.isEquipped) //you can only unequip an equipped item
-            {
-                oldEquip.isEquipped = false;
-                //subtracts the stats of equipale from the players stats
-                Player.playerStats.Attack -= oldEquip.plusAttack;                
-                Player.playerStats.MaxHP -= oldEquip.plusHP;
-                Player.playerStats.CurrentHP -= oldEquip.plusHP;
-                Player.playerStats.Agility -= oldEquip.plusAgility;
-            }                   
-        }     
         //Opens an interface for the user to interact with their inventory
         public static void OpenInventoryMenu()
         {            
@@ -200,8 +167,8 @@ namespace TBD_TBG
                     }
 
                     Utility.Write("Item Equipped:" + EquipableList[itemNum].Name, Game.inventoryColor);
-                    Inventory.EquipItem(EquipableList[itemNum]); //equip item to player
-
+                    //Inventory.EquipItem(EquipableList[itemNum]); //equip item to player
+                    (EquipableList[itemNum]).Equip();
                     //print the difference in stats between the old equipable and the new equipable
                     PrintDifferenceInStats(oldEquip, EquipableList[itemNum]);
                 }
