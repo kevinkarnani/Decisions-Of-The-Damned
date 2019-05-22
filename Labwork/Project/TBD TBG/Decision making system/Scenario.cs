@@ -64,7 +64,14 @@ namespace TBD_TBG
             string[] moralities = Morality.Split(",");
             foreach (string m in moralities)
             {
-                morality = Int32.Parse(m);
+                try
+                {
+                    morality = Int32.Parse(m);
+                }
+                catch (Exception)
+                {
+                    continue;
+                }
             }
             return morality;
         }
