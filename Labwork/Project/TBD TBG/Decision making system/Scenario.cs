@@ -47,7 +47,7 @@ namespace TBD_TBG
             {
                 try
                 {
-                    dict.Add(optdescs[i], FileParser.GlobalChoices[options[i]]);
+                    dict.Add(optdescs[i], GameFileParser.GlobalChoices[options[i]]);
                 }
                 catch (Exception ex)
                 {

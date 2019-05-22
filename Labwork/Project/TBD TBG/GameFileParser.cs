@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 namespace TBD_TBG
 {
-    class FileParser
+    class GameFileParser
     {
         public static Dictionary<string, Choice> GlobalChoices = new Dictionary<string, Choice>();
         public static void Parser()
