@@ -12,6 +12,7 @@ namespace TBD_TBG
         public string Description { get; set; }
         public string OptionDescription { get; set; }
         public string OptionKeys { get; set; }
+        public string Morality { get; set; }
 
         public void GetData()
         {
@@ -55,6 +56,17 @@ namespace TBD_TBG
                 }
             }
             return dict;
+        }
+
+        public int GetMorality()
+        {
+            int morality = 0;
+            string[] moralities = Morality.Split(",");
+            foreach (string m in moralities)
+            {
+                morality = Int32.Parse(m);
+            }
+            return morality;
         }
     }
 }
