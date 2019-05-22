@@ -47,9 +47,12 @@ namespace TBD_TBG
             //for each in consumable list
             foreach (var i in ConsumableList)
             {
-                string itemLine = cnt + ") " + i.Name;
-                Utility.Write(itemLine, color);
-                cnt++;
+                if (i.quantity > 0)
+                {
+                    string itemLine = cnt + ") " + i.Name;
+                    Utility.Write(itemLine, color);
+                    cnt++;
+                }
             }
         }
         //displays only the items in your equipable list
@@ -72,11 +75,15 @@ namespace TBD_TBG
         public static void DisplayConsumables(string color)
         {
             int cnt = 1;
-            foreach (var i in EquipableList)
+            foreach (var i in ConsumableList)
             {
-                string itemLine = cnt + ") " + i.Name;
-                Utility.Write(itemLine, color);
-                cnt++;
+                if (i.quantity > 0)
+                {
+                    string itemLine = cnt + ") " + i.Name;
+                    Utility.Write(itemLine, color);
+                    cnt++;
+                }
+                
             }
         }
 
@@ -229,6 +236,61 @@ namespace TBD_TBG
              */
 
             //only display if the consumable is usable outside of combat
+            if (Player.inCombat)
+            {
+
+            }
+            else
+            {
+
+            }
+
+            Utility.Write("~~~~~~ CONSUME ITEM ~~~~~~", Game.inventoryColor);
+            Utility.Write("What item would you like to consume?", Game.inventoryColor);
+
+            string option = "";
+
+            //TODO: Error check this!!
+
+            while (option.ToLower() != "q")
+            {
+                Utility.Write("Consumable items: ", Game.inventoryColor);
+                Inventory.DisplayConsumables(Game.choiceColor);
+                Utility.Write("Q) Quit", Game.choiceColor);
+
+                option = Utility.Input();
+                if (option.ToLower() == "q") //type q to exit
+                {
+                    break;
+                }
+                int itemNum = Int32.Parse(option) - 1;
+
+                //print item info 
+                if (itemNum < ConsumableList.Count) //item chosen is a consumabel item
+                {
+                    //usable: not in combat and usable outside
+                    //and in combat and usable outside
+                    //not usable: not in combat and not usable outside
+                    //
+                    if (!(Player.inCombat) && !(ConsumableList[itemNum].isUsableOutsideOfCombat))
+                    {
+                        //can't use
+                        Utility.Write("You can only use that item in combat.", Game.errorColor);
+                    }
+                    else
+                    {
+                        ConsumableList[itemNum].isActive = true;
+
+                        Utility.Write("Item Consumed:" + ConsumableList[itemNum].Name, Game.inventoryColor);
+                        //use item
+                        (ConsumableList[itemNum]).UseEffect();
+                    }
+                    
+                }
+                //TODO: else, throw an error
+
+            }
+
         }
 
     }

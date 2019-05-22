@@ -7,6 +7,7 @@ namespace TBD_TBG
         public static int honor = 0; //the player's honor value
         public static string archetype = "default"; //the player's archetype (Palidin, Rogue, Fighter, or Adventurer)
         public static Stats playerStats;
+        public static bool inCombat = false;
 
         //CLASS METHODS
         //getters & setters
