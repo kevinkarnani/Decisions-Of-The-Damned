@@ -46,7 +46,6 @@ namespace TBD_TBG
             Enemy testEnemy = new Enemy("Zombie", 10, 20, 100);
             testEnemy.SetAttackChance(.33, .66, 0);
 
-            Utility.Write("Player Stats: ", "darkcyan");
             Player.playerStats.PrintStatOverview();
             Console.WriteLine();
             Utility.Write("Enemy Stats: ", "darkcyan");
@@ -75,14 +74,14 @@ namespace TBD_TBG
             weapon2.Equip();
             armor1.Equip();
 
-            Consumable potion1 = new Consumable("1", "Health potion", "a red liquid in a shiny bottle");
+            Consumable potion1 = new Consumable("1", "Health potion", "a red liquid in a shiny bottle", true);
             potion1.SetStats(0, 0, 20);
-            Consumable potion2 = new Consumable("2", "Attack potion", "a blue liquid in a dark bottle");
+            Consumable potion2 = new Consumable("2", "Attack potion", "a blue liquid in a dark bottle", false);
             potion2.SetStats(10, 0, 0);
 
             Inventory.AddItem(potion1);
             Inventory.AddItem(potion2);
-            potion1.UseEffect();
+            //potion1.UseEffect();
 
             Inventory.OpenInventoryMenu();
             //Player.playerStats.PrintStatOverview();
