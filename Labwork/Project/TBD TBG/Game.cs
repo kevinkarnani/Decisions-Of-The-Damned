@@ -203,8 +203,8 @@ namespace TBD_TBG
 
 
 
-            FileParser.Parser();
-            CurrentScenario = FileParser.GlobalChoices["A1A"];
+            GameFileParser.Parser();
+            CurrentScenario = GameFileParser.GlobalChoices["A1A"];
         }
         
         //Loops through Choice objects for branching narrative

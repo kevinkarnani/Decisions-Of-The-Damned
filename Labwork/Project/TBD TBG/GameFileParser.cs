@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 namespace TBD_TBG
 {
-    class FileParser
+    class GameFileParser
     {
         public static Dictionary<string, Choice> GlobalChoices = new Dictionary<string, Choice>();
         public static void Parser()
@@ -17,13 +17,13 @@ namespace TBD_TBG
             using (var csv = new CsvReader(reader))
             {
                 var records = csv.GetRecords<Scenario>();
-                List<Scenario> things = new List<Scenario>();
-                foreach (var record in records)
+                List<Scenario> Scenarios = new List<Scenario>();
+                foreach (Scenario record in records)
                 {
                     GlobalChoices.Add(record.GetKey(), new Choice(record.GetDescription()));
-                    things.Add(record);
+                    Scenarios.Add(record);
                 }
-                foreach (var record in things)
+                foreach (Scenario record in Scenarios)
                 {
                     Dictionary<string, Choice> options = record.GetKeyValueOptions();
 
