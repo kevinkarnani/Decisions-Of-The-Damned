@@ -21,13 +21,13 @@ namespace TBD_TBG
                 foreach (Scenario record in records)
                 {
                     GlobalChoices.Add(record.GetKey(), new Choice(record.GetDescription()));
+                    GlobalChoices[record.GetKey()].SetMorality(record.GetMorality());
                     Scenarios.Add(record);
                 }
                 foreach (Scenario record in Scenarios)
                 {
                     Dictionary<string, Choice> options = record.GetKeyValueOptions();
-
-                    GlobalChoices[record.GetKey()].SetChoices(options);
+                        GlobalChoices[record.GetKey()].SetChoices(options);
                 }
             }
         }
