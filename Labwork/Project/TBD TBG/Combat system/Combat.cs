@@ -4,13 +4,9 @@ namespace TBD_TBG
 {
     public class Combat
     {
-        /*
-         * TODO:
-         * add in evasion (chance to hit)
-         * add in dodge for player
-         * add in heavy attack for enemy
-         * add in dodge for enemy
-         */
+        //TODO: Clear combat only effects after combat
+
+
         private Enemy enemy;
 
         private double playerInitialEvasion = Player.playerStats.Evasion;
@@ -30,6 +26,7 @@ namespace TBD_TBG
 
         public void StartCombatLoop()
         {
+            Player.inCombat = true;
             //header of the battle
             Utility.Write(">>>>>----------> BATTLE START <----------<<<<<", Game.combatColor);
             Utility.Write("You face a " + enemy.name + "!", Game.combatColor);
@@ -92,6 +89,7 @@ namespace TBD_TBG
                 Utility.Write("GAME OVER", Game.errorColor);
                 Game.End();
             }
+            Player.inCombat = false;
         }
 
         //the player's turn

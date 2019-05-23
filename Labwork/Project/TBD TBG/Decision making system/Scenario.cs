@@ -6,12 +6,13 @@ namespace TBD_TBG
 {
     public class Scenario
     {
-        //TODO: ADD Morality value, hasCombat var, and hasItem var
+        //TODO: ADD Morality value, hasCombat var (empty = no enemy, anything else = enemy ID), and hasItem var
 
         public string Key { get; set; }
         public string Description { get; set; }
         public string OptionDescription { get; set; }
         public string OptionKeys { get; set; }
+        public string Morality { get; set; }
 
         public void GetData()
         {
@@ -47,14 +48,32 @@ namespace TBD_TBG
             {
                 try
                 {
-                    dict.Add(optdescs[i], FileParser.GlobalChoices[options[i]]);
+                    dict.Add(optdescs[i], GameFileParser.GlobalChoices[options[i]]);
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     continue;
                 }
             }
             return dict;
+        }
+
+        public int GetMorality()
+        {
+            int morality = 0;
+            string[] moralities = Morality.Split(",");
+            foreach (string m in moralities)
+            {
+                try
+                {
+                    morality = Int32.Parse(m);
+                }
+                catch (Exception)
+                {
+                    continue;
+                }
+            }
+            return morality;
         }
     }
 }

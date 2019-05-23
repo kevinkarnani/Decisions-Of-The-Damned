@@ -11,6 +11,7 @@ namespace TBD_TBG
 
         public string Description { get; set; } // Initialized Description property by using getter and setter
         public Dictionary<string, Choice> Choices { get; set; } // Initialized Choices property by using getter and setter
+        public int Morality { get; set; }
 
         //Class Constructor, takes in description parameter and sets it to class instance of Description
         public Choice(string des)
@@ -24,15 +25,9 @@ namespace TBD_TBG
             this.Choices = choices;
         }
 
-        //returns the keys of the dictionary as a string
-        public string GetChoiceText()
+        public void SetMorality(int morality)
         {
-            string output = "";
-            foreach (string s in this.Choices.Keys)
-            {
-                output += s;
-            }
-            return output;
+            this.Morality = morality;
         }
 
         //returns true if there exists any number of objects greater than 0 in the dictionary
