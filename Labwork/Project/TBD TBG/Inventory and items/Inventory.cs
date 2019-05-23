@@ -8,8 +8,8 @@ namespace TBD_TBG
         //TODO: CONSUMABLE LIST
         //TODO: Error check user inputs
 
-        static List<Equipable> EquipableList = new List<Equipable>();
-        static List<Consumable> ConsumableList = new List<Consumable>();
+        public static List<Equipable> EquipableList = new List<Equipable>();
+        public static List<Consumable> ConsumableList = new List<Consumable>();
 
         public static Equipable equippedWeapon = new Equipable("", "default", "default", true);
         public static Equipable equippedArmor = new Equipable("", "default", "default", true);
@@ -24,7 +24,6 @@ namespace TBD_TBG
             else if (newItem is Consumable) //it's a consumable
             {
                 ConsumableList.Add((Consumable)newItem);
-                ((Consumable)newItem).quantity++; 
             }
         }
         //displays all items in your inventory, first the equipables then the consumbales
@@ -47,12 +46,10 @@ namespace TBD_TBG
             //for each in consumable list
             foreach (var i in ConsumableList)
             {
-                if (i.quantity > 0)
-                {
-                    string itemLine = cnt + ") " + i.Name;
-                    Utility.Write(itemLine, color);
-                    cnt++;
-                }
+                string itemLine = cnt + ") " + i.Name;
+                Utility.Write(itemLine, color);
+                cnt++;
+                
             }
         }
         //displays only the items in your equipable list
@@ -77,12 +74,10 @@ namespace TBD_TBG
             int cnt = 1;
             foreach (var i in ConsumableList)
             {
-                if (i.quantity > 0)
-                {
-                    string itemLine = cnt + ") " + i.Name;
-                    Utility.Write(itemLine, color);
-                    cnt++;
-                }
+                string itemLine = cnt + ") " + i.Name;
+                Utility.Write(itemLine, color);
+                cnt++;
+                
                 
             }
         }
@@ -90,10 +85,11 @@ namespace TBD_TBG
         //Opens an interface for the user to interact with their inventory
         public static void OpenInventoryMenu()
         {            
-            Utility.Write("[]xxx[]::::::::> INVENTORY MENU <::::::::[]xxx[]", Game.inventoryColor);
+            //Utility.Write("[]xxx[]::::::::> INVENTORY MENU <::::::::[]xxx[]", Game.inventoryColor);
             string option = "";
             while(option.ToLower() != "q") //type q to exit the menu
             {
+                Utility.Write("[]xxx[]::::::::> INVENTORY MENU <::::::::[]xxx[]", Game.inventoryColor);
                 //TODO: error check the user's input
                 Utility.Write("What would you like to do?", Game.inventoryColor);
                 Utility.Write("1) Check item", Game.choiceColor); //look at item description and stats
@@ -227,7 +223,7 @@ namespace TBD_TBG
         }
 
         //submenu to consume a consumable item
-        private static void ConsumeItemSubmenu()
+        public static void ConsumeItemSubmenu()
         {
             //TODO: Can you consume an item outside of combat? 
             /* Only hp potions should be usable outside of combat
@@ -284,6 +280,8 @@ namespace TBD_TBG
                         Utility.Write("Item Consumed:" + ConsumableList[itemNum].Name, Game.inventoryColor);
                         //use item
                         (ConsumableList[itemNum]).UseEffect();
+                        Player.playerStats.PrintStatOverview();
+                        Console.WriteLine();
                     }
                     
                 }

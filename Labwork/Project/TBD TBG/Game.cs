@@ -39,32 +39,28 @@ namespace TBD_TBG
             Console.WriteLine(Utility.Center("Mark Melkumyan, Kev Karnani, Humaid Mustajab,"));
             Console.WriteLine(Utility.Center("Cort Williams, and Joey Hermann."));
             Console.WriteLine();
-            
-            CreatePlayer();   
-            /*
-            //test encounter
-            Enemy testEnemy = new Enemy("Zombie", 10, 20, 100);
-            testEnemy.SetAttackChance(.33, .66, 0);
-
-            Player.playerStats.PrintStatOverview();
+                        
+            Utility.Write("        Controls:");
+            Utility.Write("        - Choices are shown in cyan", choiceColor);
+            Utility.Write("            - Type a # to choose an option (ex. '2')");
+            Utility.Write("        - Type 'I' to open your inventory");
+            Utility.Write("        - Type 'O' to open your player overview");
+            Utility.Write("        - Type 'Q' to quit any menu");
             Console.WriteLine();
-            Utility.Write("Enemy Stats: ", "darkcyan");
-            testEnemy.enemyStats.PrintStatOverview();
+            
 
-
-            Combat testBattle = new Combat(testEnemy);
-            testBattle.StartCombatLoop();
-            */
-
+            CreatePlayer();
+            
+            Player.playerStats.CurrentHP -= 50;
             
             Equipable weapon1 = new Equipable("1", "iron sword", "a crappy sword", true);
-            weapon1.SetStats(1, 2, 0);
+            weapon1.SetStats(10, 10, 0);
             Equipable weapon2 = new Equipable("2", "wooden sword", "a shitty sword", true);
-            weapon2.SetStats(4, 5, 0);
+            weapon2.SetStats(5, 5, 0);
             Equipable armor1 = new Equipable("3", "iron armor", "shiny armor fancy fancy", false);
-            armor1.SetStats(0, 8, 9);
+            armor1.SetStats(0, 0, 10);
             Equipable armor2 = new Equipable("4", "leather armor", "old leather armor that smells like shit", false);
-            armor2.SetStats(0, 11, 12);
+            armor2.SetStats(0, 0, 5);
             
             Inventory.AddItem(weapon1);
             Inventory.AddItem(weapon2);
@@ -80,14 +76,27 @@ namespace TBD_TBG
             potion2.SetStats(10, 0, 0);
 
             Inventory.AddItem(potion1);
+            Inventory.AddItem(potion1);
             Inventory.AddItem(potion2);
             //potion1.UseEffect();
 
-            Inventory.OpenInventoryMenu();
-            //Player.playerStats.PrintStatOverview();
 
-            Console.WriteLine("TESTING DONE");
             
+            //test encounter
+            Enemy testEnemy = new Enemy("Zombie", 10, 20, 100);
+            testEnemy.SetAttackChance(.33, .66, 0);
+
+            Player.playerStats.PrintStatOverview();
+            Console.WriteLine();
+            Utility.Write("Enemy Stats: ", "darkcyan");
+            testEnemy.enemyStats.PrintStatOverview();
+
+
+            Combat testBattle = new Combat(testEnemy);
+            testBattle.StartCombatLoop();
+            
+
+
             InitializeScenarios();
             StartGameLoop();
             End();
@@ -213,7 +222,7 @@ namespace TBD_TBG
             while (true)
             {
                 Utility.Write(CurrentScenario.Description);
-                if (!CurrentScenario.CheckChoice())
+                if (!CurrentScenario.CheckChoice()) //TODO: Change this to check the scenario's hasCombat variable
                 {
                     StartCombat();
                     break;
@@ -221,17 +230,29 @@ namespace TBD_TBG
                 Utility.AllValues(CurrentScenario);
                 string selection = Utility.Input();
                 //Error checking the user input
-                try
+                if(selection.ToLower() == "i") //press i to open inventory menu
                 {
-                    CurrentScenario = CurrentScenario.GetChoice(selection);
+                    Inventory.OpenInventoryMenu();
                 }
-                catch (Exception ex)
+                else if (selection.ToLower() == "o")
                 {
-                    if (ex is ArgumentOutOfRangeException || ex is FormatException)
+                    Player.PrintPlayerOverview(); //press o to open player overview
+                }
+                else
+                {
+                    try
                     {
-                        Utility.Write("Invalid Choice Selection. Try Again.", Game.errorColor);
+                        CurrentScenario = CurrentScenario.GetChoice(selection);
+                    }
+                    catch (Exception ex)
+                    {
+                        if (ex is ArgumentOutOfRangeException || ex is FormatException)
+                        {
+                            Utility.Write("Invalid Choice Selection. Try Again.", Game.errorColor);
+                        }
                     }
                 }
+                
             }
         }
 

@@ -8,7 +8,6 @@ namespace TBD_TBG
         public int plusAgility = 0;
         public int plusHP = 0;
         public int plusAttack = 0;
-        public int quantity = 0;
         public bool isUsableOutsideOfCombat = false;
 
         public bool isActive = false; //whether or not the player is currently effected by the consumbable buff
@@ -58,11 +57,12 @@ namespace TBD_TBG
         public void UseEffect()
         {
             isActive = true;
-            quantity--; 
+            Inventory.ConsumableList.Remove(this);
+            
 
             //adds stats of equipable to the players stats
             Player.playerStats.Attack += plusAttack;
-            Player.playerStats.MaxHP += plusHP;
+            //Player.playerStats.MaxHP += plusHP; //Only adds hp to current hp, not max
             Player.playerStats.CurrentHP += plusHP;
             Player.playerStats.Agility += plusAgility;
         }

@@ -125,12 +125,13 @@ namespace TBD_TBG
                 Utility.Write("1) Light attack", Game.choiceColor);
                 Utility.Write("2) Heavy attack", Game.choiceColor);
                 Utility.Write("3) Dodge", Game.choiceColor);
-                //Utility.Write("4) Display Stats");
-                //Utility.Write("5) Use an item");
+                Utility.Write("I) Use an item");
+                Utility.Write("O) Display Stats");
                 //Utility.Write("6) Flee?");
 
                 //make attack choice
-                string attackChoice = Utility.Input();                
+                string attackChoice = Utility.Input();
+                attackChoice.ToLower();
                 try
                 {
                     switch (attackChoice)
@@ -154,6 +155,12 @@ namespace TBD_TBG
                             Utility.Write("You prepare to dodge the enemy's attack...", Game.combatColor);
                             Player.playerStats.Evasion += .65;
                             playerDodgingAttack = true;
+                            break;
+                        case "i":
+                            Inventory.ConsumeItemSubmenu();
+                            break;
+                        case "o":
+                            Player.playerStats.PrintStatOverview();
                             break;
                         default://bad input
                             throw new ArgumentException();
