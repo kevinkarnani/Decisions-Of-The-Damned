@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 
 namespace TBD_TBG
 {
@@ -39,7 +38,7 @@ namespace TBD_TBG
             Console.WriteLine(Utility.Center("Mark Melkumyan, Kev Karnani, Humaid Mustajab,"));
             Console.WriteLine(Utility.Center("Cort Williams, and Joey Hermann."));
             Console.WriteLine();
-                        
+
             Utility.Write("        Controls:");
             Utility.Write("        - Choices are shown in cyan", choiceColor);
             Utility.Write("            - Type a # to choose an option (ex. '2')");
@@ -88,9 +87,6 @@ namespace TBD_TBG
         //This method sets the player's name and player's archetype
         public static void CreatePlayer()
         {
-            Utility.Write("What would you like your character's name to be?");
-            Player.Name = Utility.Input();
-
             //Make sure this input is a number between 1 and 4
             while (true)
             {

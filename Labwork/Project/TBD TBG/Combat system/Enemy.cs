@@ -4,7 +4,6 @@ namespace TBD_TBG
 {
     public class Enemy
     {
-        public string ID { get; set; }//the id of the enemy
         public string Name { get; set; }//the name of the enemy
         public Stats EnemyStat { get; set; }
         public string Description { get; set; } //description of the enemy
@@ -13,9 +12,8 @@ namespace TBD_TBG
         public double ChanceToDodge;
 
         //Constructor
-        public Enemy(string id, string name, string description)
+        public Enemy(string name, string description)
         {
-            ID = id;
             Name = name;
             Description = description;
         }

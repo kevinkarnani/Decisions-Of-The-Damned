@@ -11,7 +11,7 @@ namespace TBD_TBG
 
         //CLASS METHODS
         //getters & setters
-        public static string Name { get; set; } = "default";
+        public static string Name = "Faust";
         public static string Archetype
         {
             get
@@ -86,4 +86,3 @@ namespace TBD_TBG
     }
 
 }
-

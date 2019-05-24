@@ -27,7 +27,7 @@ namespace TBD_TBG
 
         public void SetMorality(int morality)
         {
-            this.Morality += morality;
+            this.Morality = morality;
         }
 
         //returns true if there exists any number of objects greater than 0 in the dictionary
