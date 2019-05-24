@@ -80,23 +80,6 @@ namespace TBD_TBG
             Inventory.AddItem(potion2);
             //potion1.UseEffect();
 
-
-            
-            //test encounter
-            Enemy testEnemy = new Enemy("Zombie", 10, 20, 100);
-            testEnemy.SetAttackChance(.33, .66, 0);
-
-            Player.playerStats.PrintStatOverview();
-            Console.WriteLine();
-            Utility.Write("Enemy Stats: ", "darkcyan");
-            testEnemy.enemyStats.PrintStatOverview();
-
-
-            Combat testBattle = new Combat(testEnemy);
-            testBattle.StartCombatLoop();
-            
-
-
             InitializeScenarios();
             StartGameLoop();
             End();
@@ -186,17 +169,12 @@ namespace TBD_TBG
         public static void StartCombat()
         {
             Console.ReadLine();
-            Enemy Enemy = new Enemy("Guard", 40, 10, 200)
-            {
-                description = "Royal Guard of the palace"
-            };
-            Enemy.SetAttackChance(.33, .33, .33);
 
-            Enemy.enemyStats.PrintStatOverview();
+            Enemy currentEnemy = EnemyFileParser.GlobalEnemies["1"];
             Console.WriteLine();
             Player.PrintPlayerOverview();
 
-            Combat fight1 = new Combat(Enemy);
+            Combat fight1 = new Combat(currentEnemy);
             fight1.StartCombatLoop();
 
             Player.PrintPlayerOverview();

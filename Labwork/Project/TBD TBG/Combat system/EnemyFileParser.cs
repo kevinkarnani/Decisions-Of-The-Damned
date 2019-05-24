@@ -2,7 +2,7 @@
 using System.IO;
 using CsvHelper;
 
-namespace TBD_TBG.Combat_system
+namespace TBD_TBG
 {
     public class EnemyFileParser
     {
@@ -17,7 +17,7 @@ namespace TBD_TBG.Combat_system
                 var records = csv.GetRecords<EnemyStats>();
                 foreach (EnemyStats record in records)
                 {
-                    Enemy enemy = new Enemy(record.GetID(), record.GetName());
+                    Enemy enemy = new Enemy(record.GetID(), record.GetName(), record.GetDescription());
                     GlobalEnemies.Add(record.GetID(), enemy);
                     GlobalEnemies[record.GetID()].SetAttackChance(record.GetChanceToLightAttack(), record.GetChanceToHeavyAttack(), record.GetChanceToDodge());
                     GlobalEnemies[record.GetID()].SetEnemyStat(record.GetAgility(), record.GetAttack(), record.GetHP());

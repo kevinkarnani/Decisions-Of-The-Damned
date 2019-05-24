@@ -1,21 +1,23 @@
 ﻿using System;
 
-namespace TBD_TBG.Combat_system
+namespace TBD_TBG
 {
     public class Enemy
     {
         public string ID { get; set; }//the id of the enemy
         public string Name { get; set; }//the name of the enemy
         public Stats EnemyStat { get; set; }
+        public string Description { get; set; } //description of the enemy
         public double ChanceToLightAttack;
         public double ChanceToHeavyAttack;
         public double ChanceToDodge;
 
         //Constructor
-        public Enemy(string id, string name)
+        public Enemy(string id, string name, string description)
         {
             ID = id;
             Name = name;
+            Description = description;
         }
 
         public void SetEnemyStat(int agility, int attack, int hp)
