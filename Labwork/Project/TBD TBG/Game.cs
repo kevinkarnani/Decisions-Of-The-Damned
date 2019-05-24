@@ -20,23 +20,37 @@ namespace TBD_TBG
         public static void Start()
         {
             GameTitle();
-            Console.WriteLine(Utility.Center("                    ████████╗ ██████╗     ██████╗ ███████╗                       "));
-            Console.WriteLine(Utility.Center("                    ╚══██╔══╝██╔═══██╗    ██╔══██╗██╔════╝                       "));
-            Console.WriteLine(Utility.Center("                       ██║   ██║   ██║    ██████╔╝█████╗                         "));
-            Console.WriteLine(Utility.Center("                       ██║   ██║   ██║    ██╔══██╗██╔══╝                         "));
-            Console.WriteLine(Utility.Center("                       ██║   ╚██████╔╝    ██████╔╝███████╗                       "));
-            Console.WriteLine(Utility.Center("                       ╚═╝    ╚═════╝     ╚═════╝ ╚══════╝                       "));
-            Console.WriteLine(Utility.Center("██████╗ ███████╗████████╗███████╗██████╗ ███╗   ███╗██╗███╗   ██╗███████╗██████╗ "));
-            Console.WriteLine(Utility.Center("██╔══██╗██╔════╝╚══██╔══╝██╔════╝██╔══██╗████╗ ████║██║████╗  ██║██╔════╝██╔══██╗"));
-            Console.WriteLine(Utility.Center("██║  ██║█████╗     ██║   █████╗  ██████╔╝██╔████╔██║██║██╔██╗ ██║█████╗  ██║  ██║"));
-            Console.WriteLine(Utility.Center("██║  ██║██╔══╝     ██║   ██╔══╝  ██╔══██╗██║╚██╔╝██║██║██║╚██╗██║██╔══╝  ██║  ██║"));
-            Console.WriteLine(Utility.Center("██████╔╝███████╗   ██║   ███████╗██║  ██║██║ ╚═╝ ██║██║██║ ╚████║███████╗██████╔╝"));
-            Console.WriteLine(Utility.Center("╚═════╝ ╚══════╝   ╚═╝   ╚══════╝╚═╝  ╚═╝╚═╝     ╚═╝╚═╝╚═╝  ╚═══╝╚══════╝╚═════╝ "));
-            Console.WriteLine(Utility.Center("[]xxx[]::::::::::>  A Text Based Game  <::::::::::[]xxx[]"));
+            Console.WriteLine();
+            Console.WriteLine(Utility.Center("████████▄     ▄████████  ▄████████  ▄█     ▄████████  ▄█   ▄██████▄  ███▄▄▄▄      ▄████████       ▄██████▄     ▄████████"));
+            Console.WriteLine(Utility.Center("███   ▀███   ███    ███ ███    ███ ███    ███    ███ ███  ███    ███ ███▀▀▀██▄   ███    ███      ███    ███   ███    ███"));
+            Console.WriteLine(Utility.Center("███    ███   ███    █▀  ███    █▀  ███▌   ███    █▀  ███▌ ███    ███ ███   ███   ███    █▀       ███    ███   ███    █▀ "));
+            Console.WriteLine(Utility.Center("███    ███  ▄███▄▄▄     ███        ███▌   ███        ███▌ ███    ███ ███   ███   ███             ███    ███  ▄███▄▄▄    "));
+            Console.WriteLine(Utility.Center("███    ███ ▀▀███▀▀▀     ███        ███▌ ▀███████████ ███▌ ███    ███ ███   ███ ▀███████████      ███    ███ ▀▀███▀▀▀    "));
+            Console.WriteLine(Utility.Center("███    ███   ███    █▄  ███    █▄  ███           ███ ███  ███    ███ ███   ███          ███      ███    ███   ███       "));
+            Console.WriteLine(Utility.Center("███   ▄███   ███    ███ ███    ███ ███     ▄█    ███ ███  ███    ███ ███   ███    ▄█    ███      ███    ███   ███       "));
+            Console.WriteLine(Utility.Center("████████▀    ██████████ ████████▀  █▀    ▄████████▀  █▀    ▀██████▀   ▀█   █▀   ▄████████▀        ▀██████▀    ███       "));
+            Console.WriteLine(Utility.Center(""));
+            Console.WriteLine(Utility.Center("    ███        ▄█    █▄       ▄████████      ████████▄     ▄████████   ▄▄▄▄███▄▄▄▄   ███▄▄▄▄      ▄████████ ████████▄   "));
+            Console.WriteLine(Utility.Center("▀█████████▄   ███    ███     ███    ███      ███   ▀███   ███    ███ ▄██▀▀▀███▀▀▀██▄ ███▀▀▀██▄   ███    ███ ███   ▀███  "));
+            Console.WriteLine(Utility.Center("   ▀███▀▀██   ███    ███     ███    █▀       ███    ███   ███    ███ ███   ███   ███ ███   ███   ███    █▀  ███    ███  "));
+            Console.WriteLine(Utility.Center("    ███   ▀  ▄███▄▄▄▄███▄▄  ▄███▄▄▄          ███    ███   ███    ███ ███   ███   ███ ███   ███  ▄███▄▄▄     ███    ███  "));
+            Console.WriteLine(Utility.Center("    ███     ▀▀███▀▀▀▀███▀  ▀▀███▀▀▀          ███    ███ ▀███████████ ███   ███   ███ ███   ███ ▀▀███▀▀▀     ███    ███  "));
+            Console.WriteLine(Utility.Center("    ███       ███    ███     ███    █▄       ███    ███   ███    ███ ███   ███   ███ ███   ███   ███    █▄  ███    ███  "));
+            Console.WriteLine(Utility.Center("    ███       ███    ███     ███    ███      ███   ▄███   ███    ███ ███   ███   ███ ███   ███   ███    ███ ███   ▄███  "));
+            Console.WriteLine(Utility.Center("   ▄████▀     ███    █▀      ██████████      ████████▀    ███    █▀   ▀█   ███   █▀   ▀█   █▀    ██████████ ████████▀   "));
+            Console.WriteLine(Utility.Center("               _      _____         _     ____                     _    ____                                "));
+            Console.WriteLine(Utility.Center("              / \\    |_   _|____  _| |_  | __ )  __ _ ___  ___  __| |  / ___| __ _ _ __ ___   ___           "));
+            Console.WriteLine(Utility.Center("       / _ \\     | |/ _ \\ \\/ / __| |  _ \\ / _` / __|/ _ \\/ _` | | |  _ / _` | '_ ` _ \\ / _ \\    "));
+            Console.WriteLine(Utility.Center("  / ___ \\    | |  __/>  <| |_  | |_) | (_| \\__ \\  __/ (_| | | |_| | (_| | | | | | |  __/"));
+            Console.WriteLine(Utility.Center(" /_/   \\_\\   |_|\\___/_/\\_\\___| |____/ \\__,_|___/\\___|\\__,_|  \\____|\\__,_|_| |_| |_|\\___|"));
+            Console.WriteLine();
+            Console.WriteLine(Utility.Center("<::::::::::::[]xxx[] xXx []xxx[]::::::::::::>"));
             Console.WriteLine();
             Console.WriteLine(Utility.Center("Created by:"));
             Console.WriteLine(Utility.Center("Mark Melkumyan, Kev Karnani, Humaid Mustajab,"));
             Console.WriteLine(Utility.Center("Cort Williams, and Joey Hermann."));
+            Console.WriteLine();
+            Console.WriteLine(Utility.Center("=========================================================================================================================="));
             Console.WriteLine();
 
             Utility.Write("        Controls:");
@@ -93,10 +107,11 @@ namespace TBD_TBG
                 try
                 {
                     Utility.Write("What class would you like to play as?");
-                    Utility.Write("1) Adventurer: Balanced stats", Game.choiceColor);
-                    Utility.Write("2) Paladin: Defense focused", Game.choiceColor);
-                    Utility.Write("3) Brawler: Attack focused", Game.choiceColor);
-                    Utility.Write("4) Rogue: Quick", Game.choiceColor);
+                    Utility.Write("1) ", Game.choiceColor, false);
+                    Console.WriteLine(Utility.CleanDes("Adventurer: Your experiences traveling have provided you with the knowledge to handle yourself in combat. A perfectly balanced fighter."));
+                    Utility.Write("2) Paladin: Blessed with a hardy constitution, you are able to withstand blows that a lesser being could not.", Game.choiceColor);
+                    Utility.Write("3) Brawler: Years in the gym has given you the strength to hit your enemies as hard as you hit the weights.", Game.choiceColor);
+                    Utility.Write("4) Rogue: Fleet of foot, your speed allows you to avoid the blows rained down upon you by your enemies.", Game.choiceColor);
                     Utility.Write("Type 1, 2, 3, or 4", Game.choiceColor);
 
                     Player.Archetype = Utility.Input();
