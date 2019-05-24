@@ -1,6 +1,4 @@
-﻿
-using System;
-using CsvHelper;
+﻿using CsvHelper;
 using System.IO;
 using System.Collections.Generic;
 
@@ -27,7 +25,7 @@ namespace TBD_TBG
                 foreach (Scenario record in Scenarios)
                 {
                     Dictionary<string, Choice> options = record.GetKeyValueOptions();
-                        GlobalChoices[record.GetKey()].SetChoices(options);
+                    GlobalChoices[record.GetKey()].SetChoices(options);
                 }
             }
         }

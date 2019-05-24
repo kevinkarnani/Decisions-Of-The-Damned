@@ -1,65 +1,64 @@
 ﻿using System;
 
-namespace TBD_TBG
+namespace TBD_TBG.Combat_system
 {
     public class Enemy
     {
-        //TODO: MAKE GETTERS AND SETTERS FOR ENEMY CLASS
+        public string ID { get; set; }//the id of the enemy
+        public string Name { get; set; }//the name of the enemy
+        public Stats EnemyStat { get; set; }
+        public double ChanceToLightAttack;
+        public double ChanceToHeavyAttack;
+        public double ChanceToDodge;
 
-        //CLASS ATTRIBUTES
-        public string name = ""; //the name of the enemy
-        public string description = ""; //description of the enemy
-        public Stats enemyStats;//= new Stats(0,0,0) //the enemies' stats (agi, attack, and HP)
-        //all the chances must be between 0 and 1, and add to 1
-        public double chanceToLightAttack; 
-        public double chanceToHeavyAttack;
-        public double chanceToDodge;
-
-        //CLASS CONTRUCTOR
-        public Enemy(string _name, int _attack, int _agility, int _HP)
+        EnemyStats EnemyStats = new EnemyStats();
+        //Constructor
+        public Enemy(string id, string name)
         {
-            name = _name;
-            enemyStats = new Stats(_agility, _attack, _HP);
+            ID = id;
+            Name = name;
+            EnemyStat = new Stats(EnemyStats.GetAgility(), EnemyStats.GetAttack(), EnemyStats.GetHP());
+        }
+        public void SetAttackChance(double lchance, double hchance, double dchance)
+        {
+            
+            ChanceToLightAttack = lchance;
+            ChanceToHeavyAttack = hchance;
+            ChanceToDodge = dchance;
         }
 
-        //CLASS METHODS
-            //setters
-        public void SetAttackChance(double _lchance, double _hchance, double _dchance)
-        {
-            chanceToLightAttack = _lchance;
-            chanceToHeavyAttack = _hchance;
-            chanceToDodge = _dchance;
-        }
-
-            //ATTACKS
-            //light attack
+        //ATTACKS
+        //light attack
         public void LightAttack()
         {
-            int damage = enemyStats.Attack;
+            int damage = EnemyStat.Attack;
             Player.Damage(damage);
         }
-            //heavy attack
+
+        //heavy attack
         public void HeavyAttack()
         {
-            int damage = Convert.ToInt32(2.5 * enemyStats.Attack);
+            int damage = Convert.ToInt32(2.5 * EnemyStat.Attack);
             Player.Damage(damage);
         }
+
         //dodge
         //no method needed, player doesn't take damage
-        public void Damage(int _dmg)
+        public void Damage(int dmg)
         {
-           enemyStats.CurrentHP -= _dmg;
+            EnemyStat.CurrentHP -= dmg;
         }
+
         public string ChooseRandomAttack()
         {
             Random random = new Random();
             double randomNum = random.NextDouble(); //random number between 0 and 1
 
-            if(randomNum <= chanceToLightAttack) //ex: 0->.25
+            if(randomNum <= ChanceToLightAttack) //ex: 0->.25
             {
                 return "lightAttack";
             }
-            else if(randomNum >chanceToLightAttack && randomNum <= chanceToLightAttack + chanceToHeavyAttack) //ex .25->(.25+.25)
+            else if(randomNum > ChanceToLightAttack && randomNum <= ChanceToLightAttack + ChanceToHeavyAttack) //ex .25->(.25+.25)
             {
                 return "heavyAttack";
             }
@@ -72,15 +71,7 @@ namespace TBD_TBG
         {
             Random random = new Random();
             double randomNum = random.NextDouble(); //random number between 0 and 1
-
-            if (randomNum <= enemyStats.Evasion)//miss
-            {
-                return false;
-            }
-            else //hit
-            {
-                return true;
-            }
+            return randomNum > EnemyStat.Evasion;
         }
     }
 }

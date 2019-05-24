@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace TBD_TBG
 {
@@ -13,16 +12,6 @@ namespace TBD_TBG
         public string OptionDescription { get; set; }
         public string OptionKeys { get; set; }
         public string Morality { get; set; }
-
-        public void GetData()
-        {
-            //Console.WriteLine($"Key: {Key} ;\n Description: {Description} ;\n Options: {optionDescription} ;\n Choices: {optionKeys}");
-            //Console.WriteLine();
-
-            //Dictionary <string, string> jumpChoice = new Dictionary<string, string>();
-            //jumpChoice.Add(Key, Description);
-            //Dictionary<string, string> myDict = new Dictionary<string, string>();
-        }
 
         public string GetDescription()
         {
