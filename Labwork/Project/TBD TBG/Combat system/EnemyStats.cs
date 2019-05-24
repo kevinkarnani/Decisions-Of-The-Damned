@@ -63,5 +63,9 @@ namespace TBD_TBG
         {
             return Description;
         }
+        public string GetDeathDescription()
+        {
+            return DeathDescription;
+        }
     }
 }
