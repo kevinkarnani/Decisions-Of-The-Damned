@@ -6,6 +6,7 @@ namespace TBD_TBG.Combat_system
 {
     public class EnemyFileParser
     {
+        public static Dictionary<string, Enemy> GlobalEnemies = new Dictionary<string, Enemy>();
         public static void Parser()
         {
             string path = "CSV-Enemies.csv";
@@ -14,10 +15,12 @@ namespace TBD_TBG.Combat_system
             using (var csv = new CsvReader(reader))
             {
                 var records = csv.GetRecords<EnemyStats>();
-                List<EnemyStats> Enemies = new List<EnemyStats>();
                 foreach (EnemyStats record in records)
                 {
-                    Enemies.Add(record);
+                    Enemy enemy = new Enemy(record.GetID(), record.GetName());
+                    GlobalEnemies.Add(record.GetID(), enemy);
+                    GlobalEnemies[record.GetID()].SetAttackChance(record.GetChanceToLightAttack(), record.GetChanceToHeavyAttack(), record.GetChanceToDodge());
+                    GlobalEnemies[record.GetID()].SetEnemyStat(record.GetAgility(), record.GetAttack(), record.GetHP());
                 }
             }
         }

@@ -11,17 +11,20 @@ namespace TBD_TBG.Combat_system
         public double ChanceToHeavyAttack;
         public double ChanceToDodge;
 
-        EnemyStats EnemyStats = new EnemyStats();
         //Constructor
         public Enemy(string id, string name)
         {
             ID = id;
             Name = name;
-            EnemyStat = new Stats(EnemyStats.GetAgility(), EnemyStats.GetAttack(), EnemyStats.GetHP());
         }
+
+        public void SetEnemyStat(int agility, int attack, int hp)
+        {
+            EnemyStat = new Stats(agility, attack, hp);
+        }
+
         public void SetAttackChance(double lchance, double hchance, double dchance)
         {
-            
             ChanceToLightAttack = lchance;
             ChanceToHeavyAttack = hchance;
             ChanceToDodge = dchance;
