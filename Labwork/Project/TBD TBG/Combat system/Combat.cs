@@ -80,16 +80,16 @@ namespace TBD_TBG
             if (enemy.EnemyStat.CurrentHP <= 0) //you win
             {
                 Utility.Write("You defeated the " + enemy.Name + "!", Game.combatColor);
+                Utility.Write(enemy.DeathDescription);
                 Utility.Write(">>>>>----------> BATTLE FINISH <----------<<<<<", Game.combatColor);
             }
             else if (Player.playerStats.CurrentHP <= 0)//you lose
             {
                 Utility.Write("You lost to the " + enemy.Name + "!", Game.combatColor);
                 Utility.Write(">>>>>----------> BATTLE FINISH <----------<<<<<", Game.combatColor);
-                Utility.Write("GAME OVER", Game.errorColor);
-                Game.End();
             }
             Player.inCombat = false;
+            Game.StartGameLoop();
         }
 
         //the player's turn

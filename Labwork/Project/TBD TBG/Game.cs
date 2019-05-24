@@ -165,7 +165,7 @@ namespace TBD_TBG
         public static void StartCombat()
         {
             Console.ReadLine();
-
+            EnemyFileParser.Parser();
             Enemy currentEnemy = EnemyFileParser.GlobalEnemies["1"];
             Console.WriteLine();
             Player.PrintPlayerOverview();
