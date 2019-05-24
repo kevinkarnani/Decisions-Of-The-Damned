@@ -17,7 +17,7 @@ namespace TBD_TBG
                 var records = csv.GetRecords<EnemyStats>();
                 foreach (EnemyStats record in records)
                 {
-                    Enemy enemy = new Enemy(record.GetName(), record.GetDescription());
+                    Enemy enemy = new Enemy(record.GetName(), record.GetDescription(), record.GetDeathDescription());
                     GlobalEnemies.Add(record.GetID(), enemy);
                     GlobalEnemies[record.GetID()].SetAttackChance(record.GetChanceToLightAttack(), record.GetChanceToHeavyAttack(), record.GetChanceToDodge());
                     GlobalEnemies[record.GetID()].SetEnemyStat(record.GetAgility(), record.GetAttack(), record.GetHP());
