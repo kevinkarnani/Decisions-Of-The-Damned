@@ -219,7 +219,14 @@ namespace TBD_TBG
                 fight.StartCombatLoop();
                 if (CurrentEnemy.Name == "Bulette")
                 {
-                    CurrentScenario = GameFileParser.GlobalChoices["D1A"];
+                    if (Combat.PlayerWon)
+                    {
+                        CurrentScenario = GameFileParser.GlobalChoices["D1A"];
+                    }
+                    else
+                    {
+                        CurrentScenario = GameFileParser.GlobalChoices["D2A"];
+                    }
                 }
 
                 Player.PrintPlayerOverview();

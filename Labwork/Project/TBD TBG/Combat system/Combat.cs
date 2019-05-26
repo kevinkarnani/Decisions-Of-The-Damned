@@ -12,27 +12,33 @@ namespace TBD_TBG
         private bool playerPreparingHeavyAttack = false;
         private bool playerDodgingAttack = false;
 
-        private double enemyInitialEvasion; 
+        private double enemyInitialEvasion;
         private bool enemyPreparingHeavyAttack = false;
         private bool enemyDodgingAttack = false;
+        private int turnNumber;
+        public static bool PlayerWon { get; set; }
 
-        public Combat(Enemy _enem)
+        public Combat(Enemy enemy)
         {
-            enemy = _enem;
+            this.enemy = enemy;
             enemyInitialEvasion = enemy.EnemyStat.Evasion;
 
+        }
+
+        private void BattleStart()
+        {
+            Utility.Write(">>>>>----------> BATTLE START <----------<<<<<", Game.combatColor);
+            Utility.Write("You face a " + enemy.Name + "!", Game.combatColor);
+            Utility.Write("Description: " + enemy.Description, Game.combatColor);
+            Console.WriteLine();
         }
 
         public void StartCombatLoop()
         {
             Player.inCombat = true;
             //header of the battle
-            Utility.Write(">>>>>----------> BATTLE START <----------<<<<<", Game.combatColor);
-            Utility.Write("You face a " + enemy.Name + "!", Game.combatColor);
-            Utility.Write("Description: " + enemy.Description, Game.combatColor);
-            Console.WriteLine();
-
-            int turnNumber = 1;
+            BattleStart();
+            turnNumber = 1;
             var pressAnyKey = "";
             //start loop until someone dies
             while (Player.playerStats.CurrentHP > 0 && enemy.EnemyStat.CurrentHP > 0)
@@ -78,18 +84,29 @@ namespace TBD_TBG
             //determines who won the battle
             if (enemy.EnemyStat.CurrentHP <= 0) //you win
             {
-                Utility.Write("You defeated the " + enemy.Name + "!", Game.combatColor);
-                Utility.Write(enemy.DeathDescription);
-                Utility.Write(">>>>>----------> BATTLE FINISH <----------<<<<<", Game.combatColor);
+                PlayerWin();
             }
             else if (Player.playerStats.CurrentHP <= 0)//you lose
             {
-                Utility.Write("You lost to the " + enemy.Name + "!", Game.combatColor);
-                Utility.Write(">>>>>----------> BATTLE FINISH <----------<<<<<", Game.combatColor);
+                EnemyWin();
             }
             Player.inCombat = false;
         }
 
+        private void PlayerWin()
+        {
+            Utility.Write("You defeated the " + enemy.Name + "!", Game.combatColor);
+            Utility.Write(enemy.DeathDescription);
+            Utility.Write(">>>>>----------> BATTLE FINISH <----------<<<<<", Game.combatColor);
+            PlayerWon = true;
+        }
+
+        private void EnemyWin()
+        {
+            Utility.Write("You lost to the " + enemy.Name + "!", Game.combatColor);
+            Utility.Write(">>>>>----------> BATTLE FINISH <----------<<<<<", Game.combatColor);
+            PlayerWon = false;
+        }
         //the player's turn
         private void PlayerTurn()
         {
