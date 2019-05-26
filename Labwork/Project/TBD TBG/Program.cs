@@ -10,6 +10,8 @@ namespace TBD_TBG
         //main method, calls most important functions
         static void Main()
         {
+            GameFileParser.Parser();
+            EnemyFileParser.Parser();
             Game.Start();
             Console.Read();
         }

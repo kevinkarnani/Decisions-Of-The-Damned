@@ -1,5 +1,4 @@
 ﻿using System;
-
 namespace TBD_TBG
 {
     public class Combat
@@ -89,7 +88,6 @@ namespace TBD_TBG
                 Utility.Write(">>>>>----------> BATTLE FINISH <----------<<<<<", Game.combatColor);
             }
             Player.inCombat = false;
-            Game.StartGameLoop();
         }
 
         //the player's turn

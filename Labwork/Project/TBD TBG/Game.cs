@@ -10,6 +10,7 @@ namespace TBD_TBG
         public static readonly string statsColor = "darkcyan";
         public static readonly string inventoryColor = "green";
         public static readonly string errorColor = "red";
+        public static bool game = true;
 
         static Choice CurrentScenario; //Choice object that is associated with certain paths in the branching narrative        
 
@@ -94,7 +95,7 @@ namespace TBD_TBG
             //potion1.UseEffect();
 
             InitializeScenarios();
-            StartGameLoop();
+            GameLoop();
             End();
         }
 
@@ -107,15 +108,15 @@ namespace TBD_TBG
                 try
                 {
                     Utility.Write("What class would you like to play as?");
-                    Utility.Write("1) ", Game.choiceColor, false);
+                    Utility.Write("1) ", choiceColor, false);
                     Console.WriteLine(Utility.CleanDes("Adventurer: Your experiences traveling have provided you with the knowledge to handle yourself in combat. A perfectly balanced fighter."));
-                    Utility.Write("2) ", Game.choiceColor, false);
+                    Utility.Write("2) ", choiceColor, false);
                     Console.WriteLine(Utility.CleanDes("Paladin: Blessed with a hardy constitution, you are able to withstand blows that a lesser being could not."));
-                    Utility.Write("3) ", Game.choiceColor, false);
+                    Utility.Write("3) ", choiceColor, false);
                     Console.WriteLine(Utility.CleanDes("Brawler: Years in the gym has given you the strength to hit your enemies as hard as you hit the weights."));
-                    Utility.Write("4) ", Game.choiceColor, false);
+                    Utility.Write("4) ", choiceColor, false);
                     Console.WriteLine(Utility.CleanDes("Rogue: Fleet of foot, your speed allows you to avoid the blows rained down upon you by your enemies."));
-                    Utility.Write("Type 1, 2, 3, or 4", Game.choiceColor);
+                    Utility.Write("Type 1, 2, 3, or 4", choiceColor);
 
                     Player.Archetype = Utility.Input();
                     break;
@@ -135,22 +136,36 @@ namespace TBD_TBG
         //This method initializes all Choice objects
         public static void InitializeScenarios()
         {
-            GameFileParser.Parser();
             CurrentScenario = GameFileParser.GlobalChoices["A1A"];
         }
         
-        //Loops through Choice objects for branching narrative
-        public static void StartGameLoop()
+        public static void GameLoop()
         {
-            while (true)
+            while (game)
+            {
+                if (Player.inCombat)
+                {
+                    StartCombat();
+                }
+                else
+                {
+                    DecisionLoop();
+                }
+            }
+        }
+
+        //Loops through Choice objects for branching narrative
+        public static void DecisionLoop()
+        {
+            while (game)
             {
                 Utility.Write(CurrentScenario.Description);
+                Utility.AllValues(CurrentScenario);
                 if (!CurrentScenario.CheckChoice()) //TODO: Change this to check the scenario's hasCombat variable
                 {
                     StartCombat();
                     break;
                 }
-                Utility.AllValues(CurrentScenario);
                 string selection = Utility.Input();
                 //Error checking the user input
                 if(selection.ToLower() == "i") //press i to open inventory menu
@@ -183,7 +198,6 @@ namespace TBD_TBG
         public static void StartCombat()
         {
             Console.ReadLine();
-            EnemyFileParser.Parser();
             Enemy currentEnemy = EnemyFileParser.GlobalEnemies["1"];
             Console.WriteLine();
             Player.PrintPlayerOverview();
