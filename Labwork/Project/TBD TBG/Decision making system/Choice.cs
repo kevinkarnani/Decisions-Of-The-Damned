@@ -16,31 +16,36 @@ namespace TBD_TBG
         //Class Constructor, takes in description parameter and sets it to class instance of Description
         public Choice(string des)
         {
-            this.Description = des;
+            Description = des;
         }
 
         // setter method for Choices Dictionary, takes a dictionary of strings and choices, sets it to class instance
         public void SetChoices(Dictionary<string, Choice> choices)
         {
-            this.Choices = choices;
+            Choices = choices;
         }
 
         public void SetMorality(int morality)
         {
-            this.Morality = morality;
+            Morality = morality;
+        }
+
+        public int GetMorality()
+        {
+            return Morality;
         }
 
         //returns true if there exists any number of objects greater than 0 in the dictionary
         public bool CheckChoice()
         {
-            return (this.Choices.Count > 0);
+            return (Choices.Count > 0);
         }
 
         //parses string into int, then returns the values of the dictionary as a choice object
         public Choice GetChoice(string selection)
         {
             int num = Int32.Parse(selection) - 1;
-            return this.Choices.Values.ElementAt(num);
+            return Choices.Values.ElementAt(num);
         } 
     }
 }

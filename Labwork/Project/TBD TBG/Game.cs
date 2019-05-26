@@ -143,15 +143,18 @@ namespace TBD_TBG
         {
             while (game)
             {
-                if (Player.inCombat)
+                if (!CurrentScenario.CheckChoice()) //TODO: Change this to check the scenario's hasCombat variable
                 {
-                    StartCombat();
+                    Player.inCombat = true;
+                    CombatLoop();
                 }
                 else
                 {
+                    Player.inCombat = false;
                     DecisionLoop();
                 }
             }
+            game = false;
         }
 
         //Loops through Choice objects for branching narrative
@@ -161,11 +164,7 @@ namespace TBD_TBG
             {
                 Utility.Write(CurrentScenario.Description);
                 Utility.AllValues(CurrentScenario);
-                if (!CurrentScenario.CheckChoice()) //TODO: Change this to check the scenario's hasCombat variable
-                {
-                    StartCombat();
-                    break;
-                }
+                Player.honor += CurrentScenario.GetMorality();
                 string selection = Utility.Input();
                 //Error checking the user input
                 if(selection.ToLower() == "i") //press i to open inventory menu
@@ -195,17 +194,20 @@ namespace TBD_TBG
         }
 
         //Start Combat
-        public static void StartCombat()
+        public static void CombatLoop()
         {
-            Console.ReadLine();
-            Enemy currentEnemy = EnemyFileParser.GlobalEnemies["1"];
-            Console.WriteLine();
-            Player.PrintPlayerOverview();
+            while (game)
+            {
+                Console.ReadLine();
+                Enemy currentEnemy = EnemyFileParser.GlobalEnemies["1"];
+                Console.WriteLine();
+                Player.PrintPlayerOverview();
 
-            Combat fight1 = new Combat(currentEnemy);
-            fight1.StartCombatLoop();
+                Combat fight = new Combat(currentEnemy);
+                fight.StartCombatLoop();
 
-            Player.PrintPlayerOverview();
+                Player.PrintPlayerOverview();
+            }
         }
 
         //Create Game Title
