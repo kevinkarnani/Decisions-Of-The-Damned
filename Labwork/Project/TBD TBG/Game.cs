@@ -12,7 +12,8 @@ namespace TBD_TBG
         public static readonly string errorColor = "red";
         public static bool game = true;
 
-        static Choice CurrentScenario; //Choice object that is associated with certain paths in the branching narrative        
+        static Choice CurrentScenario; //Choice object that is associated with certain paths in the branching narrative
+        static Enemy CurrentEnemy;
 
         /* 
          * This function is meant to start the game. It outputs the title, the ASCII ART, the authors, creates the player,
@@ -95,6 +96,7 @@ namespace TBD_TBG
             //potion1.UseEffect();
 
             InitializeScenarios();
+            InitializeEnemy();
             GameLoop();
             End();
         }
@@ -103,7 +105,7 @@ namespace TBD_TBG
         public static void CreatePlayer()
         {
             //Make sure this input is a number between 1 and 4
-            while (true)
+            while (game)
             {
                 try
                 {
@@ -138,19 +140,22 @@ namespace TBD_TBG
         {
             CurrentScenario = GameFileParser.GlobalChoices["A1A"];
         }
+
+        public static void InitializeEnemy()
+        {
+            CurrentEnemy = EnemyFileParser.GlobalEnemies["1"];
+        }
         
         public static void GameLoop()
         {
             while (game)
             {
-                if (!CurrentScenario.CheckChoice()) //TODO: Change this to check the scenario's hasCombat variable
+                if (Player.inCombat) //TODO: Change this to check the scenario's hasCombat variable
                 {
-                    Player.inCombat = true;
                     CombatLoop();
                 }
                 else
                 {
-                    Player.inCombat = false;
                     DecisionLoop();
                 }
             }
@@ -160,32 +165,40 @@ namespace TBD_TBG
         //Loops through Choice objects for branching narrative
         public static void DecisionLoop()
         {
-            while (game)
+            while (!Player.inCombat)
             {
-                Utility.Write(CurrentScenario.Description);
-                Utility.AllValues(CurrentScenario);
-                Player.honor += CurrentScenario.GetMorality();
-                string selection = Utility.Input();
-                //Error checking the user input
-                if(selection.ToLower() == "i") //press i to open inventory menu
+                if (!CurrentScenario.CheckChoice())
                 {
-                    Inventory.OpenInventoryMenu();
-                }
-                else if (selection.ToLower() == "o")
-                {
-                    Player.PrintPlayerOverview(); //press o to open player overview
+                    Player.inCombat = true;
+                    break;
                 }
                 else
                 {
-                    try
+                    Utility.Write(CurrentScenario.Description);
+                    Utility.AllValues(CurrentScenario);
+                    Player.honor += CurrentScenario.GetMorality();
+                    string selection = Utility.Input();
+                    //Error checking the user input
+                    if(selection.ToLower() == "i") //press i to open inventory menu
                     {
-                        CurrentScenario = CurrentScenario.GetChoice(selection);
+                        Inventory.OpenInventoryMenu();
                     }
-                    catch (Exception ex)
+                    else if (selection.ToLower() == "o")
                     {
-                        if (ex is ArgumentOutOfRangeException || ex is FormatException)
+                        Player.PrintPlayerOverview(); //press o to open player overview
+                    }
+                    else
+                    {
+                        try
                         {
-                            Utility.Write("Invalid Choice Selection. Try Again.", Game.errorColor);
+                            CurrentScenario = CurrentScenario.GetChoice(selection);
+                        }
+                        catch (Exception ex)
+                        {
+                            if (ex is ArgumentOutOfRangeException || ex is FormatException)
+                            {
+                                Utility.Write("Invalid Choice Selection. Try Again.", Game.errorColor);
+                            }
                         }
                     }
                 }
@@ -196,17 +209,21 @@ namespace TBD_TBG
         //Start Combat
         public static void CombatLoop()
         {
-            while (game)
+            while (Player.inCombat)
             {
                 Console.ReadLine();
-                Enemy currentEnemy = EnemyFileParser.GlobalEnemies["1"];
                 Console.WriteLine();
                 Player.PrintPlayerOverview();
 
-                Combat fight = new Combat(currentEnemy);
+                Combat fight = new Combat(CurrentEnemy);
                 fight.StartCombatLoop();
+                if (CurrentEnemy.Name == "Bulette")
+                {
+                    CurrentScenario = GameFileParser.GlobalChoices["D1A"];
+                }
 
                 Player.PrintPlayerOverview();
+                Player.inCombat = false;
             }
         }
 

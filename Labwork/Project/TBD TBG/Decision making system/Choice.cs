@@ -38,7 +38,7 @@ namespace TBD_TBG
         //returns true if there exists any number of objects greater than 0 in the dictionary
         public bool CheckChoice()
         {
-            return (Choices.Count > 0);
+            return Choices.Count > 0;
         }
 
         //parses string into int, then returns the values of the dictionary as a choice object
