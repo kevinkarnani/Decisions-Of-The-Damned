@@ -23,16 +23,21 @@ namespace TBD_TBG
             return Key;
         }
 
-        public string GetOptionDescription()
+        public string[] GetOptionKeys()
         {
-            return OptionDescription;
+            return OptionKeys.Split(",");
+        }
+
+        public string[] GetOptionDescription()
+        {
+            return OptionDescription.Split(",");
         }
 
         public Dictionary<string, Choice> GetKeyValueOptions()
         {
             Dictionary<string, Choice> dict = new Dictionary<string, Choice>();
-            string[] options = OptionKeys.Split(",");
-            string[] optdescs = OptionDescription.Split(",");
+            string[] options = GetOptionKeys();
+            string[] optdescs = GetOptionDescription();
             for (int i = 0; i < options.Length; i++)
             {
                 try
@@ -47,22 +52,10 @@ namespace TBD_TBG
             return dict;
         }
 
-        public int GetMorality()
+        public int[] GetMorality()
         {
-            int morality = 0;
             string[] moralities = Morality.Split(",");
-            foreach (string m in moralities)
-            {
-                try
-                {
-                    morality = Int32.Parse(m);
-                }
-                catch (Exception)
-                {
-                    continue;
-                }
-            }
-            return morality;
+            return Array.ConvertAll(moralities, Int32.Parse);
         }
     }
 }

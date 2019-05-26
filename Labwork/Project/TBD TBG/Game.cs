@@ -167,16 +167,15 @@ namespace TBD_TBG
         {
             while (!Player.inCombat)
             {
+                Utility.Write(CurrentScenario.Description);
                 if (!CurrentScenario.CheckChoice())
                 {
                     Player.inCombat = true;
-                    break;
                 }
                 else
                 {
-                    Utility.Write(CurrentScenario.Description);
                     Utility.AllValues(CurrentScenario);
-                    Player.honor += CurrentScenario.GetMorality();
+                    
                     string selection = Utility.Input();
                     //Error checking the user input
                     if(selection.ToLower() == "i") //press i to open inventory menu
@@ -192,6 +191,7 @@ namespace TBD_TBG
                         try
                         {
                             CurrentScenario = CurrentScenario.GetChoice(selection);
+                            Player.honor += CurrentScenario.GetMorality();
                         }
                         catch (Exception ex)
                         {

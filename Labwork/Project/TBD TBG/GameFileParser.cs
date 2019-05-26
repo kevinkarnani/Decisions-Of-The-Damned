@@ -1,6 +1,7 @@
 ﻿using CsvHelper;
 using System.IO;
 using System.Collections.Generic;
+using System;
 
 namespace TBD_TBG
 {
@@ -19,13 +20,23 @@ namespace TBD_TBG
                 foreach (Scenario record in records)
                 {
                     GlobalChoices.Add(record.GetKey(), new Choice(record.GetDescription()));
-                    GlobalChoices[record.GetKey()].SetMorality(record.GetMorality());
                     Scenarios.Add(record);
                 }
                 foreach (Scenario record in Scenarios)
                 {
                     Dictionary<string, Choice> options = record.GetKeyValueOptions();
                     GlobalChoices[record.GetKey()].SetChoices(options);
+                    for (int i = 0; i < record.GetOptionKeys().Length; i++)
+                    {
+                        try
+                        {
+                            GlobalChoices[record.GetOptionKeys()[i]].SetMorality(record.GetMorality()[i]);
+                        }
+                        catch (Exception)
+                        {
+                            continue;
+                        }
+                    }
                 }
             }
         }
