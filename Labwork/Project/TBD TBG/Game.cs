@@ -110,14 +110,10 @@ namespace TBD_TBG
                 try
                 {
                     Utility.Write("What class would you like to play as?");
-                    Utility.Write("1) ", choiceColor, false);
-                    Console.WriteLine(Utility.CleanDes("Adventurer: Your experiences traveling have provided you with the knowledge to handle yourself in combat. A perfectly balanced fighter."));
-                    Utility.Write("2) ", choiceColor, false);
-                    Console.WriteLine(Utility.CleanDes("Paladin: Blessed with a hardy constitution, you are able to withstand blows that a lesser being could not."));
-                    Utility.Write("3) ", choiceColor, false);
-                    Console.WriteLine(Utility.CleanDes("Brawler: Years in the gym has given you the strength to hit your enemies as hard as you hit the weights."));
-                    Utility.Write("4) ", choiceColor, false);
-                    Console.WriteLine(Utility.CleanDes("Rogue: Fleet of foot, your speed allows you to avoid the blows rained down upon you by your enemies."));
+                    Menu.Output(1, new Menu("Adventurer: Your experiences traveling have provided you with the knowledge to handle yourself in combat. A perfectly balanced fighter."));
+                    Menu.Output(2, new Menu("Paladin: Blessed with a hardy constitution, you are able to withstand blows that a lesser being could not."));
+                    Menu.Output(3, new Menu("Brawler: Years in the gym has given you the strength to hit your enemies as hard as you hit the weights."));
+                    Menu.Output(4, new Menu("Rogue: Fleet of foot, your speed allows you to avoid the blows rained down upon you by your enemies."));
                     Utility.Write("Type 1, 2, 3, or 4", choiceColor);
 
                     Player.Archetype = Utility.Input();
