@@ -19,6 +19,7 @@ namespace TBD_TBG
             this.isEquipped = false;
             this.isWeapon = isWeapon; 
         }
+
         //sets the stats of the equipable
         public void SetStats(int attack, int agility, int HP)
         {
@@ -26,6 +27,7 @@ namespace TBD_TBG
             plusHP = HP;
             plusAttack = attack; 
         }
+
         //displays the stats of the equipable
         public void PrintStats()
         {
@@ -44,6 +46,7 @@ namespace TBD_TBG
             }           
             Console.WriteLine();
         }
+
         //equips an item to the player by adding its stats to the player's stats
         public void Equip()
         {
@@ -65,6 +68,7 @@ namespace TBD_TBG
             Player.playerStats.CurrentHP += plusHP;
             Player.playerStats.Agility += plusAgility;
         }
+
         public void Unequip()
         {
             if (isEquipped) //you can only unequip an equipped item
@@ -77,7 +81,5 @@ namespace TBD_TBG
                 Player.playerStats.Agility -= plusAgility;
             }
         }
-
-
     }
 }

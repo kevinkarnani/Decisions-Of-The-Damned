@@ -43,7 +43,7 @@ namespace TBD_TBG
             //start loop until someone dies
             while (Player.playerStats.CurrentHP > 0 && enemy.EnemyStat.CurrentHP > 0)
             {
-                Utility.Write("=====TURN #" + turnNumber + "=====", Game.combatColor);
+                TurnNumber();
                 //determine who goes first
                 if (Player.playerStats.Agility > enemy.EnemyStat.Agility) //the player goes first
                 {
@@ -91,6 +91,11 @@ namespace TBD_TBG
                 EnemyWin();
             }
             Player.inCombat = false;
+        }
+
+        private void TurnNumber()
+        {
+            Utility.Write("=====TURN #" + turnNumber + "=====", Game.combatColor);
         }
 
         private void PlayerWin()

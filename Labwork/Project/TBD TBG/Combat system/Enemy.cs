@@ -49,9 +49,9 @@ namespace TBD_TBG
 
         //dodge
         //no method needed, player doesn't take damage
-        public void Damage(int dmg)
+        public void Damage(int damage)
         {
-            EnemyStat.CurrentHP -= dmg;
+            EnemyStat.CurrentHP -= damage;
         }
 
         public string ChooseRandomAttack()

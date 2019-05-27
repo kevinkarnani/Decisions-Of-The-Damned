@@ -10,10 +10,11 @@ namespace TBD_TBG
 
         public Item(string Identification, string Name, string Description)
         {
-            this.ID = Identification;
+            ID = Identification;
             this.Name = Name;
             this.Description = Description;
         }
+
         public void PrintItemOverview()
         {
             string color = "darkcyan";
@@ -23,9 +24,5 @@ namespace TBD_TBG
             Console.WriteLine();
         }
         //TODO: function add to inventory
-               
-
     }
-
-    
 }

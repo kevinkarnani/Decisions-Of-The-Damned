@@ -123,7 +123,7 @@ namespace TBD_TBG
                 {
                     if (ex is ArgumentException || ex is FormatException)
                     {
-                        Utility.Write("Invalid Archetype Selection. Try Again", Game.errorColor);
+                        Utility.Write("Invalid Archetype Selection. Try Again", errorColor);
                     }
                 }
             }
@@ -193,7 +193,7 @@ namespace TBD_TBG
                         {
                             if (ex is ArgumentOutOfRangeException || ex is FormatException)
                             {
-                                Utility.Write("Invalid Choice Selection. Try Again.", Game.errorColor);
+                                Utility.Write("Invalid Choice Selection. Try Again.", errorColor);
                             }
                         }
                     }
