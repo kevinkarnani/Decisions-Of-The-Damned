@@ -1,31 +1,18 @@
-ID,Item Name,Attack,Agility,HP,Type,Special,Description
-1,Iron Broadsword,3,0,0,Weapon,-,Empty
-2,Platinum Greatsword,4,0,0,Weapon,-,Empty
-3,Maul of Disruption,5,0,0,Weapon,-,Empty
-4,Glass Cannon,10,0,0,Weapon,-,Empty
-5,Bramble Bow,3,0,0,Weapon,-,Empty
-6,Time Hammer,5,5,0,Weapon,-,Empty
-7,Void Blade,3,0,0,Weapon,-,Empty
-8,Double-Shot Bow,4,0,0,Weapon,-,Empty
-9,Blazing Whip,3,0,0,Weapon,-,Empty
-10,Chilling Handaxe,3,0,0,Weapon,-,Empty
-11,Displacer Armor,0,5,3,Armor,-,Empty
-12,Shield of the Martyr,0,0,2,Armor,-,Empty
-13,Plate of the Dawn-Blessed,0,0,4,Armor,-,Empty
-14,Thorn Armor,2,0,2,Armor,-,Empty
-15,Cloak of Perception,0,5,2,Armor,-,Empty
-16,Raven's Wings,0,3,4,Armor,-,Empty
-17,Dragon-Scale Armor,0,0,4,Armor,-,Empty
-18,Mithril Chain Mail,0,0,5,Armor,-,Empty
-19,Extending Shield,0,5,0,Armor,-,Empty
-20,Boomerang Shield,5,0,5,Armor,-,Empty
-21,Elixir of Hawk's Perception,0,5,0,Consumable,-,Empty
-22,Potion of Bestial Strength,5,0,0,Consumable,-,Empty
-23,Potion of Stone's Endurance,0,0,5,Consumable,-,Empty
-24,Elixir of Etherealness,0,0,0,Consumable,-,Empty
-25,Potion of Dragon's Breath,5,0,0,Consumable,-,Empty
-26,Throwing Knife,2,0,0,Consumable,-,Empty
-27,Smoke Bomb,0,3,0,Consumable,-,Empty
-28,Acid Vial,3,0,0,Consumable,-,Empty
-29,Elixir of Vitality,0,0,5,Consumable,-,Empty
-30,Death's Ward,0,0,0,Consumable,-,Empty
+ID,Deadass Location,Item Name,Attack,Agility,HP,Item Type,Item Location,Item Description
+1,A5A,Iron Shortsword,20,10,0,Weapon,Found in ship wreckage,"This dulled iron sword isn't anything special, but it'll get the job done. "
+2,"D1C, D1D",Ebony Longsword,40,5,0,Weapon,Taken off of Marquiese - dead or alive,This sword is the most beautiful weapon you have laid eyes upon. It pierces your enemies just as its beauty pierces the hearts of those who wield it. 
+3,,Ice Daggers,60,15,0,Weapon,"Two daggers, found inside bulette",The blades of these daggers are as cold as ice. They may or may not be willing to sacrifice your love. 
+4,,Void Blade,70,10,0,Weapon,Found after ankhegs ,Anything struck by this blade is warped and twisted. Anything smaller than the blade is sucked inside. You have no idea where these things go. 
+5,,Platinum Greatsword,80,0,0,Weapon,Taken off of Al if you kill him,"The platinum greatsword once wielded by Al radiates with divine energy. Even in death, it seems that through his sword, he is trying to turn your soul towards the light."
+6,D1C,Royal Guard Armor,0,0,30,Armor,Taken off of Marquise if you kill him first time,This purple and gold armor befits the servant of a self-righteous king. Hopefully it will serve you better than it did Marquiese.
+7,,Bulette-Hide Armor,0,0,50,Armor,After Bulette WIlliam - dead or alive,"To add insult to injury, this armor taken from Bulette William is made from the hide of a bulette. So not only did you murder him in cold blood, but you are also wearing armor made out of his brethren's skin. "
+8,,Mithril Mail,0,0,100,Armor,Taken off of Al if you kill him,"This glittering armor served Al quite well over the course of his life, but it did not protect him from being stabbed in the back by one he called a friend. The weight of this armor represents the weight on your conscience of betraying an ally,"
+9,,Dusk-Touched Armor,0,20,60,Armor,Marquise's Second Set of Armor,"With this armor, the shadows seem to cling to you, making you harder to hit in combat. Such a boon could only have been given by one as powerful as the king."
+10,,Armor of Agility,0,35,40,Armor,Found after defeating Ankhegs ,"When wearing this armor, only the most perceptive of enemies are able to strike you rather than your afterimage."
+11,,Potion of Stone's Endurance,0,0,50,Consumable,,"Upon imbibing this potion, your constitution is moderately increased"
+12,,Potion of Hawk's Swiftness,0,50,0,Consumable,,"Once consumed, the user is able to move with the speed of a hunting hawk."
+13,,Potion of Fire Giant Strength,50,0,0,Consumable,,Your stikes are augmented with the strength of a giant upon drinking this potion. 
+14,,Philter of Ultimate Vitality,0,0,150,Consumable,,"Once you drink this, you could probably be body slammed by a giant and still survive."
+15,,Potion of Ultimate Speed,0,150,0,Consumable,,Gotta. Go. Fast.
+16,,Potion of Unlimited Strength ,150,0,0,Consumable,,Anyone attacking you following the consumption of this potion should really take a moment and think about their life choices before you send them to the afterlife. 
+17,,Potion of Revitalization,0,0,999,Consumable,,"Upon drinking this potion, you are completely restored."
