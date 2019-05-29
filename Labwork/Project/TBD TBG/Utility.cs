@@ -44,8 +44,13 @@ namespace TBD_TBG
 
             if (text.Length > charLimit)
             {
-                foreach (string word in words)
+                for (int i = 0; i < words.Length; i++)
                 {
+                    string word = words[i];
+                    if (word.Length > 0 && word[word.Length - 1] == '\n')
+                    {
+                        word = word.Substring(0, word.Length - 1);
+                    }
                     charOnLine += word.Length + 1;
                     if (charOnLine < charLimit)
                     {
