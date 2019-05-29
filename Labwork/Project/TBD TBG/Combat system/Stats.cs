@@ -140,6 +140,7 @@ namespace TBD_TBG
                 else
                 {
                     attack = value;
+                    heavyAttack = Convert.ToInt32(2.5 * attack);
                 }
                 
             }

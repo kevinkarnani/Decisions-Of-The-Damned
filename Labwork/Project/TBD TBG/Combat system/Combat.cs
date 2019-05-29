@@ -81,6 +81,17 @@ namespace TBD_TBG
                     turnNumber++;
                 }
             }
+
+            //TODO: CLEAR ITEM BUFFS
+            /*
+            //clear item buffs
+            foreach(var i in Inventory.ConsumableList)
+            {
+                i.ClearEffect();
+            }
+            //This doesn't work bc it's not in the inventory anymore
+            */
+
             //determines who won the battle
             if (enemy.EnemyStat.CurrentHP <= 0) //you win
             {
@@ -211,7 +222,7 @@ namespace TBD_TBG
         }
         private void DisplayCombatOptions()
         {
-            Utility.Write("Options:", Game.choiceColor);
+            Utility.Write("Options:", Game.combatColor);
             Menu.OutputIndent("1", new Menu("Light attack"));
             Menu.OutputIndent("2", new Menu("Heavy attack"));
             Menu.OutputIndent("3", new Menu("Dodge"));
