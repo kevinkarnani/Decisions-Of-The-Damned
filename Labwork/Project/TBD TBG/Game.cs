@@ -198,7 +198,6 @@ namespace TBD_TBG
                         }
                     }
                 }
-                
             }
         }
 
@@ -224,7 +223,6 @@ namespace TBD_TBG
                         CurrentScenario = GameFileParser.GlobalChoices["D2A"];
                     }
                 }
-
                 Player.PrintPlayerOverview();
                 Player.inCombat = false;
             }
