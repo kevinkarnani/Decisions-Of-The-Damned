@@ -53,6 +53,7 @@ namespace TBD_TBG
             Console.WriteLine(Utility.Center("Mark Melkumyan, Kev Karnani, Humaid Mustajab,"));
             Console.WriteLine(Utility.Center("Cort Williams, and Joey Hermann."));
             Console.WriteLine();
+            var pressAnyKey = Console.ReadLine();  //make the player press any key to continue
 
             Console.WriteLine(String.Concat(Enumerable.Repeat("=", Console.WindowWidth)));
             Console.WriteLine();
@@ -131,6 +132,7 @@ namespace TBD_TBG
             }
             Utility.Write("Welcome " + Player.Name + "! You are a(n) " + Player.archetype + "!");
             Utility.Write("Now let the story begin...\n");
+            var pressAnyKey = Console.ReadLine();  //make the player press any key to continue
             Console.WriteLine(String.Concat(Enumerable.Repeat("=", Console.WindowWidth)));
             Console.WriteLine();
         }
