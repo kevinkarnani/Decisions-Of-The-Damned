@@ -28,7 +28,7 @@ namespace TBD_TBG
         private void BattleStart()
         {
             Utility.Write(">>>>>----------> BATTLE START <----------<<<<<", Game.combatColor);
-            Utility.Write("You face a " + enemy.Name + "!", Game.combatColor);
+            Utility.Write("You face " + enemy.Name + "!", Game.combatColor);
             Utility.Write("Description: " + enemy.Description, Game.combatColor);
             Console.WriteLine();
         }

@@ -1,7 +1,7 @@
-ID,Name,Attack,Agility,HP,ChanceToLightAttack,ChanceToHeavyAttack,ChanceToDodge,Description,DeathDescription,,
-1,Bulette,55,2,150,60,30,10,"Before you is a bulette, with a hide like bone, claws the size of your arm, and an impossibly large jaw filled with rows and rows of razor sharp teeth. ","With a roar that seems to shake the very ground, the bulette attempts a final attack. It does not reach you, as it succumbs to its wounds and crashes to the floor. This predator will not be hunting again.",,"With a roar that seems to shake the very ground, the bulette attempts a final attack. It does not reach you, as it succumbs to its wounds and crashes to the floor. This predator will not be hunting again. "
-2,Anhkeg,65,30,120,40,20,40,N/A,N/A,,
-3,Royal Guard,30,15,80,50,30,20,N/A,N/A,,
-4,Marquise Round 1,20,15,200,40,40,20,N/A,N/A,,
-5,Maquise Round 2,60,30,80,20,40,40,N/A,N/A,,
+ID,Name,Attack,Agility,HP,ChanceToLightAttack,ChanceToHeavyAttack,ChanceToDodge,Description,DeathDescription
+1,Marquise,20,15,200,40,40,20,N/A,N/A,,
+2,a Bulette,55,2,150,60,30,10,"Before you is a bulette, with a hide like bone, claws the size of your arm, and an impossibly large jaw filled with rows and rows of razor sharp teeth.","With a roar that seems to shake the very ground, the bulette attempts a final attack. It does not reach you, as it succumbs to its wounds and crashes to the floor. This predator will not be hunting again.",,"With a roar that seems to shake the very ground, the bulette attempts a final attack. It does not reach you, as it succumbs to its wounds and crashes to the floor. This predator will not be hunting again."
+3,a Anhkeg,65,30,120,40,20,40,N/A,N/A,,
+4,a Royal Guard,30,15,80,50,30,20,N/A,N/A,,
+5,Marquise,60,30,80,20,40,40,N/A,N/A,,
 6,King Gott,85,20,250,35,30,35,N/A,N/A,,
