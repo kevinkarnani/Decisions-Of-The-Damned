@@ -137,22 +137,38 @@ namespace TBD_TBG
                 }                
                 playerPreparingHeavyAttack = false;
             }
-            else //if you didn't prepare a heavy attack last turn you can attack
+            else //if you didn't prepare a heavy attack last turn you can make an action
             {
                 //the player's combat choices
                 //TODO: ERROR CHECKING           
-                Utility.Write("Options:", Game.choiceColor);
-                //Menu.Output("1) Light attack");
-                Utility.Write("1) Light attack", Game.choiceColor);
-                Utility.Write("2) Heavy attack", Game.choiceColor);
-                Utility.Write("3) Dodge", Game.choiceColor);
-                Utility.Write("I) Use an item");
-                Utility.Write("O) Display Stats");
-                //Utility.Write("6) Flee?");
+                DisplayCombatOptions();
 
                 //make attack choice
-                string attackChoice = Utility.Input();
-                attackChoice.ToLower();
+                string attackChoice = (Utility.Input()).ToLower();
+
+                while(attackChoice != "1" && attackChoice != "2" && attackChoice != "3")
+                {
+                    if (attackChoice == "o")
+                    {
+                        Player.playerStats.PrintStatOverview();
+                        Console.WriteLine();
+                    }
+                    else if (attackChoice == "i")
+                    {
+                        Inventory.ConsumeItemSubmenu();
+                        Console.WriteLine();
+                    }
+                    else
+                    {
+                        Utility.Write("Invalid Choice Selection. Try Again.", Game.errorColor);
+                    }
+
+                    DisplayCombatOptions();
+                    //make attack choice
+                    attackChoice = (Utility.Input()).ToLower();
+                }                    
+
+
                 try
                 {
                     switch (attackChoice)
@@ -177,12 +193,14 @@ namespace TBD_TBG
                             Player.playerStats.Evasion += .65;
                             playerDodgingAttack = true;
                             break;
+                        /*
                         case "i":
                             Inventory.ConsumeItemSubmenu();
                             break;
                         case "o":
                             Player.playerStats.PrintStatOverview();
                             break;
+                        */
                         default://bad input
                             throw new ArgumentException();
                     }
@@ -198,6 +216,15 @@ namespace TBD_TBG
             //display health of enemy            
             Utility.Write("Enemy HP:" + enemy.EnemyStat.CurrentHP + "/" + enemy.EnemyStat.MaxHP, Game.combatColor);
             //Console.WriteLine();
+        }
+        private void DisplayCombatOptions()
+        {
+            Utility.Write("Options:", Game.choiceColor);
+            Utility.Write("1) Light attack", Game.choiceColor);
+            Utility.Write("2) Heavy attack", Game.choiceColor);
+            Utility.Write("3) Dodge", Game.choiceColor);
+            Utility.Write("I) Use an item");
+            Utility.Write("O) Display Stats");
         }
         
         private void EnemyTurn()
