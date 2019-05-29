@@ -66,7 +66,6 @@ namespace TBD_TBG
 
             CreatePlayer();
             
-            Player.playerStats.CurrentHP -= 50;
             /*
             Equipable weapon1 = new Equipable("1", "iron sword", "a crappy sword", true);
             weapon1.SetStats(10, 10, 0);
@@ -214,7 +213,7 @@ namespace TBD_TBG
 
                 Combat fight = new Combat(CurrentEnemy);
                 fight.StartCombatLoop();
-                if (CurrentEnemy.Name == "Bulette")
+                if (CurrentEnemy.Name == "Marquise" && CurrentEnemy.ID == "1")
                 {
                     if (Combat.PlayerWon)
                     {

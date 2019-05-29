@@ -7,14 +7,16 @@ namespace TBD_TBG
         public string Name { get; set; }//the name of the enemy
         public Stats EnemyStat { get; set; }
         public string Description { get; set; } //description of the enemy
+        public string ID { get; set; }
         public string DeathDescription { get; set; }
         public double ChanceToLightAttack;
         public double ChanceToHeavyAttack;
         public double ChanceToDodge;
 
         //Constructor
-        public Enemy(string name, string description, string death)
+        public Enemy(string id, string name, string description, string death)
         {
+            ID = id;
             Name = name;
             Description = description;
             DeathDescription = death;
