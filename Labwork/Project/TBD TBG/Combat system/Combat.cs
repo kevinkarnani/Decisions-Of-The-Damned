@@ -193,14 +193,6 @@ namespace TBD_TBG
                             Player.playerStats.Evasion += .65;
                             playerDodgingAttack = true;
                             break;
-                        /*
-                        case "i":
-                            Inventory.ConsumeItemSubmenu();
-                            break;
-                        case "o":
-                            Player.playerStats.PrintStatOverview();
-                            break;
-                        */
                         default://bad input
                             throw new ArgumentException();
                     }
@@ -220,11 +212,11 @@ namespace TBD_TBG
         private void DisplayCombatOptions()
         {
             Utility.Write("Options:", Game.choiceColor);
-            Utility.Write("1) Light attack", Game.choiceColor);
-            Utility.Write("2) Heavy attack", Game.choiceColor);
-            Utility.Write("3) Dodge", Game.choiceColor);
-            Utility.Write("I) Use an item");
-            Utility.Write("O) Display Stats");
+            Menu.OutputIndent("1", new Menu("Light attack"));
+            Menu.OutputIndent("2", new Menu("Heavy attack"));
+            Menu.OutputIndent("3", new Menu("Dodge"));
+            Menu.OutputIndent("I", new Menu("Use an item"));
+            Menu.OutputIndent("O", new Menu("Display stats"));
         }
         
         private void EnemyTurn()

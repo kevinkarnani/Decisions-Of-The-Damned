@@ -14,7 +14,7 @@ namespace TBD_TBG
     class Utility
     {
         static string margin = "    ";
-        static string indent = "      ";
+        public static string indent = "      ";
 
         public static string Input()
         {

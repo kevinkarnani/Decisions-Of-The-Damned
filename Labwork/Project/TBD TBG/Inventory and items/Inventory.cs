@@ -33,21 +33,21 @@ namespace TBD_TBG
             int count = 1;
             foreach (var i in EquipableList)
             {
-                string itemLine = count + ") " + i.Name;
+                string itemLine = i.Name;
                 
                 if (i.isEquipped) //if the equipable is currently equiped, then show it
                 {
                     itemLine += " [EQUIPPED]";
                 }                
-                Utility.Write(itemLine, color);
+                Menu.OutputIndent(count.ToString(), new Menu(itemLine));
                 count++;
             }
             Utility.Write("Consumable Items: ", Game.inventoryColor);
             //for each in consumable list
             foreach (var i in ConsumableList)
             {
-                string itemLine = count + ") " + i.Name;
-                Utility.Write(itemLine, color);
+                string itemLine = i.Name;
+                Menu.OutputIndent(count.ToString(), new Menu(itemLine));
                 count++;
                 
             }
@@ -58,13 +58,13 @@ namespace TBD_TBG
             int count = 1;
             foreach (var i in EquipableList)
             {
-                string itemLine = count + ") " + i.Name;
+                string itemLine = i.Name;
 
                 if (i.isEquipped) //if the equipable is currently equiped, then show it
                 {
                     itemLine += " [EQUIPPED]";
                 }
-                Utility.Write(itemLine, color);
+                Menu.OutputIndent(count.ToString(), new Menu(itemLine));
                 count++;
             }
         }
@@ -74,8 +74,8 @@ namespace TBD_TBG
             int count = 1;
             foreach (var i in ConsumableList)
             {
-                string itemLine = count + ") " + i.Name;
-                Utility.Write(itemLine, color);
+                string itemLine = i.Name;
+                Menu.OutputIndent(count.ToString(), new Menu(itemLine));
                 count++;        
             }
         }
@@ -90,10 +90,10 @@ namespace TBD_TBG
                 Utility.Write("[]xxx[]::::::::> INVENTORY MENU <::::::::[]xxx[]", Game.inventoryColor);
                 //TODO: error check the user's input
                 Utility.Write("What would you like to do?", Game.inventoryColor);
-                Utility.Write("1) Check item", Game.choiceColor); //look at item description and stats
-                Utility.Write("2) Equip item", Game.choiceColor); //add equipable stats to your stats
-                Utility.Write("3) Consume item", Game.choiceColor); //use a consumable item
-                Utility.Write("Q) Quit", Game.choiceColor); //exit menu
+                Menu.OutputIndent("1", new Menu("Check item")); //look at item description and stats
+                Menu.OutputIndent("2", new Menu("Equip item")); //add equipable stats to your stats
+                Menu.OutputIndent("3", new Menu("Consume item")); //use a consumable item
+                Menu.OutputIndent("Q", new Menu("Quit"));
                 option = Utility.Input();
                 switch (option)
                 {
@@ -109,7 +109,8 @@ namespace TBD_TBG
                     case ("q"):
                         Utility.Write("Current stats: ", Game.inventoryColor);
                         Player.playerStats.PrintStatOverview();
-                        break;
+                        Console.WriteLine();
+                         break;
                 }
             }
         }
@@ -128,7 +129,7 @@ namespace TBD_TBG
             {
                 Utility.Write("Inventory: ", Game.inventoryColor);
                 DisplayAll(Game.choiceColor); //displays all items in your invenory
-                Utility.Write("Q) Quit", Game.choiceColor);
+                Menu.OutputIndent("Q", new Menu("Quit"));
 
                 option = Utility.Input();
                 if(option.ToLower() == "q") //type q to exit
@@ -173,7 +174,7 @@ namespace TBD_TBG
             {
                 Utility.Write("Equipable items: ", Game.inventoryColor);
                 DisplayEquipables(Game.choiceColor);
-                Utility.Write("Q) Quit", Game.choiceColor);
+                Menu.OutputIndent("Q", new Menu("Quit"));
 
                 option = Utility.Input();
                 if (option.ToLower() == "q") //type q to exit
@@ -245,7 +246,7 @@ namespace TBD_TBG
             {
                 Utility.Write("Consumable items: ", Game.inventoryColor);
                 DisplayConsumables(Game.choiceColor);
-                Utility.Write("Q) Quit", Game.choiceColor);
+                Menu.OutputIndent("Q", new Menu("Quit"));
 
                 option = Utility.Input();
                 if (option.ToLower() == "q") //type q to exit

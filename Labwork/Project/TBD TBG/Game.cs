@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 
 namespace TBD_TBG
 {
@@ -52,21 +53,22 @@ namespace TBD_TBG
             Console.WriteLine(Utility.Center("Mark Melkumyan, Kev Karnani, Humaid Mustajab,"));
             Console.WriteLine(Utility.Center("Cort Williams, and Joey Hermann."));
             Console.WriteLine();
-            Console.WriteLine(Utility.Center("=========================================================================================================================="));
+
+            Console.WriteLine(String.Concat(Enumerable.Repeat("=", Console.WindowWidth)));
             Console.WriteLine();
 
-            Utility.Write("        Controls:");
-            Utility.Write("        - Choices are shown in cyan", choiceColor);
-            Utility.Write("            - Type a # to choose an option (ex. '2')");
-            Utility.Write("        - Type 'I' to open your inventory");
-            Utility.Write("        - Type 'O' to open your player overview");
-            Utility.Write("        - Type 'Q' to quit any menu");
+            Utility.Write("Controls:");
+            Utility.Write(" - Choices are shown in cyan", choiceColor);
+            Utility.Write("    - Type a # to choose an option (ex. '2')");
+            Utility.Write(" - Type 'I' to open your inventory");
+            Utility.Write(" - Type 'O' to open your player overview");
+            Utility.Write(" - Type 'Q' to quit any menu");
             Console.WriteLine();
             
 
             CreatePlayer();
             
-            /*
+            ///*
             Equipable weapon1 = new Equipable("1", "iron sword", "a crappy sword", true);
             weapon1.SetStats(10, 10, 0);
             Equipable weapon2 = new Equipable("2", "wooden sword", "a shitty sword", true);
@@ -93,7 +95,7 @@ namespace TBD_TBG
             Inventory.AddItem(potion1);
             Inventory.AddItem(potion2);
             //potion1.UseEffect();
-            */
+            //*/
 
             InitializeScenarios();
             InitializeEnemy();
@@ -110,10 +112,10 @@ namespace TBD_TBG
                 try
                 {
                     Utility.Write("What class would you like to play as?");
-                    Menu.Output(1, new Menu("Adventurer: Your experiences traveling have provided you with the knowledge to handle yourself in combat. A perfectly balanced fighter."));
-                    Menu.Output(2, new Menu("Paladin: Blessed with a hardy constitution, you are able to withstand blows that a lesser being could not."));
-                    Menu.Output(3, new Menu("Brawler: Years in the gym has given you the strength to hit your enemies as hard as you hit the weights."));
-                    Menu.Output(4, new Menu("Rogue: Fleet of foot, your speed allows you to avoid the blows rained down upon you by your enemies."));
+                    Menu.Output("1", new Menu("Adventurer: Your experiences traveling have provided you with the knowledge to handle yourself in combat. A perfectly balanced fighter."));
+                    Menu.Output("2", new Menu("Paladin: Blessed with a hardy constitution, you are able to withstand blows that a lesser being could not."));
+                    Menu.Output("3", new Menu("Brawler: Years in the gym has given you the strength to hit your enemies as hard as you hit the weights."));
+                    Menu.Output("4", new Menu("Rogue: Fleet of foot, your speed allows you to avoid the blows rained down upon you by your enemies."));
                     Utility.Write("Type 1, 2, 3, or 4", choiceColor);
 
                     Player.Archetype = Utility.Input();
@@ -129,6 +131,8 @@ namespace TBD_TBG
             }
             Utility.Write("Welcome " + Player.Name + "! You are a(n) " + Player.archetype + "!");
             Utility.Write("Now let the story begin...\n");
+            Console.WriteLine(String.Concat(Enumerable.Repeat("=", Console.WindowWidth)));
+            Console.WriteLine();
         }
 
         //This method initializes all Choice objects

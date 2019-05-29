@@ -11,9 +11,14 @@ namespace TBD_TBG
             Description = description;
         }
 
-        public static void Output(int i, Menu menu)
+        public static void Output(string i, Menu menu)
         {
             Utility.Write(i + ") ", Game.choiceColor, false);
+            Console.WriteLine(Utility.CleanDes(menu.Description));
+        }
+        public static void OutputIndent(string i, Menu menu)
+        {
+            Utility.Write("    " + i + ") ", Game.choiceColor, false);
             Console.WriteLine(Utility.CleanDes(menu.Description));
         }
     }
