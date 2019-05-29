@@ -247,5 +247,13 @@ namespace TBD_TBG
         {
             Utility.Write("Press enter to exit.");
         }
+
+        public static void AddItem()
+        {
+            if (CurrentScenario == GameFileParser.GlobalChoices["A5A"])
+            {
+                //Inventory.AddItem();
+            }
+        }
     }
 }
