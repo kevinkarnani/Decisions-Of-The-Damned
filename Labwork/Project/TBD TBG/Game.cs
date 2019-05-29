@@ -67,7 +67,7 @@ namespace TBD_TBG
             CreatePlayer();
             
             Player.playerStats.CurrentHP -= 50;
-            
+            /*
             Equipable weapon1 = new Equipable("1", "iron sword", "a crappy sword", true);
             weapon1.SetStats(10, 10, 0);
             Equipable weapon2 = new Equipable("2", "wooden sword", "a shitty sword", true);
@@ -94,6 +94,7 @@ namespace TBD_TBG
             Inventory.AddItem(potion1);
             Inventory.AddItem(potion2);
             //potion1.UseEffect();
+            */
 
             InitializeScenarios();
             InitializeEnemy();
