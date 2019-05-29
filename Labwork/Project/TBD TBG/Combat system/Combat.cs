@@ -142,6 +142,7 @@ namespace TBD_TBG
                 //the player's combat choices
                 //TODO: ERROR CHECKING           
                 Utility.Write("Options:", Game.choiceColor);
+                //Menu.Output("1) Light attack");
                 Utility.Write("1) Light attack", Game.choiceColor);
                 Utility.Write("2) Heavy attack", Game.choiceColor);
                 Utility.Write("3) Dodge", Game.choiceColor);
