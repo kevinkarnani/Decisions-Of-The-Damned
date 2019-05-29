@@ -18,6 +18,8 @@ namespace TBD_TBG
         private int turnNumber;
         public static bool PlayerWon { get; set; }
 
+        private int[] initialPlayerStats = new int[2] {Player.playerStats.Attack, Player.playerStats.Agility};
+
         public Combat(Enemy enemy)
         {
             this.enemy = enemy;
@@ -83,14 +85,11 @@ namespace TBD_TBG
             }
 
             //TODO: CLEAR ITEM BUFFS
-            /*
-            //clear item buffs
-            foreach(var i in Inventory.ConsumableList)
-            {
-                i.ClearEffect();
-            }
-            //This doesn't work bc it's not in the inventory anymore
-            */
+
+            //clear consumable item buffs
+            Player.playerStats.Attack = initialPlayerStats[0];
+            Player.playerStats.Agility = initialPlayerStats[1];
+
 
             //determines who won the battle
             if (enemy.EnemyStat.CurrentHP <= 0) //you win
