@@ -49,7 +49,7 @@ namespace TBD_TBG
                     string word = words[i];
                     if (word.Length > 0 && word[word.Length - 1] == '\n')
                     {
-                        word = word.Substring(0, word.Length - 1);
+                        word = word.Substring(0, word.Length - 1);                
                     }
                     charOnLine += word.Length + 1;
                     if (charOnLine < charLimit)
