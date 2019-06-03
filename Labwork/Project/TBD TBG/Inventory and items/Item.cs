@@ -7,10 +7,11 @@ namespace TBD_TBG
         public string ID { get; set; } //id of item
         public string Name { get; set; } //name of item
         public string Description { get; set; } //description of item
+        public ItemStats ItemStat { get; set; }
 
-        public Item(string Identification, string Name, string Description)
+        public Item(string ID, string Name, string Description)
         {
-            ID = Identification;
+            this.ID = ID;
             this.Name = Name;
             this.Description = Description;
         }
@@ -23,6 +24,5 @@ namespace TBD_TBG
             Utility.Write("Description: " + Description, color);
             Console.WriteLine();
         }
-        //TODO: function add to inventory
     }
 }

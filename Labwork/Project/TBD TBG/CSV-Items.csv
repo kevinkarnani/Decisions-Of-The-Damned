@@ -1,4 +1,4 @@
-ID,Deadass Location,Item Name,Attack,Agility,HP,Item Type,Item Location,Item Description
+ID,Location,Name,Attack,Agility,HP,Type,LocationDescription,Description
 1,A5A,Iron Shortsword,20,10,0,Weapon,Found in ship wreckage,"This dulled iron sword isn't anything special, but it'll get the job done. "
 2,"D1C, D1D",Ebony Longsword,40,5,0,Weapon,Taken off of Marquiese - dead or alive,This sword is the most beautiful weapon you have laid eyes upon. It pierces your enemies just as its beauty pierces the hearts of those who wield it. 
 3,,Ice Daggers,60,15,0,Weapon,"Two daggers, found inside bulette",The blades of these daggers are as cold as ice. They may or may not be willing to sacrifice your love. 
