@@ -7,7 +7,7 @@ namespace TBD_TBG
         public string ID { get; set; } //id of item
         public string Name { get; set; } //name of item
         public string Description { get; set; } //description of item
-        public ItemStats ItemStat { get; set; }
+        public Stats ItemStats { get; set; }
 
         public Item(string ID, string Name, string Description)
         {
@@ -23,6 +23,11 @@ namespace TBD_TBG
             Utility.Write("Name: " + Name, color);
             Utility.Write("Description: " + Description, color);
             Console.WriteLine();
+        }
+
+        public void SetItemStats(int Agility, int Attack, int HP)
+        {
+            ItemStats = new Stats(Agility, Attack, HP);
         }
     }
 }

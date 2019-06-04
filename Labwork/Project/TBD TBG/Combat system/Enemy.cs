@@ -14,17 +14,17 @@ namespace TBD_TBG
         public double ChanceToDodge;
 
         //Constructor
-        public Enemy(string id, string name, string description, string death)
+        public Enemy(string ID, string Name, string Description, string Death)
         {
-            ID = id;
-            Name = name;
-            Description = description;
-            DeathDescription = death;
+            this.ID = ID;
+            this.Name = Name;
+            this.Description = Description;
+            DeathDescription = Death;
         }
 
-        public void SetEnemyStat(int agility, int attack, int hp)
+        public void SetEnemyStat(int Agility, int Attack, int HP)
         {
-            EnemyStat = new Stats(agility, attack, hp);
+            EnemyStat = new Stats(Agility, Attack, HP);
         }
 
         public void SetAttackChance(double lchance, double hchance, double dchance)

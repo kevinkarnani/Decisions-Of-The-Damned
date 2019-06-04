@@ -15,7 +15,7 @@ namespace TBD_TBG
         public static Equipable equippedArmor = new Equipable("", "default", "default", true);
         
         //Adds an item to your inventory, either the equipable list or consumable list
-        public static void AddItem(Item newItem)
+        public static void AddItem(Equipable newItem)
         {
             if (newItem is Equipable)
             {

@@ -12,12 +12,16 @@ namespace TBD_TBG
 
         public bool isActive = false; //whether or not the player is currently effected by the consumbable buff
         
-        public Consumable(string Identification, string Name, string Description, bool OutOfCombat) : base(Identification, Name, Description)
+        public Consumable(string ID, string Name, string Description) : base(ID, Name, Description)
         {
             //TODO: fix this init? it doesnt look right ^^^
-            ID = Identification;
+            this.ID = ID;
             this.Name = Name;
             this.Description = Description;
+        }
+
+        public void SetConsumability(bool OutOfCombat)
+        {
             isUsableOutsideOfCombat = OutOfCombat;
         }
 

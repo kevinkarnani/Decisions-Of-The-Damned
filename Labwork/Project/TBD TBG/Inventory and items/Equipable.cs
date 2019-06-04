@@ -10,14 +10,22 @@ namespace TBD_TBG
         public bool isEquipped = false; //whether the equipable is equiped or not
         public bool isWeapon; //whether the equipable is a weapon or armor (T = weapon, F = armor)
 
-        public Equipable(string Identification, string Name, string Description, bool isWeapon) : base(Identification, Name, Description)
+        public Equipable(string ID, string Name, string Description) : base(ID, Name, Description)
         {
             //TODO: fix this init? it doesnt look right ^^^
-            this.ID = Identification;
+            this.ID = this.ID;
             this.Name = Name;
             this.Description = Description;
-            this.isEquipped = false;
-            this.isWeapon = isWeapon; 
+        }
+
+        public void SetEquipped()
+        {
+            isEquipped = false;
+        }
+
+        public void SetIsWeapon(bool isWeapon)
+        {
+            this.isWeapon = isWeapon;
         }
 
         //sets the stats of the equipable
