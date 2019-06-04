@@ -70,15 +70,19 @@ namespace TBD_TBG
             CreatePlayer();
             
             ///*
-            Equipable weapon1 = new Equipable("1", "iron sword", "a crappy sword", true);
+            Equipable weapon1 = new Equipable("1", "iron sword", "a crappy sword");
+            weapon1.SetIsWeapon(true);
             weapon1.SetStats(10, 10, 0);
-            Equipable weapon2 = new Equipable("2", "wooden sword", "a shitty sword", true);
+            Equipable weapon2 = new Equipable("2", "wooden sword", "a shitty sword");
             weapon2.SetStats(5, 5, 0);
-            Equipable armor1 = new Equipable("3", "iron armor", "shiny armor fancy fancy", false);
+            weapon2.SetIsWeapon(true);
+            Equipable armor1 = new Equipable("3", "iron armor", "shiny armor fancy fancy");
             armor1.SetStats(0, 0, 10);
-            Equipable armor2 = new Equipable("4", "leather armor", "old leather armor that smells like shit", false);
+            armor1.SetIsWeapon(false);
+            Equipable armor2 = new Equipable("4", "leather armor", "old leather armor that smells like shit");
             armor2.SetStats(0, 0, 5);
-            
+            armor2.SetIsWeapon(false);
+
             Inventory.AddItem(weapon1);
             Inventory.AddItem(weapon2);
             Inventory.AddItem(armor1);
