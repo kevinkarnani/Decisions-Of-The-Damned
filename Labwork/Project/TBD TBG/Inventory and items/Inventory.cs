@@ -11,12 +11,14 @@ namespace TBD_TBG
         public static List<Equipable> EquipableList = new List<Equipable>();
         public static List<Consumable> ConsumableList = new List<Consumable>();
 
-        public static Equipable equippedWeapon = new Equipable("", "default", "default", true);
-        public static Equipable equippedArmor = new Equipable("", "default", "default", true);
+        public static Equipable equippedWeapon = new Equipable("", "default", "default");
+        public static Equipable equippedArmor = new Equipable("", "default", "default");
         
         //Adds an item to your inventory, either the equipable list or consumable list
-        public static void AddItem(Equipable newItem)
+        public static void AddItem(Item newItem)
         {
+            equippedWeapon.SetIsWeapon(true);
+            equippedArmor.SetIsWeapon(true);
             if (newItem is Equipable)
             {
                 EquipableList.Add((Equipable)newItem);

@@ -22,12 +22,14 @@ namespace TBD_TBG
                     {
                         Equipable item = new Equipable(record.GetID(), record.GetName(), record.GetDes());
                         item.SetItemStats(record.GetAgility(), record.GetAttack(), record.GetHP());
+                        item.SetLocation(record.GetLocDes());
                         GlobalItems.Add(record.GetID(), item);
                     }
                     else if (record.GetItemType() == "Consumable")
                     {
                         Consumable item = new Consumable(record.GetID(), record.GetName(), record.GetDes());
                         item.SetItemStats(record.GetAgility(), record.GetAttack(), record.GetHP());
+                        item.SetLocation(record.GetLocDes());
                         GlobalItems.Add(record.GetID(), item);
                     }
                     else

@@ -91,10 +91,12 @@ namespace TBD_TBG
             weapon2.Equip();
             armor1.Equip();
 
-            Consumable potion1 = new Consumable("1", "Health potion", "a red liquid in a shiny bottle", true);
+            Consumable potion1 = new Consumable("1", "Health potion", "a red liquid in a shiny bottle");
             potion1.SetStats(0, 0, 20);
-            Consumable potion2 = new Consumable("2", "Attack potion", "a blue liquid in a dark bottle", false);
+            potion1.SetUsability(true);
+            Consumable potion2 = new Consumable("2", "Attack potion", "a blue liquid in a dark bottle");
             potion2.SetStats(10, 0, 0);
+            potion2.SetUsability(false);
 
             Inventory.AddItem(potion1);
             Inventory.AddItem(potion1);

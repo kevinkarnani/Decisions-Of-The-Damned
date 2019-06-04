@@ -8,12 +8,18 @@ namespace TBD_TBG
         public string Name { get; set; } //name of item
         public string Description { get; set; } //description of item
         public Stats ItemStats { get; set; }
+        public string LocationDescription { get; set; }
 
         public Item(string ID, string Name, string Description)
         {
             this.ID = ID;
             this.Name = Name;
             this.Description = Description;
+        }
+
+        public void SetLocation(string LocationDescription)
+        {
+            this.LocationDescription = LocationDescription;
         }
 
         public void PrintItemOverview()

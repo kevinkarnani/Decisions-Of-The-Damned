@@ -20,7 +20,7 @@ namespace TBD_TBG
             this.Description = Description;
         }
 
-        public void SetConsumability(bool OutOfCombat)
+        public void SetUsability(bool OutOfCombat)
         {
             isUsableOutsideOfCombat = OutOfCombat;
         }
