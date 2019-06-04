@@ -179,6 +179,7 @@ namespace TBD_TBG
                 if (!CurrentScenario.CheckChoice())
                 {
                     Player.inCombat = true;
+                    break;
                 }
                 else
                 {
