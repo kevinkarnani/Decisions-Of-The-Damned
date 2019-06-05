@@ -2,7 +2,6 @@
 
 namespace TBD_TBG
 {
-
     class Program
     {
         //TODO: start all methods with capital letters
@@ -12,6 +11,7 @@ namespace TBD_TBG
         {
             GameFileParser.Parser();
             EnemyFileParser.Parser();
+            ItemParser.Parser();
             Game.Start();
             Console.Read();
         }

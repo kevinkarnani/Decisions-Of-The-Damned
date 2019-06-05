@@ -225,7 +225,7 @@ namespace TBD_TBG
 
                 Combat fight = new Combat(CurrentEnemy);
                 fight.StartCombatLoop();
-                if (CurrentEnemy.Name == "Marquise" && CurrentEnemy.ID == "1")
+                if (CurrentEnemy.ID == "1")
                 {
                     if (Combat.PlayerWon)
                     {

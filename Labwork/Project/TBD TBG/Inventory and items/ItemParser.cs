@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
 using CsvHelper;
 
@@ -12,8 +11,8 @@ namespace TBD_TBG
         {
             string path = "CSV-Items.csv";
             FileStream fileStream = new FileStream(path, FileMode.Open);
-            using (var reader = new StreamReader(fileStream))
-            using (var csv = new CsvReader(reader))
+            using (StreamReader reader = new StreamReader(fileStream))
+            using (CsvReader csv = new CsvReader(reader))
             {
                 var records = csv.GetRecords<ItemStats>();
                 foreach (ItemStats record in records)
@@ -31,10 +30,6 @@ namespace TBD_TBG
                         item.SetItemStats(record.GetAgility(), record.GetAttack(), record.GetHP());
                         item.SetLocation(record.GetLocDes());
                         GlobalItems.Add(record.GetID(), item);
-                    }
-                    else
-                    {
-                        throw new ArgumentException();
                     }
                 }
             }

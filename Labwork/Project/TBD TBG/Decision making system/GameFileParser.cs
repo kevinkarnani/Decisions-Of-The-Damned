@@ -12,8 +12,8 @@ namespace TBD_TBG
         {
             string path = "CSV-GameChoice.csv";
             FileStream fileStream = new FileStream(path, FileMode.Open);
-            using (var reader = new StreamReader(fileStream))
-            using (var csv = new CsvReader(reader))
+            using (StreamReader reader = new StreamReader(fileStream))
+            using (CsvReader csv = new CsvReader(reader))
             {
                 var records = csv.GetRecords<Scenario>();
                 List<Scenario> Scenarios = new List<Scenario>();
