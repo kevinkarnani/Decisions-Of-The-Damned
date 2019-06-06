@@ -14,7 +14,9 @@ namespace TBD_TBG
         public int Agility { get; set; }
         public int HP { get; set; }
         public string Type { get; set; }
+        public string Combat { get; set; }
         public string LocationDescription { get; set; }
+        bool Usable;
 
         public string[] GetLoc()
         {
@@ -65,6 +67,19 @@ namespace TBD_TBG
         public string GetItemType()
         {
             return Type;
+        }
+
+        public bool GetCombatUsability()
+        {
+            if (Combat == "Yes")
+            {
+                Usable = true;
+            }
+            else if (Combat == "No")
+            {
+                Usable = false;
+            }
+            return Usable;
         }
 
         public int GetHP()

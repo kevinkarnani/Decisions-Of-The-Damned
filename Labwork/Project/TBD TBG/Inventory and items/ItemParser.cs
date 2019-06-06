@@ -29,6 +29,7 @@ namespace TBD_TBG
                         Consumable item = new Consumable(record.GetID(), record.GetName(), record.GetDes());
                         item.SetItemStats(record.GetAgility(), record.GetAttack(), record.GetHP());
                         item.SetLocation(record.GetLocDes());
+                        item.SetUsability(record.GetCombatUsability());
                         GlobalItems.Add(record.GetID(), item);
                     }
                 }
