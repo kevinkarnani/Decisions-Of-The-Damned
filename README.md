@@ -13,7 +13,7 @@ Decisions of The Damned is a Text-Based Adventure Game that includes a branching
 Download the latest Community Version of Visual Studio at the following link:
 `https://visualstudio.microsoft.com/downloads/`
 
-Choose the .NETCore package as well as anything relative to C# (only 3-4 packages total)
+Choose the .NETCore package as well as anything relative to C# (only 3-4 packages total).
 
 Download the GitLab extension through the following steps:
 * 1) Go to the Extension tab at the top
@@ -23,7 +23,7 @@ Download the GitLab extension through the following steps:
 * 5) Set up your account
 * 6) Add this repository
 
-Press the green button to run the code
+Press the green button to run the code.
 
 ## Contributions
 In order to push, you must first open an issue to explain your reasoning. After careful consideration, a response will be given within 5-7 days.
