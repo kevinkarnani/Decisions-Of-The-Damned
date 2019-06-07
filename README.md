@@ -25,4 +25,4 @@ Download the GitLab extension through the following steps:
 In order to push, you must first open an issue to explain your reasoning. After careful consideration, a response will be given within 5-7 days.
 
 ## License
-[GNU]()
+[GNU](https://www.gnu.org/licenses/gpl-3.0.en.html)
