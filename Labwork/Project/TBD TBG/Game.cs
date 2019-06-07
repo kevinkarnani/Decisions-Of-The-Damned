@@ -70,10 +70,20 @@ namespace TBD_TBG
 
             CreatePlayer();
 
-            /*Equipable weapon1 = (Equipable)ItemParser.GlobalItems["1"];
+            //Equipable weapon1 = (Equipable)ItemParser.GlobalItems["1"];
 
+            //test weapons
+            Equipable weapon1 = new Equipable("1", "Dulled Shortsword", "An old blade wielded by a warrior long past.");
+            weapon1.SetIsWeapon(true);
+            weapon1.SetStats(10,5,0); 
             Inventory.AddItem(weapon1);
-            weapon1.Equip();*/
+            weapon1.Equip();
+
+            Equipable armor1 = new Equipable("2", "Torn tunic", "The worn out garb of an experienced adventurer.");
+            weapon1.SetIsWeapon(false);
+            armor1.SetStats(0, 0, 15);
+            Inventory.AddItem(armor1);
+            armor1.Equip();
 
             Consumable potion1 = new Consumable("1", "Health potion", "a red liquid in a shiny bottle");
             potion1.SetStats(0, 0, 20);
