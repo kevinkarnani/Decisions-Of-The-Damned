@@ -14,7 +14,6 @@ namespace TBD_TBG
         public string Type { get; set; }
         public string Combat { get; set; }
         public string LocationDescription { get; set; }
-        bool Usable;
 
         /*
          * returns a string array of locations
