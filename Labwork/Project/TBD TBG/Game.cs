@@ -12,6 +12,7 @@ namespace TBD_TBG
         public static readonly string inventoryColor = "green";
         public static readonly string errorColor = "red";
         public static bool game = true;
+        public static Equipable weapon;
 
         static Choice CurrentScenario; //Choice object that is associated with certain paths in the branching narrative
         static Enemy CurrentEnemy;
@@ -68,27 +69,11 @@ namespace TBD_TBG
             
 
             CreatePlayer();
-            
-            Equipable weapon1 = new Equipable("1", "iron sword", "a crappy sword");
-            weapon1.SetIsWeapon(true);
-            weapon1.SetStats(10, 10, 0);
-            Equipable weapon2 = new Equipable("2", "wooden sword", "a shitty sword");
-            weapon2.SetStats(5, 5, 0);
-            weapon2.SetIsWeapon(true);
-            Equipable armor1 = new Equipable("3", "iron armor", "shiny armor fancy fancy");
-            armor1.SetStats(0, 0, 10);
-            armor1.SetIsWeapon(false);
-            Equipable armor2 = new Equipable("4", "leather armor", "old leather armor that smells like shit");
-            armor2.SetStats(0, 0, 5);
-            armor2.SetIsWeapon(false);
+
+            Equipable weapon1 = (Equipable)ItemParser.GlobalItems["1"];
 
             Inventory.AddItem(weapon1);
-            Inventory.AddItem(weapon2);
-            Inventory.AddItem(armor1);
-            Inventory.AddItem(armor2);
             weapon1.Equip();
-            weapon2.Equip();
-            armor1.Equip();
 
             Consumable potion1 = new Consumable("1", "Health potion", "a red liquid in a shiny bottle");
             potion1.SetStats(0, 0, 20);
@@ -271,8 +256,14 @@ namespace TBD_TBG
         {
             if (CurrentScenario == GameFileParser.GlobalChoices["A5A"])
             {
-                //Inventory.AddItem();
+                weapon = (Equipable)ItemParser.GlobalItems["1"];
             }
+            else if (CurrentScenario == GameFileParser.GlobalChoices["D1C"] || CurrentScenario == GameFileParser.GlobalChoices["D1D"])
+            {
+                weapon = (Equipable)ItemParser.GlobalItems["2"];
+            }
+            Inventory.AddItem(weapon);
+            weapon.Equip();
         }
     }
 }
