@@ -113,7 +113,7 @@ namespace TBD_TBG
         //This method sets the player's name and player's archetype
         public static void CreatePlayer()
         {
-            //Make sure this input is a number between 1 and 4
+            //Make sure this input is a number between 1 and 4com
             while (game)
             {
                 try
@@ -221,7 +221,7 @@ namespace TBD_TBG
             {
                 Console.ReadLine();
                 Console.WriteLine();
-                Player.PrintPlayerOverview();
+                //Player.PrintPlayerOverview();
 
                 Combat fight = new Combat(CurrentEnemy);
                 fight.StartCombatLoop();
