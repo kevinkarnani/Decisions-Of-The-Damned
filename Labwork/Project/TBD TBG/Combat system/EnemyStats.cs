@@ -4,7 +4,6 @@ namespace TBD_TBG
 {
     public class EnemyStats
     {
-        //TODO: MAKE GETTERS AND SETTERS FOR ENEMY CLASS
 
         //CLASS ATTRIBUTES
         public string ID { get; set; }//the id of the enemy
