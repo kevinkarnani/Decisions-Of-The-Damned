@@ -4,6 +4,10 @@ namespace TBD_TBG
 {
     public class Equipable : Item
     {
+        /*
+         * Inherits from item class. 
+         * Includes weapons and armor. Can be equiped and unequiped
+         */
         public int plusAgility = 0; //additional agility stat
         public int plusHP = 0; //additional HP stat
         public int plusAttack = 0; //additional attack stat
@@ -12,7 +16,6 @@ namespace TBD_TBG
 
         public Equipable(string ID, string Name, string Description) : base(ID, Name, Description)
         {
-            //TODO: fix this init? it doesnt look right ^^^
             this.ID = this.ID;
             this.Name = Name;
             this.Description = Description;

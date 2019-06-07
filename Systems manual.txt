@@ -1,0 +1,35 @@
+Minimum hardware and software requirements:
+Operating System:
+- Generally any OS that can run visual studio
+- Windows 7, Windows 8 or Windows 10
+- Mac OSX 10.8, 10.9, 10.10 or 10.11
+Hardware: 
+- Generally any computer that can run visual studio
+- Processor (CPU) with 2 gigahertz (GHz) frequency or above
+- A minimum of 1 GB of RAM
+- Monitor Resolution 1024 X 768 or higher
+- A minimum of 10 MB of available space on the hard disk
+- Keyboard
+Software: 
+- Visual Studio- Version 2015 to present
+
+Installation Guide:
+- Download the latest Community Version of Visual Studio at the following link:
+`https://visualstudio.microsoft.com/downloads/`
+[picture]
+- Launch solution
+[picture]
+- Press the green button to run the game
+[picture]
+
+Errors:
+- Not full screening:
+-- Not full screening the game in the beginning results in a broken title screen
+TODO: PICTURE
+- Bad input: 
+-- If you type in an input that isn't a valid option (options are shown in blue)
+TODO: PICTURE
+
+CONTACT:
+Phone - 123-456-7890
+Email - mam962@drexel.edu
