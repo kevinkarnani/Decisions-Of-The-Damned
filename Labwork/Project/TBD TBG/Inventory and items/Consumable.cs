@@ -4,11 +4,14 @@ namespace TBD_TBG
 {
     public class Consumable : Item
     {
-        //STILL IN PROGRESS
-        public int plusAgility = 0;
-        public int plusHP = 0;
-        public int plusAttack = 0;
-        public bool isUsableOutsideOfCombat = false;
+        /*
+         * Inherits from item class. 
+         * Used for consumable items like potions.
+         */
+        public int plusAgility = 0;//additional agility stat
+        public int plusHP = 0;//additional HP stat
+        public int plusAttack = 0;//additional attack stat
+        public bool isUsableOutsideOfCombat = false; //whether or not the item can be used 
 
         public bool isActive = false; //whether or not the player is currently effected by the consumbable buff
         
@@ -20,11 +23,13 @@ namespace TBD_TBG
             this.Description = Description;
         }
 
+        //sets whether the item is usable out of combat or not
         public void SetUsability(bool OutOfCombat)
         {
             isUsableOutsideOfCombat = OutOfCombat;
         }
 
+        //sets stat of item
         public void SetStats(int attack, int agility, int HP)
         {
             plusAgility = agility;
@@ -74,6 +79,7 @@ namespace TBD_TBG
             Player.playerStats.Agility += plusAgility;
         }
 
+        //clears effects of item from player
         public void ClearEffect()
         {
             if (isActive) //you can only clear the effects if it's active
@@ -86,16 +92,5 @@ namespace TBD_TBG
                 Player.playerStats.Agility -= plusAgility;
             }
         }
-
-        /*
-        public void AttackingEnemyEffect()
-        {
-        }
-        public void TakingDamageEffect()
-        {
-        }
-        public void DodgeEffect()
-        {
-        }*/
     }
 }

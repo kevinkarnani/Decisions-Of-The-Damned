@@ -5,9 +5,10 @@ namespace TBD_TBG
 {
     public static class Inventory
     {
-        //TODO: CONSUMABLE LIST
-        //TODO: Error check user inputs
-
+        /*
+         * The inventory that the player accesses to do actions with items
+         * Includes methods such as adding items, displaying items, and other menus
+         */
         public static List<Equipable> EquipableList = new List<Equipable>();
         public static List<Consumable> ConsumableList = new List<Consumable>();
 
@@ -70,7 +71,7 @@ namespace TBD_TBG
                 count++;
             }
         }
-        //TODO: displayConsumables
+        //displays all consumable items
         public static void DisplayConsumables(string color)
         {
             int count = 1;

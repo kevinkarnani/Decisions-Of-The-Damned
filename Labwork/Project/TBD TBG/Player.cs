@@ -4,14 +4,20 @@ namespace TBD_TBG
 {
     public static class Player
     {
+        /*
+         * This class contains everything to do with the player character.
+         * Includes information about the player, stats, attacks, etc.
+         */
+
         public static int honor = 0; //the player's honor value
         public static string archetype = "default"; //the player's archetype (Palidin, Rogue, Fighter, or Adventurer)
-        public static Stats playerStats;
-        public static bool inCombat = false;
+        public static Stats playerStats; //their stats
+        public static bool inCombat = false; //whether they're in combat or not
+
+        public static string Name = "Faust"; //the name of the player
 
         //CLASS METHODS
         //getters & setters
-        public static string Name = "Faust";
         public static string Archetype
         {
             get
@@ -40,10 +46,10 @@ namespace TBD_TBG
                 playerStats = new Stats(archetype);
             }
         }
-            
+        //displays all information about the player
         public static void PrintPlayerOverview()
         {
-            string color = "darkcyan";
+            string color = Game.inventoryColor;
             Utility.Write("Name: " + Name, color);
             Utility.Write("Archetype: " + Archetype, color);
             Utility.Write("Honor: " + honor, color);
