@@ -55,7 +55,7 @@ namespace TBD_TBG
             Console.WriteLine();
             var pressAnyKey = Console.ReadLine();  //make the player press any key to continue
 
-            Console.WriteLine(String.Concat(Enumerable.Repeat("=", Console.WindowWidth)));
+            Console.WriteLine(String.Concat(Enumerable.Repeat("=", Console.WindowWidth))); //create a line of "=" based on console width
             Console.WriteLine();
 
             Utility.Write("Controls:");
@@ -69,7 +69,6 @@ namespace TBD_TBG
 
             CreatePlayer();
             
-            ///*
             Equipable weapon1 = new Equipable("1", "iron sword", "a crappy sword");
             weapon1.SetIsWeapon(true);
             weapon1.SetStats(10, 10, 0);
@@ -125,14 +124,14 @@ namespace TBD_TBG
                     Menu.Output("4", new Menu("Rogue: Fleet of foot, your speed allows you to avoid the blows rained down upon you by your enemies."));
                     Utility.Write("Type 1, 2, 3, or 4", choiceColor);
 
-                    Player.Archetype = Utility.Input();
+                    Player.Archetype = Utility.Input(); //sets archetype based on player input
                     break;
                 }
                 catch (Exception ex)
                 {
                     if (ex is ArgumentException || ex is FormatException)
                     {
-                        Utility.Write("Invalid Archetype Selection. Try Again", errorColor);
+                        Utility.Write("Invalid Archetype Selection. Try Again", errorColor); //bad input
                     }
                 }
             }
@@ -149,16 +148,20 @@ namespace TBD_TBG
             CurrentScenario = GameFileParser.GlobalChoices["A1A"];
         }
 
+        //This method initializes all Enemy objects
         public static void InitializeEnemy()
         {
             CurrentEnemy = EnemyFileParser.GlobalEnemies["1"];
         }
         
+        /*
+         * Deals with branching narrative and combat loop based and checks if player is in combat
+         */
         public static void GameLoop()
         {
             while (game)
             {
-                if (Player.inCombat) //TODO: Change this to check the scenario's hasCombat variable
+                if (Player.inCombat)
                 {
                     CombatLoop();
                 }
@@ -170,20 +173,22 @@ namespace TBD_TBG
             game = false;
         }
 
-        //Loops through Choice objects for branching narrative
+        /*
+         * Loops through Choice objects for branching narrative
+         */
         public static void DecisionLoop()
         {
             while (!Player.inCombat)
             {
-                Utility.Write(CurrentScenario.Description);
-                if (!CurrentScenario.CheckChoice())
+                Utility.Write(CurrentScenario.Description); //prints the story description
+                if (!CurrentScenario.CheckChoice()) //if there are no choices to be made, send to combat
                 {
                     Player.inCombat = true;
                     break;
                 }
                 else
                 {
-                    Utility.AllValues(CurrentScenario);
+                    Utility.AllValues(CurrentScenario); //print out possible values
                     
                     string selection = Utility.Input();
                     //Error checking the user input
@@ -199,14 +204,14 @@ namespace TBD_TBG
                     {
                         try
                         {
-                            CurrentScenario = CurrentScenario.GetChoice(selection);
-                            Player.honor += CurrentScenario.GetMorality();
+                            CurrentScenario = CurrentScenario.GetChoice(selection); //reassigns to new value based on player choice
+                            Player.honor += CurrentScenario.GetMorality(); //updates morality
                         }
                         catch (Exception ex)
                         {
                             if (ex is ArgumentOutOfRangeException || ex is FormatException)
                             {
-                                Utility.Write("Invalid Choice Selection. Try Again.", errorColor);
+                                Utility.Write("Invalid Choice Selection. Try Again.", errorColor); //bad input
                             }
                         }
                     }
@@ -261,6 +266,7 @@ namespace TBD_TBG
             Utility.Write("Press enter to exit.");
         }
 
+        //Adds items to Inventory
         public static void AddItem()
         {
             if (CurrentScenario == GameFileParser.GlobalChoices["A5A"])
