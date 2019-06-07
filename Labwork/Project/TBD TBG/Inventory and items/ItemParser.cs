@@ -13,7 +13,7 @@ namespace TBD_TBG
          */
         public static void Parser()
         {
-            string path = "CSV-Items.csv"; //file path
+            string path = "CSV-Items.csv"; //store file path
             FileStream fileStream = new FileStream(path, FileMode.Open); //create File object
             using (StreamReader reader = new StreamReader(fileStream)) //read text
             using (CsvReader csv = new CsvReader(reader)) //parse text as a CSV
