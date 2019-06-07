@@ -17,7 +17,7 @@ Download the GitLab extension through the following steps:
 7) Press the green button to run the code
 
 ## Contributions
-In order to push, you must first open an issue to explain your reasoning. After careful consideration, a response will be given within 5-7 days/
+In order to push, you must first open an issue to explain your reasoning. After careful consideration, a response will be given within 5-7 days.
 
 ## License
 [GNU]
