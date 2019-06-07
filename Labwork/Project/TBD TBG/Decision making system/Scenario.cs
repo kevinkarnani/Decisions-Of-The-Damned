@@ -5,34 +5,37 @@ namespace TBD_TBG
 {
     public class Scenario
     {
-        //TODO: ADD Morality value, hasCombat var (empty = no enemy, anything else = enemy ID), and hasItem var
-
         public string Key { get; set; }
         public string Description { get; set; }
         public string OptionDescription { get; set; }
         public string OptionKeys { get; set; }
         public string Morality { get; set; }
 
+        //getter for description
         public string GetDescription()
         {
             return Description;
         }
 
+        //getter for key
         public string GetKey()
         {
             return Key;
         }
 
+        //getter for possible keys
         public string[] GetOptionKeys()
         {
             return OptionKeys.Split(",");
         }
 
+        //getter for possible descriptions
         public string[] GetOptionDescription()
         {
             return OptionDescription.Split(",");
         }
 
+        //appends possible keys and values to a dictionary and return said dictionary
         public Dictionary<string, Choice> GetKeyValueOptions()
         {
             Dictionary<string, Choice> dict = new Dictionary<string, Choice>();
@@ -52,6 +55,7 @@ namespace TBD_TBG
             return dict;
         }
 
+        //places all morality values into an int array and returns said array
         public int[] GetMorality()
         {
             string[] moralities = Morality.Split(",");
