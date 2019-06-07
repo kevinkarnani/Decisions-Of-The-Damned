@@ -7,7 +7,7 @@ using System.Linq;
 namespace TBD_TBG
 {
     /*
-     * Derived from "C# Adventure Game" by http://programmingisfun.com, used under CC BY.
+     * This entire class was derived from "C# Adventure Game" by http://programmingisfun.com, used under CC BY.
      * https://creativecommons.org/licenses/by/4.0/
      */
 
