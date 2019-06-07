@@ -1,9 +1,9 @@
-#Decisions of The Damned
+# Decisions of The Damned
 Decisions of The Damned is a Text-Based Adventure Game that includes a branching narrative, a combat system, a morality system, and an inventory system.
 It was coded by: Kevin Karnani and Mark Melkumyan.
 The story was written by: Joey Hermann and Cort Williams.
 
-##Installation
+## Installation
 Download the latest Community Version of Visual Studio at the following link:
 `https://visualstudio.microsoft.com/downloads/`
 
