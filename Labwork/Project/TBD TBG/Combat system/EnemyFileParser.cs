@@ -18,7 +18,7 @@ namespace TBD_TBG
             using (StreamReader reader = new StreamReader(fileStream)) //read text
             using (CsvReader csv = new CsvReader(reader)) //parse text as a CSV
             {
-                var records = csv.GetRecords<EnemyStats>(); //Get all records in the CSV as a Enumerable of ItemStats
+                var records = csv.GetRecords<EnemyStats>(); //Get all records in the CSV as a Enumerable of EnemytStats
                 foreach (EnemyStats record in records)
                 {
                     Enemy enemy = new Enemy(record.GetID(), record.GetName(), record.GetDescription(), record.GetDeathDescription()); //create Enemy object
