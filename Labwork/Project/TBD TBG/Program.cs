@@ -9,7 +9,7 @@ namespace TBD_TBG
         {
             GameFileParser.Parser();
             EnemyFileParser.Parser();
-            ItemParser.Parser();
+            //ItemParser.Parser();
             Game.Start();
             Console.Read();
         }

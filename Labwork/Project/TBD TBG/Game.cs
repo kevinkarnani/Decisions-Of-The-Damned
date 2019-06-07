@@ -70,10 +70,10 @@ namespace TBD_TBG
 
             CreatePlayer();
 
-            Equipable weapon1 = (Equipable)ItemParser.GlobalItems["1"];
+            /*Equipable weapon1 = (Equipable)ItemParser.GlobalItems["1"];
 
             Inventory.AddItem(weapon1);
-            weapon1.Equip();
+            weapon1.Equip();*/
 
             Consumable potion1 = new Consumable("1", "Health potion", "a red liquid in a shiny bottle");
             potion1.SetStats(0, 0, 20);
@@ -191,6 +191,7 @@ namespace TBD_TBG
                         {
                             CurrentScenario = CurrentScenario.GetChoice(selection); //reassigns to new value based on player choice
                             Player.honor += CurrentScenario.GetMorality(); //updates morality
+
                         }
                         catch (Exception ex)
                         {
@@ -251,7 +252,7 @@ namespace TBD_TBG
             Utility.Write("Press enter to exit.");
         }
 
-        //Adds items to Inventory
+        /*//Adds items to Inventory
         public static void AddItem()
         {
             if (CurrentScenario == GameFileParser.GlobalChoices["A5A"])
@@ -264,6 +265,6 @@ namespace TBD_TBG
             }
             Inventory.AddItem(weapon);
             weapon.Equip();
-        }
+        }*/
     }
 }
