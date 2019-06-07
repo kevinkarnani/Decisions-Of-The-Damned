@@ -4,31 +4,35 @@ namespace TBD_TBG
 {
     public class Stats
     {
+        /*
+         * This class sets the attack, agility, evasion, and max/current hp stats
+         * of the player and enemies. It initialises them based on the option the
+         * player chose at the start of the game. 
+         */
+
         //CLASS ATTRIBUTES
 
-            //STATS
+        //STATS
         private int agility; //affects evasion and who goes first (if you have greater agi then your opponent you go first)
         private double evasion; //chance of an enemy hitting you
         private int attack; //damage done in combat
         private int currentHP; //current health. You lose when this reaches zero.
         private int maxHP; //maximum health
-
-        private int heavyAttack;
+        private int heavyAttack; //damage of heavy attack done
 
         //CLASS CONSTRUCTORS
         //for the player (pass in archetype string)
         public Stats(string _arch)
         {
             SetInitialArchStats(_arch);
-
         }       
-            //for enemies (pass in all the stats)
+        //for enemies (pass in all the stats)
         public Stats(int _agi, int _att, int _maxHP)
         {
             agility = _agi;
             attack = _att;
             maxHP = _maxHP;
-            heavyAttack = Convert.ToInt32(2.5 * attack);
+            heavyAttack = Convert.ToInt32(2.5 * attack); 
             currentHP = MaxHP;
             SetEvasionStat();
         }
