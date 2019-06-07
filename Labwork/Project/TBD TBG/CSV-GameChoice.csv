@@ -101,3 +101,22 @@ F1C,"Al gives you a warm smile. ""That was very kind of you, I wish that we coul
 And so, you and Al began your journey, venturing towards the edge of the village. Many adventures surely await!","Onward to adventure!","G1A","0"
 F1D,"Al catches up with you, a disappointed and sad expression on his face. It lingers for a moment, disappearing as he matches your pace.
 And so, you and Al began your journey, venturing towards the edge of the village. Many adventures surely await!","Onward to adventure!","G1A","0"
+G1A,"Once you and Al have set off on your way, you see a large mountain range standing tall in the distance. Al tells you that King Gott has made his home there due to its strategic positioning. He is able to control much of the land from that position safe and sound due to its sheer cliffs. You can think of only one way you could reach the castle.
+""Is there a way we can travel through the mountain?""
+""That is correct!"" Al responds. ""This passage I am leading us to does not go from one side of the mountain to the other, but rather from the bottom to the top. The entire path is within the mountain itself""","""So… we’re just going waltz our way in there?"",""Am I correct in assuming that the pathway will be somewhat fortified?""","G1B,G1C","0,0"
+G1B,"""Not quite. You see, our plan is to enter the mouth of the cave, which opens to a passage that will take us to the castle. Pretty simple.""","""...But?""","G1D""0"
+G1C,"""You would be correct good sir, there are a multitude of foul beasts along the passage. We will probably encounter a sizable number of them.""","""We will do what we have to."",""Wait. Monsters? Why not soldiers?""","G1F,G1E""0,0"
+G1D,"""We’re going to have to fight a bunch of monsters on the way up; they pretty much litter the passage almost all the way up.""","""We will do what we have to."",""Wait. Monsters? Why not soldiers?""","G1F,G1E""0,0"
+G1E,"""Yep, most of the soldiers stay inside the castle since there seems to be no end to the monsters. They tend to burrow out of the walls and ambush those walking the passage. They are basically an infestation. A pretty good deterrent for potential intruders. I do wonder, how do they leave the castle? They must have a secret exit somewhere.""","""We will do what we have to.""","G1F","0"
+G1F,"""That’s the spirit! You’re shaping up to be a true hero!"""
+(You both are going to die.)
+Al abruptly stops walking and stares for a moment. You follow his gaze and find that you two have already reached the passage, having been caught up in conversation. It is quite large, so it is almost impressive that you didn’t notice it. You probably would have walked straight into the mountain had Al not noticed. It appears the mouth of the tunnel is what caught Al’s attention. Large, jagged rocks protrude out from the entrance, almost like jaws.
+""Welp! Looks like it’s now or never!""","Follow Al","H1A","0"
+H1A,"As soon as you and Al enter the mountain, you notice a pathway leading upwards through a tunnel.
+""This will most likely lead us to the castle. As we are surrounded by earth and stone, let us be on our guard for Buletes and Anhkegs.""","""We can take them!"",""Those sound... bad.""","H1C,H1B","0,0"
+H1B,"""They’re more of a nuisance than anything, but once they start to group together you’ve got a real problem.""","""Let’s hope that doesn’t happen.""","H1D","0"
+H1D,"""I hope so too! Better to stay positive!""","""How long do you think this passage is?""","H2A","0"
+H1C,"""That’s the spirit! We’ll be at the castle in no time!""","""How long do you think this passage is?""","H2A","0"
+H2A,"""I’m not sure – HEADS UP!"" 
+Your conversation is interrupted as two Bulettes burst out of the wall. Their deep growls seem to reverberate in your chest.
+Al pulls his greatsword from his back and steels himself. “I’ll take the right one, you handle the left."
