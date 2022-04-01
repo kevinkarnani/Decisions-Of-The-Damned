@@ -18,14 +18,6 @@ Download the latest Community Version of Visual Studio at the following link:
 
 Choose the .NETCore package as well as anything relative to C# (only 3-4 packages total).
 
-Download the GitLab extension through the following steps:
-* 1) Go to the Extension tab at the top
-* 2) Press 'Manage Extensions'
-* 3) Click the 'Online' Tab on the left side
-* 4) Search 'Gitlab' and download
-* 5) Set up your account
-* 6) Add this repository
-
 Press the green button to run the code.
 
 ## Contributions
